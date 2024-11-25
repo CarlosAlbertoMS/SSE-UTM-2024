@@ -1,0 +1,268 @@
+└── .editorconfig
+└── .env
+└── .env.example
+└── .gitattributes
+└── .gitignore
+└── .styleci.yml
+└── Carpeta 'app' (omitida)
+└── artisan
+└── auto.py
+└── bootstrap
+    └── app.php
+    └── cache
+        └── .gitignore
+        └── config.php
+        └── packages.php
+        └── services.php
+└── composer.json
+└── composer.lock
+└── Carpeta 'config' (omitida)
+└── Carpeta 'database' (omitida)
+└── directorio.py
+└── Documentación
+    └── a.py
+    └── Agregar_Egresado.png
+    └── Code
+        └── Agregar-Evento_Admin.blade.php
+        └── Agregar-Historia_Admin.blade.php
+        └── Agregar-Salario_Admin.blade.php
+        └── Egresados_Admin-Agregar-Egresado.blade.php
+        └── Egresados_Admin-Agregar-Lote.blade.php
+        └── Egresados_Admin.blade.php
+        └── Empresas_Admin.blade.php
+        └── Estadisticas_Admin.blade.php
+        └── Eventos_Admin.blade.php
+        └── Historias_Admin.blade.php
+        └── Ofertas_Admin.blade.php
+        └── Salarios_Admin.blade.php
+        └── Tips_Admin.blade.php
+        └── vista.blade.php
+    └── documentación.md
+    └── utm_u31.png
+└── Egresados_Admin.css
+└── package.json
+└── phpunit.xml
+└── plantilla_vista.md
+└── public
+    └── .htaccess
+    └── assets
+        └── flechas
+            └── FLECHA-CREAR-CUENTA-EMPRESA.svg
+            └── FLECHA_FINAL.png
+            └── FLECHA_FINAL.svg
+            └── FLECHA_FINAL_GRIS.png
+            └── FLECHA_FINAL_GRIS.svg
+            └── FLECHA_INICIO.png
+            └── FLECHA_INICIO.svg
+            └── FLECHA_INICIO_GRIS.png
+            └── FLECHA_INICIO_GRIS.svg
+            └── FLECHA_INTERMEDIO.png
+            └── FLECHA_INTERMEDIO.svg
+            └── FLECHA_INTERMEDIO_GRIS.png
+            └── FLECHA_INTERMEDIO_GRIS.svg
+        └── icons
+            └── agregar_r.svg
+            └── Ajustes_B.png
+            └── Ajustes_B.svg
+            └── Arroba.png
+            └── Arroba.svg
+            └── Buscar_B.png
+            └── Buscar_B.svg
+            └── Buscar_N.png
+            └── Buscar_N.svg
+            └── buscar_oferta.svg
+            └── Calendario.png
+            └── Calendario.svg
+            └── config_ofertas.svg
+            └── Contraseña.png
+            └── Contraseña.svg
+            └── correo_a.svg
+            └── Correo_B.png
+            └── Correo_B.svg
+            └── Correo_N.png
+            └── Correo_N.svg
+            └── descargar_r.svg
+            └── descarga_oferta.svg
+            └── editar-n.svg
+            └── editar_b.svg
+            └── editar_oferta.svg
+            └── eliminar_oferta.svg
+            └── Estrella_B.png
+            └── Estrella_B.svg
+            └── Estrella_bB.png
+            └── Estrella_bB.svg
+            └── Estrella_bN.png
+            └── Estrella_bN.svg
+            └── Estrella_N.png
+            └── Estrella_N.svg
+            └── Estrella_sB.png
+            └── Estrella_sB.svg
+            └── Estrella_sN.png
+            └── Estrella_sN.svg
+            └── flecha-apunta-hacia-abajo-oferta.svg
+            └── flecha-apunta-hacia-abajo.png
+            └── help_ofertas.svg
+            └── imprimir_oferta.svg
+            └── Información_B.png
+            └── Información_B.svg
+            └── Información_N.png
+            └── Información_N.svg
+            └── Marcador.png
+            └── Marcador.svg
+            └── Marcador_B.svg
+            └── Marcador_BG.svg
+            └── Marcador_NG.svg
+            └── Marcador_oferta.svg
+            └── normal_u1027.svg
+            └── normal_u1030.svg
+            └── normal_u1032.svg
+            └── normal_u1034.svg
+            └── normal_u1035.svg
+            └── normal_u1038.svg
+            └── normal_u1051.svg
+            └── normal_u1053.svg
+            └── normal_u1059.svg
+            └── normal_u1061.svg
+            └── normal_u1063.svg
+            └── normal_u165.svg
+            └── normal_u23.svg
+            └── normal_u24.svg
+            └── normal_u26.svg
+            └── normal_u866.svg
+            └── radio_button.svg
+            └── radio_button_B_selected.svg
+            └── radio_button_disabled.svg
+            └── radio_button_disabled_selected.svg
+            └── radio_button_selected.svg
+            └── Solicitantes.png
+            └── Solicitantes.svg
+            └── Solicitantes_G.svg
+            └── Telefono_B.png
+            └── Telefono_B.svg
+            └── telefono_bla.svg
+            └── Telefono_N.png
+            └── Telefono_N.svg
+            └── u10.svg
+            └── u11.svg
+            └── u18.svg
+            └── u20.svg
+            └── u21.svg
+            └── u27.svg
+            └── ubicacion.svg
+            └── Universidad.png
+            └── Universidad.svg
+            └── Usuario_B.png
+            └── Usuario_B.svg
+            └── Usuario_N.png
+            └── Usuario_N.svg
+            └── validar_oferta.svg
+            └── ver_oferta.svg
+        └── img
+            └── cemex.png
+            └── fondo_ofertas.jpg
+            └── imagen_main.jpg
+            └── normal_u1052.svg
+            └── normal_u1058.svg
+            └── normal_u1060.svg
+            └── normal_u1062.svg
+            └── normal_u1088.svg
+            └── normal_u1091.svg
+            └── normal_u1100.svg
+            └── normal_u1106.svg
+            └── normal_u1108.svg
+            └── normal_u1110.svg
+            └── normal_u1216.svg
+            └── normal_u1249.svg
+            └── normal_u2.jpg
+            └── normal_u25.jpg
+            └── normal_u36.svg
+            └── normal_u392.svg
+            └── normal_u460.jpg
+            └── normal_u729.svg
+            └── normal_u764.svg
+            └── nova_u32.png
+            └── u14.png
+            └── u25.jpg
+            └── u26.png
+            └── u43.png
+            └── u43_fondo.svg
+            └── u46.jpg
+            └── u462.png
+            └── u80.svg
+            └── u82.svg
+            └── umar_u33.png
+            └── unca_u34.png
+            └── uncos_u35.png
+            └── unicha_u36.png
+            └── unistmo_u37.png
+            └── unpa_u38.png
+            └── unsij_u39.png
+            └── unsis_u40.png
+            └── utm_u31.png
+    └── css
+        └── Administrador
+            └── Agregar-Evento_Admin.css
+            └── Agregar-Historia_Admin.css
+            └── Agregar-Salario_Admin.css
+            └── Egresados_Admin-Agregar-Egresado.css
+            └── Egresados_Admin-Agregar-Lote.css
+            └── Egresados_Admin.css
+            └── Empresas_Admin.css
+            └── Estadisticas_Admin.css
+            └── Eventos_Admin.css
+            └── Historias_Admin.css
+            └── Ofertas_Admin.css
+            └── Salarios_Admin.css
+            └── Tips_Admin.css
+            └── vista.css
+        └── Empresas
+        └── estilo.css
+    └── favicon.ico
+    └── index.php
+    └── robots.txt
+    └── web.config
+└── README.md
+└── resources
+    └── js
+        └── app.js
+        └── bootstrap.js
+    └── lang
+        └── en
+            └── auth.php
+            └── pagination.php
+            └── passwords.php
+            └── validation.php
+    └── sass
+        └── app.scss
+    └── views
+        └── administrador
+            └── Agregar-Evento_Admin.blade.php
+            └── Agregar-Historia_Admin.blade.php
+            └── Agregar-Salario_Admin.blade.php
+            └── Egresados_Admin-Agregar-Egresado.blade.php
+            └── Egresados_Admin-Agregar-Lote.blade.php
+            └── Egresados_Admin.blade.php
+            └── Empresas_Admin.blade.php
+            └── Estadisticas_Admin.blade.php
+            └── Eventos_Admin.blade.php
+            └── Historias_Admin.blade.php
+            └── Ofertas_Admin.blade.php
+            └── Salarios_Admin.blade.php
+            └── Tips_Admin.blade.php
+            └── vista.blade.php
+        └── layouts
+            └── footer.blade.php
+            └── header.blade.php
+        └── welcome.blade.php
+└── routes
+    └── api.php
+    └── channels.php
+    └── console.php
+    └── web.php
+└── salida_arbol.txt
+└── server.php
+└── Carpeta 'storage' (omitida)
+└── Carpeta 'vendor' (omitida)
+└── webpack.mix.js
+
+No se encontraron los archivos específicos.
