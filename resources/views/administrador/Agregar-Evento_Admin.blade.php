@@ -17,7 +17,7 @@
 <body>
     <!-- Encabezado del sitio -->
     @include('layouts.header') <!-- Archivo de encabezado reutilizable -->
-
+    
     <!-- Contenido principal -->
     <section id="contenido">
         <form>
