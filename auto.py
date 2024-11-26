@@ -1,7 +1,8 @@
 import os
 
 # Ruta base (asegúrate de ajustar esta ruta según tu estructura de carpetas)
-ruta_base = r"C:\Users\Marvi\SSE"
+# ruta_base = r"C:\Users\Marvi\SSE"
+ruta_base = r"/home/d/Desktop/SSE-UTM-2024/"
 ruta_vistas = os.path.join(ruta_base, "resources", "views", "administrador")
 archivo_documentacion = os.path.join(ruta_base, "documentacion", "documentacion.md")
 
