@@ -149,4 +149,66 @@ Route::get('/empresa-egresados/propuesta', function () {
     return view('registro-empresa.propuesta-suneo');
 })->name('empresa_propuesta');
 
+Route::get('/empresa-egresados/cuenta', function () {
+    return view('registro-empresa.Crear-Cuenta_Empresa');
+})->name('empresa_cuenta');
+
+Route::get('/empresa-egresados/datos', function () {
+    return view('registro-empresa.DatosDeLaEmpresa_RegEmpresas');
+})->name('empresa_datos');
+
+Route::get('/empresa-egresados/encuesta', function () {
+    return view('registro-empresa.Encuesta-satisfaccion-empresa');
+})->name('empresa_encuesta');
+
+
+Route::get('/empresa-egresados/ingreso', function () {
+    return view('registro-empresa.Ingreso_Selecciona_Universidad');
+})->name('empresa_ingreso');
+
+
+Route::get('/empresa-egresados/propuesta', function () {
+    return view('registro-empresa.propuesta-suneo');
+})->name('empresa_propuesta');
+
+//Egresados
+Route::get('/Egresados/Ofertas_laborales', function () {
+    return view('Egresados.Ofertas_laborales');
+})->name('Egresados_Ofertas');
+
+Route::get('/Egresados/Informacion-de-empresas', function () {
+    return view('Egresados.Informacion-de-empresas');
+})->name('Informacion-empresas');
+
+Route::get('/Egresados/Informacion-empresas-ofertas-laborales', function () {
+    return view('Egresados.Informacion-empresas-ofertas-laborales');
+})->name('Informacion-empresas-ofertas-laborales');
+
+Route::get('/Egresados/Eventos', function () {
+    return view('Egresados.Eventos');
+})->name('Eventos');
+
+Route::get('/Egresados/Eventos-individual', function () {
+    return view('Egresados.Eventos-individual');
+})->name('Eventos-individual');
+
+Route::get('/Egresados/CasosDeExito-Egresados', function () {
+    return view('Egresados.CasosDeExito-Egresados');
+})->name('CasosDeExito-Egresados');
+
+Route::get('/Egresados/ingreso-ingresa-tus-datos', function () {
+    return view('Egresados.ingreso-ingresa-tus-datos');
+})->name('ingreso-ingresa-tus-datos');
+
+Route::get('/Egresados/Selecciona-tu-universidad', function () {
+    return view('Egresados.Selecciona-tu-universidad');
+})->name('Selecciona-tu-universidad');
+
+Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
+    return view('Egresados.TabuladorDeSalarios-Egresados');
+})->name('TabuladorDeSalarios-Egresados');
+
+
+
+
 ?>

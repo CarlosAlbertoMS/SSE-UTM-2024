@@ -43,6 +43,12 @@ body {
   width: 1391px;
 }
 
+body{
+  background-image: url('../../assets/img/imagen_main.jpg');
+  background-attachment: fixed;
+  background-size:cover;
+}
+
 header {
   position: relative;
   display: flex;
