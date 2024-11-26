@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\admin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use App\admin;
 |
 */
 
-Route::get('/administrador-egresados', function () {
+Route::get('/administrador-egresados2', function () {
     return view('administrador.Egresados_Admin');
 })->name('administrador');
 
@@ -76,5 +77,26 @@ Route::get('/', function() {
     return redirect()->route('administrador'); 
 });
 
+Route::get('/empresa-egresados/cuenta', function () {
+    return view('registro-empresa.Crear-Cuenta_Empresa');
+})->name('empresa_cuenta');
+
+Route::get('/empresa-egresados/datos', function () {
+    return view('registro-empresa.DatosDeLaEmpresa_RegEmpresas');
+})->name('empresa_datos');
+
+Route::get('/empresa-egresados/encuesta', function () {
+    return view('registro-empresa.Encuesta-satisfaccion-empresa');
+})->name('empresa_encuesta');
+
+
+Route::get('/empresa-egresados/ingreso', function () {
+    return view('registro-empresa.Ingreso_Selecciona_Universidad');
+})->name('empresa_ingreso');
+
+
+Route::get('/empresa-egresados/propuesta', function () {
+    return view('registro-empresa.propuesta-suneo');
+})->name('empresa_propuesta');
 
 ?>
