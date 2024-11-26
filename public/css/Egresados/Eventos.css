@@ -47,8 +47,8 @@ body {
   flex-direction: column;
   background-image: url("../../assets/img/imagen_main.jpg");
   background-repeat: no-repeat;
-  background-size: 1376px 712px;
-  width: 1391px;
+  background-size: cover;
+ 
 }
 
 header {

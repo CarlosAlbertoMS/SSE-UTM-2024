@@ -33,9 +33,8 @@ body {
   flex-direction: column;
   background-image: url("../../assets/img/normal_u25.jpg");
   background-repeat: no-repeat;
-  background-size: 1391px 737px;
-  width: 1391px;
-  height: 723px;
+  background-size: cover;
+
 }
 
 header {

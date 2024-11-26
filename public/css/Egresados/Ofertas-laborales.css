@@ -34,14 +34,12 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  background-image: url("../../assets/img/imagen_main.jpg");
-  background-repeat: no-repeat;
-  background-size: 1376px 712px;
-  width: 1391px;
+body{
+  background-image: url('../../assets/img/imagen_main.jpg');
+  background-attachment: fixed;
+  background-size:cover;
 }
+
 
 header {
   position: relative;
