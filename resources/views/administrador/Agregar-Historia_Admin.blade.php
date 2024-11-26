@@ -76,7 +76,7 @@
             </div>
         </form>
     </section>
-       
+ 
     <!-- Pie de página -->
     <footer>
         <!-- Imagen del pie de página -->
