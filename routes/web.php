@@ -76,5 +76,26 @@ Route::get('/', function() {
     return redirect()->route('administrador'); 
 });
 
+Route::get('/empresa-egresados/cuenta', function () {
+    return view('empresa.Crear-Cuenta_Empresa');
+})->name('empresa_cuenta');
+
+Route::get('/empresa-egresados/datos', function () {
+    return view('empresa.DatosDeLaEmpresa_RegEmpresas');
+})->name('empresa_datos');
+
+Route::get('/empresa-egresados/encuesta', function () {
+    return view('empresa.Encuesta-satisfaccion-empresa');
+})->name('empresa_encuesta');
+
+
+Route::get('/empresa-egresados/ingreso', function () {
+    return view('empresa.Ingreso_Selecciona_Universidad');
+})->name('empresa_ingreso');
+
+
+Route::get('/empresa-egresados/propuesta', function () {
+    return view('empresa.propuesta-suneo');
+})->name('empresa_propuesta');
 
 ?>
