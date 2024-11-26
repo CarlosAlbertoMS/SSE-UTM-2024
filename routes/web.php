@@ -98,47 +98,34 @@ Route::get('/ofertas-laborales', function() {
     return view('empresas.ofertas-laborales'); 
 }); // oferta.index
 
+// RUTAS PARA EMPRESAS:
+Route::get('/crear-oferta-editar', function() {
+    return view('empresas.crear-oferta-editar');
+}); // ofertas.edit
+
+Route::get('/datos-de-la-empresa-ofertas-laborales', function() {
+    return view('empresas.Datos-de-la-empresa-Ofertas-Laborales');
+})->name('ofertas.index'); // ofertas.index
+
+Route::get('/datos-de-la-empresa', function() {
+    return view('empresas.Datos-de-la-empresa'); 
+}); // empresa.index
+
+Route::get('/editar-datos-empresa', function() {
+    return view('empresas.editar-datos-empresa'); 
+}); // empresa.editar
+
+Route::get('/ofertas-laborales-crear-oferta', function() {
+    return view('empresas.ofertas--laborales-crear-oferta'); 
+}); // oferta.create
+
+Route::get('/ofertas-laborales', function() {
+    return view('empresas.ofertas-laborales'); 
+}); // oferta.index
+
 Route::get('/', function() {
     return redirect()->route('administrador'); 
 });
-
-//Egresados
-Route::get('/Egresados/Ofertas_laborales', function () {
-    return view('Egresados.Ofertas_laborales');
-})->name('Egresados_Ofertas');
-
-Route::get('/Egresados/Informacion-de-empresas', function () {
-    return view('Egresados.Informacion-de-empresas');
-})->name('Informacion-empresas');
-
-Route::get('/Egresados/Informacion-empresas-ofertas-laborales', function () {
-    return view('Egresados.Informacion-empresas-ofertas-laborales');
-})->name('Informacion-empresas-ofertas-laborales');
-
-Route::get('/Egresados/Eventos', function () {
-    return view('Egresados.Eventos');
-})->name('Eventos');
-
-Route::get('/Egresados/Eventos-individual', function () {
-    return view('Egresados.Eventos-individual');
-})->name('Eventos-individual');
-
-Route::get('/Egresados/CasosDeExito-Egresados', function () {
-    return view('Egresados.CasosDeExito-Egresados');
-})->name('CasosDeExito-Egresados');
-
-Route::get('/Egresados/ingreso-ingresa-tus-datos', function () {
-    return view('Egresados.ingreso-ingresa-tus-datos');
-})->name('ingreso-ingresa-tus-datos');
-
-Route::get('/Egresados/Selecciona-tu-universidad', function () {
-    return view('Egresados.Selecciona-tu-universidad');
-})->name('Selecciona-tu-universidad');
-
-Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
-    return view('Egresados.TabuladorDeSalarios-Egresados');
-})->name('TabuladorDeSalarios-Egresados');
-
 
 Route::get('/empresa-egresados/cuenta', function () {
     return view('registro-empresa.Crear-Cuenta_Empresa');
