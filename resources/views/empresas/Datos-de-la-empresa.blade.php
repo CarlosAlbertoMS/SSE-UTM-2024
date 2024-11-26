@@ -171,7 +171,7 @@
               </div>
             </div>
           </div>
-          <!--Fin del contenido derecho de la pagina (Datos de la empresa y datos de contacto-->
+          <!--Fin del contenido derecho de la pagina (Datos de la empresa y datos de contacto. -->
       </section>
     <!-- Fin de la seccion del contenido de los datos. -->
     </main>
