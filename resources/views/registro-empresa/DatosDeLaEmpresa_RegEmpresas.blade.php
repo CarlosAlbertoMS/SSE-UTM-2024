@@ -174,7 +174,7 @@
                         <p>*Campos obligatorios</p>
                         <div class="navegar--botones">
                             <button class="navegar--botones-G" type="button" href="">
-                                <a href="../Vistas-Registro Empresas/CrearCuenta-Empresa.html">Regresar</a>
+                                <a href="{{route('empresa_cuenta')}}">Regresar</a>
                             </button>
                             <button class="navegar--botones-A" type="button">
                                 <a href="{{route('empresa_encuesta')}}">Siguiente</a>
