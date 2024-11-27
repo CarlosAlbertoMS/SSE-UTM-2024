@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\admin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use App\admin;
 |
 */
 
-Route::get('/administrador-egresados', function () {
+Route::get('/administrador-egresados2', function () {
     return view('administrador.Egresados_Admin');
 })->name('administrador');
 
@@ -72,10 +73,81 @@ Route::get('/administrador-egresados/tips', function () {
 })->name('administrador_Tips_Admin');
 
 
+// RUTAS PARA EMPRESAS:
+Route::get('/crear-oferta-editar', function() {
+    return view('empresas.crear-oferta-editar');
+}); // ofertas.edit
+
+Route::get('/datos-de-la-empresa-ofertas-laborales', function() {
+    return view('empresas.Datos-de-la-empresa-Ofertas-Laborales');
+})->name('ofertas.index'); // ofertas.index
+
+Route::get('/datos-de-la-empresa', function() {
+    return view('empresas.Datos-de-la-empresa'); 
+}); // empresa.index
+
+Route::get('/editar-datos-empresa', function() {
+    return view('empresas.editar-datos-empresa'); 
+}); // empresa.editar
+
+Route::get('/ofertas-laborales-crear-oferta', function() {
+    return view('empresas.ofertas--laborales-crear-oferta'); 
+}); // oferta.create
+
+Route::get('/ofertas-laborales', function() {
+    return view('empresas.ofertas-laborales'); 
+}); // oferta.index
+
+// RUTAS PARA EMPRESAS:
+Route::get('/crear-oferta-editar', function() {
+    return view('empresas.crear-oferta-editar');
+}); // ofertas.edit
+
+Route::get('/datos-de-la-empresa-ofertas-laborales', function() {
+    return view('empresas.Datos-de-la-empresa-Ofertas-Laborales');
+})->name('ofertas.index'); // ofertas.index
+
+Route::get('/datos-de-la-empresa', function() {
+    return view('empresas.Datos-de-la-empresa'); 
+}); // empresa.index
+
+Route::get('/editar-datos-empresa', function() {
+    return view('empresas.editar-datos-empresa'); 
+}); // empresa.editar
+
+Route::get('/ofertas-laborales-crear-oferta', function() {
+    return view('empresas.ofertas--laborales-crear-oferta'); 
+}); // oferta.create
+
+Route::get('/ofertas-laborales', function() {
+    return view('empresas.ofertas-laborales'); 
+}); // oferta.index
+
 Route::get('/', function() {
     return redirect()->route('administrador'); 
 });
 
+Route::get('/empresa-egresados/cuenta', function () {
+    return view('registro-empresa.Crear-Cuenta_Empresa');
+})->name('empresa_cuenta');
+
+Route::get('/empresa-egresados/datos', function () {
+    return view('registro-empresa.DatosDeLaEmpresa_RegEmpresas');
+})->name('empresa_datos');
+
+Route::get('/empresa-egresados/encuesta', function () {
+    return view('registro-empresa.Encuesta-satisfaccion-empresa');
+})->name('empresa_encuesta');
+
+
+Route::get('/empresa-egresados/ingreso', function () {
+    return view('registro-empresa.Ingreso_Selecciona_Universidad');
+})->name('empresa_ingreso');
+
+
+Route::get('/empresa-egresados/propuesta', function () {
+    return view('registro-empresa.propuesta-suneo');
+})->name('empresa_propuesta');
 
 Route::get('/empresa-egresados/cuenta', function () {
     return view('registro-empresa.Crear-Cuenta_Empresa');
