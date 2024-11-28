@@ -226,8 +226,8 @@
 
                 <section id="formulario--texto-boton">
 
-                    <button class="texto--boton-buton">Cancelar</button>
-
+                    <!-- <button class="texto--boton-buton">Cancelar</button> -->
+                    <a href="{{ route('ofertas-laborales') }}" class="texto--boton-buton1"><span class="content1--more_coments-text">Cancelar</span></a>
                     <a href="#modal" class="texto--boton-buton1"><span class="content1--more_coments-text"> Publicar oferta </span></a>
 
                 </section>

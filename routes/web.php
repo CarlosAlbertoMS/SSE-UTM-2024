@@ -72,56 +72,26 @@ Route::get('/administrador-egresados/tips', function () {
     return view('administrador.Tips_Admin');
 })->name('administrador_Tips_Admin');
 
-
 // RUTAS PARA EMPRESAS:
 Route::get('/crear-oferta-editar', function() {
     return view('empresas.crear-oferta-editar');
-}); // ofertas.edit
-
-Route::get('/datos-de-la-empresa-ofertas-laborales', function() {
-    return view('empresas.Datos-de-la-empresa-Ofertas-Laborales');
-})->name('ofertas.index'); // ofertas.index
+})->name('ofertas-editar'); // ofertas.edit
 
 Route::get('/datos-de-la-empresa', function() {
     return view('empresas.Datos-de-la-empresa'); 
-}); // empresa.index
+})->name('datos-empresa'); // empresa.index
 
 Route::get('/editar-datos-empresa', function() {
     return view('empresas.editar-datos-empresa'); 
-}); // empresa.editar
+})->name('editar-datos-empresa'); // empresa.editar
 
 Route::get('/ofertas-laborales-crear-oferta', function() {
     return view('empresas.ofertas--laborales-crear-oferta'); 
-}); // oferta.create
+})->name('ofertas-laborales-crear'); // oferta.create
 
 Route::get('/ofertas-laborales', function() {
     return view('empresas.ofertas-laborales'); 
-}); // oferta.index
-
-// RUTAS PARA EMPRESAS:
-Route::get('/crear-oferta-editar', function() {
-    return view('empresas.crear-oferta-editar');
-}); // ofertas.edit
-
-Route::get('/datos-de-la-empresa-ofertas-laborales', function() {
-    return view('empresas.Datos-de-la-empresa-Ofertas-Laborales');
-})->name('ofertas.index'); // ofertas.index
-
-Route::get('/datos-de-la-empresa', function() {
-    return view('empresas.Datos-de-la-empresa'); 
-}); // empresa.index
-
-Route::get('/editar-datos-empresa', function() {
-    return view('empresas.editar-datos-empresa'); 
-}); // empresa.editar
-
-Route::get('/ofertas-laborales-crear-oferta', function() {
-    return view('empresas.ofertas--laborales-crear-oferta'); 
-}); // oferta.create
-
-Route::get('/ofertas-laborales', function() {
-    return view('empresas.ofertas-laborales'); 
-}); // oferta.index
+})->name('ofertas-laborales'); // oferta.index
 
 Route::get('/', function() {
     return redirect()->route('administrador'); 

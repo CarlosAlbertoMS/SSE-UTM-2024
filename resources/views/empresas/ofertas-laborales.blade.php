@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/empresas/ofertas-laborales.css') }}">
 </head>
 <body>
-
     <header>
         <div id="header--encabezado">
             <img id="header--img1" src="../assets/img/u43.png">
@@ -18,17 +17,16 @@
             <img id="header--img2" src="../assets/img/utm_u31.png">
         </div>
 
-
         <center>
-        <div>
-        <ul class="menu">
-        <li class="active2"><a class="texto-menu" href="Datos-de-la-empresa.html">Datos de la Empresa</a></li>
-        <li class="active"><a class="texto-menu" href="Datos-de-la-empresa-Ofertas-Laborales.html">Ofertas Laborales</a></li>
-        <li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
-        <li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
-        <li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
-        </ul>
-        </div>
+            <div>
+                <ul class="menu">
+                <li class="active2"><a class="texto-menu" href="{{ route('datos-empresa') }}">Datos de la Empresa</a></li>
+                <li class="active"><a class="texto-menu" href="{{ route('ofertas-laborales') }}">Ofertas Laborales</a></li>
+                <li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
+                <li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
+                <li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
+                </ul>
+            </div>
         </center>
 
                 </div>
@@ -45,7 +43,7 @@
 
             <div id="cinta--opciones">
                 <ul>
-                    <a href="#" style="color:#9ba266;" >
+                    <a href="{{ route('ofertas-laborales-crear') }}" style="color:#9ba266;" >
                         <li><img src="../assets/icons/normal_u1027.svg"></li>
                         <li>Agregar Oferta</li>
                     </a>
@@ -61,7 +59,7 @@
                         <li><img src="../assets/icons/normal_u1038.svg"></li>
                         <li>Ver Detalles</li>
                     </a>
-                    <a href="#" style="color: #6b6b6b;">
+                    <a href="{{ route('ofertas-editar') }}" style="color: #6b6b6b;">
                         <li><img src="../assets/icons/normal_u1034.svg"></li>
                         <li>Editar</li>
                     </a>
@@ -178,36 +176,36 @@
             </section>
         </section>
     </footer>
+
 <aside id="detalles" class="modal--container">
-      <div class="content-modal">
+    <div class="content-modal">
         <div class="modal--title">
-          <p>Detalles de la Oferta</p>
+            <p>Detalles de la Oferta</p>
         </div>
         <div class="modal-subtitle">
-          <p>Se busca ex-ACMers</p>
+            <p>Se busca ex-ACMers</p>
         </div>
-       <div class="contenido2">
-
+        <div class="contenido2">
             <img class="container-img" src="../assets/img/cemex.png">
             <div class="informacion">
-               <p class="titulos">Ingeniería en Electrónica o áreas afines.</p>
+                <p class="titulos">Ingeniería en Electrónica o áreas afines.</p>
                 <div  class="iconos-texto"> <img src="../assets/icons/ubicacion.svg" style="width: 14px; height: 18px;"><p>Oaxaca de Juárez, Oaxaca.</p></div>
                 <div  class="iconos-texto"> <img src="../assets/icons/correo_a.svg" class="iconos"><p>reclutamiento@agavelab.com</p></div>
                 <div  class="iconos-texto"> <img src="../assets/icons/telefono_bla.svg" class="iconos"><p>9511148536</p></div>
-              <div class="beneficios">  <p class="titulos2">Especificaciones:<p class="sueldo" >Con salario base de $10,000 MxN </p> </p> </div>
-              <p class="idiomas">Español, Ingles 80%</p>
-              <div class="beneficios">  <p class="fecha">Fecha de publicacion:<p class="fecha-num">25/10/2021</p> </p> </div>
+                <div class="beneficios">  <p class="titulos2">Especificaciones:<p class="sueldo" >Con salario base de $10,000 MxN </p> </p> </div>
+                <p class="idiomas">Español, Ingles 80%</p>
+                <div class="beneficios">  <p class="fecha">Fecha de publicacion:<p class="fecha-num">25/10/2021</p> </p> </div>
+            </div>
         </div>
-
-    </div>
-    <div class="descripcion-puesto">
-        <p >Descripción del puesto. Ganas de aprender. Sería bueno que sepas: - Funcionamiento básico de un parser/lexer. Estas son las herramientas que utilizamos: - Git - IntelliJ - Programamos en Erlang (ntp, aquí aprendes). - A veces C y java. Metodología - Agile - Test Driven Development Vacante en: Guadalajara, (puede ser remoto después de prueba).</p>
-    </div>
-        <div class="modal--container-buttons">
-         <a href="Datos-de-la-empresa-Ofertas-Laborales.html" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
+            <div class="descripcion-puesto">
+                <p >Descripción del puesto. Ganas de aprender. Sería bueno que sepas: - Funcionamiento básico de un parser/lexer. Estas son las herramientas que utilizamos: - Git - IntelliJ - Programamos en Erlang (ntp, aquí aprendes). - A veces C y java. Metodología - Agile - Test Driven Development Vacante en: Guadalajara, (puede ser remoto después de prueba).</p>
+            </div>
+            <div class="modal--container-buttons">
+                <!-- <a href="Datos-de-la-empresa-Ofertas-Laborales.html" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a> -->
+                <a href="{{ route('ofertas-laborales') }}" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
+            </div>
         </div>
-      </div>
-    </aside>
+</aside>
 
 <aside id="eliminar" class="modal--container">
       <div class="content-modal">

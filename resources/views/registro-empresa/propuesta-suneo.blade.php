@@ -7,7 +7,6 @@
   <title>Inicio</title>
   <!-- <link rel="stylesheet" href="propuesta-suneo.css" /> -->
   <link rel="stylesheet" href="{{ asset('css/Empresa/propuesta-suneo.css') }}"> <!-- Estilos específicos para la página -->
-
 </head>
 
 <body>

@@ -25,7 +25,7 @@
 <!--Inicio del menu-->
 <div>
   <ul class="menu">
-  <li ><a class="texto-menu" href="Datos-de-la-empresa.html">Datos de la Empresa</a></li>
+  <li ><a class="texto-menu" href="{{ route('datos-empresa') }}">Datos de la Empresa</a></li>
   <li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
   <li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
   <li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
@@ -198,7 +198,7 @@
         <p>¿Desea guardar los cambios realizados antes de salir?</p>
         </div>
         <div class="modal--container-buttons">
-           <a href="Datos-de-la-empresa.html" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
+           <a href="{{ route('editar-datos-empresa') }}" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
          <a href="#modal2" class="modal-button1"> <span class="modal-button1-text">Guardar</span></a>
 
         </div>
@@ -213,7 +213,7 @@
         <p>¡Enhorabuena!,Cambios guardados con exito</p>
         </div>
         <div class="modal--container-buttons">
-         <a href="Datos-de-la-empresa.html" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
+         <a href="{{ route('datos-empresa') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
         </div>
       </div>
     </aside>

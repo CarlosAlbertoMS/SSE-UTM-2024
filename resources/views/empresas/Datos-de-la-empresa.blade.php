@@ -18,9 +18,8 @@
   <!--Inicio del menu de navegacion de cada vista-->
   <div>
     <ul class="menu">
-      <li class="active"><a class="texto-menu" href="#">Datos de la Empresa</a></li>
-      <!-- <li><a class="texto-menu" href="Datos-de-la-empresa-Ofertas-Laborales.html">Ofertas Laborales</a></li> -->
-      <li><a class="texto-menu" href="{{ route('ofertas.index') }}">Ofertas Laborales</a></li>
+      <li class="active"><a class="texto-menu" href="{{ route('datos-empresa') }}">Datos de la Empresa</a></li>
+      <li><a class="texto-menu" href="{{ route('ofertas-laborales') }}">Ofertas Laborales</a></li>
       <li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
       <li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
       <li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
@@ -108,7 +107,7 @@
           <div class="content2">
             <div class="content2--information">
               <div class="content2--information-title1">
-                <p>Datos de la empresa <a class="content2--referencia" href="Editar-datos-empresa.html"><input type="button" class="boton--editar" name="btn1" value="Editar datos de la empresa"></a></p>
+                <p>Datos de la empresa <a class="content2--referencia" href="{{ route('editar-datos-empresa') }}"><input type="button" class="boton--editar" name="btn1" value="Editar datos de la empresa"></a></p>
                 <hr class="line-title2">
               </div>
 
@@ -153,8 +152,7 @@
               <div class="content2--datos--direccion">
                 <p>Direccion de la empresa</p>
               <!-- </div> -->
-              <div class="content2--datos--text1 testxd">
-              <!-- <div class="testxd"> -->
+              <div class="content2--datos--text1">
                 <p>Calle:<input type="text" class="content2--information-texto1" name="ubicacion" placeholder=" Calle" readonly="readonly"> </p>
                 <p>Colonia:<input type="text" class="content2--information-texto1" name="ubicacion" placeholder=" Colonia" readonly="readonly"> </p>
                 <p>Numero/piso:<input type="text" class="content2--information-texto2" name="ubicacion" placeholder=" Número/Piso" readonly="readonly"> </p>

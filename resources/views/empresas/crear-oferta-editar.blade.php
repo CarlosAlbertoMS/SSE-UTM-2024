@@ -20,29 +20,21 @@
             </div>
         </section>
         <section id="menu--crear-oferta">
-
             <section id="menu--izq">
                 <ul>
-                    <li style="width: 512px;"><a href="#">Datos de la Empresa</a></li>
+                    <li style="width: 512px;"><a href="{{ route('datos-empresa') }}">Datos de la Empresa</a></li>
                     <li style="background-color: var(--footer--acerca); width: 426px;"><a href="#">Ofertas Laborales</a>
                     </li>
                 </ul>
-
             </section>
 
             <section id="menu--der">
-
                 <img class="menu--der-img" src="../assets/icons/help_ofertas.svg">
-
                 <img class="menu--der-img" src="../assets/icons/Ajustes_B.png">
-
                 <img class="menu--der-img" src="../assets/img/u462.png">
-
             </section>
 
         </section>
-
-
     </header>
 
     <section id="contenido">
@@ -170,7 +162,8 @@
 
                     <section id="formulario--texto-boton">
                         <button class="texto--boton-buton">
-                            <a href="Datos-de-la-empresa-Ofertas-Laborales.html">Cancelar</a>
+                            <!-- <a href="Datos-de-la-empresa-Ofertas-Laborales.html">Cancelar</a> -->
+                            <a href="{{ route('ofertas-laborales') }}">Cancelar</a>
                         </button>
 
                         <a href="#modal" class="texto--boton-buton1">
