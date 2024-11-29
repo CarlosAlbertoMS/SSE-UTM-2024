@@ -25,7 +25,7 @@
 <!--Inicio del menu-->
 <div>
   <ul class="menu">
-  <li ><a class="texto-menu" href="{{ route('datos-empresa') }}">Datos de la Empresa</a></li>
+  <li ><a class="texto-menu" href="{{ route('empresa.index') }}">Datos de la Empresa</a></li>
   <li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
   <li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
   <li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
@@ -167,24 +167,24 @@
       </div>
       <div class="footer--text">
         <div class="footer--textT1">
-        <div class="footer--text1">
-          <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-        </div>
-        <div class="footer--text1">
-          <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-        </div>
+            <div class="footer--text1">
+                <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
+            </div>
+            <div class="footer--text1">
+                <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
+            </div>
       </div>
       <div class="footer--textT2">
         <div class="footer--text1">
-          <p>
-            Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116
-          </p>
+            <p>
+                Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116
+            </p>
         </div>
         <div class="footer--text1">
-          <p>
-            Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P
-            69000
-          </p>
+            <p>
+                Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P
+                69000
+            </p>
         </div>
       </div>
       </div>
@@ -192,28 +192,27 @@
         <aside id="modal" class="modal--container">
       <div class="content-modal">
         <div class="modal--title">
-          <p>Mensaje</p>
+            <p>Mensaje</p>
         </div>
         <div class="container-text1">
         <p>¿Desea guardar los cambios realizados antes de salir?</p>
         </div>
         <div class="modal--container-buttons">
-           <a href="{{ route('datos-empresa') }}" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
-         <a href="#modal2" class="modal-button1"> <span class="modal-button1-text">Guardar</span></a>
-
+            <a href="{{ route('empresa.index') }}" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
+            <a href="#modal2" class="modal-button1"> <span class="modal-button1-text">Guardar</span></a>
         </div>
       </div>
     </aside>
     <aside id="modal2" class="modal--container">
       <div class="content-modal">
         <div class="modal--title">
-          <p>Mensaje</p>
+            <p>Mensaje</p>
         </div>
         <div class="container-text2">
-        <p>¡Enhorabuena!,Cambios guardados con exito</p>
+            <p>¡Enhorabuena!,Cambios guardados con exito</p>
         </div>
         <div class="modal--container-buttons">
-         <a href="{{ route('datos-empresa') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
+            <a href="{{ route('datos-empresa') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
         </div>
       </div>
     </aside>
