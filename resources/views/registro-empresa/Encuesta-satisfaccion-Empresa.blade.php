@@ -714,7 +714,7 @@
                             </div>
 
                             <div class="contenedor-botones" id="contenedor-botones">
-                                <button class="button--1"><a href="{{route('empresa_datos')}}">Regresar</a></button>
+                                <button class="button--1"><a href="DatosDeLaEmpresa_RegEmpresas.html">Regresar</a></button>
                                 
                                 <input type="submit" value="Enviar" class="button--2">
                             </div>
