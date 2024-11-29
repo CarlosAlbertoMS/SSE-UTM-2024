@@ -75,8 +75,8 @@
                             <p class="campos-obligatorios">*Campos obligatorios</p>
                             <p class="informacion">Todos los datos proporcionados serán verificados para cerciorar su veracidad.</p>
                             <div class="contenedor-botones">
-                                <a href="Ingreso_selecciona_universidad.html" class="button--1">Regresar</a>
-                                <a href="{{route('empresa_datos')}}" class="button--2">Siguiente</a>
+                                <a href="{{route('empresa_ingreso')}}" class="button--1">Regresar</a>
+                                <a href="{{route('empresa_datos')}}" class="button--2">Siguiente</a> 
                             </div>
                         </form>
                     </div>

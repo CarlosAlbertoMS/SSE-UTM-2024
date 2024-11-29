@@ -77,7 +77,7 @@
               <a href="#uncos"><img src="../assets/img/uncos_u35.png" alt="" class="logo--school" />
               <a href="#unicha"><img src="../assets/img/unicha_u36.png" alt="" class="logo--school"></a>
             </div>
-            <a href="#" class="button--1"> Regresar </a>
+            <a href="{{route('empresa_propuesta')}}" class="button--1"> Regresar </a>
           </div>
         </div>
 

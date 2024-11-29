@@ -62,7 +62,7 @@
             <div class="form--button-text">
               <a href="#" class="text--forget">¿Olvido su contraseña?</a>
               <button type="submit">Entrar</button>
-              <a href="#" class="register--text">Registrate</a>
+              <a href="{{route('empresa_ingreso')}}" class="register--text">Registrate</a>
             </div>
           </form>
         </div>
