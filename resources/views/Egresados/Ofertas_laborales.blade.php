@@ -170,21 +170,7 @@
 						</div>
 					</div>
 					<div class="main--pagination">
-						<div class="main--pagination--opc-1">
-							<a href="">Anterior</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">1</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">2</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">3</a>
-						</div>
-						<div class="main--pagination--opc-1">
-							<a href="">Siguiente</a>
-						</div>
+						
 					</div>
 				</div>
 			</section>

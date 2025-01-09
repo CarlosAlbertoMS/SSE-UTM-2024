@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\admin;
+use App\Http\Controllers\EgresadosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,6 +113,12 @@ Route::get('/Egresados/Selecciona-tu-universidad', function () {
 Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
     return view('Egresados.TabuladorDeSalarios-Egresados');
 })->name('TabuladorDeSalarios-Egresados');
+
+Route::get('/egresados', [EgresadosController::class, 'obtenerEgresados']);
+Route::get('/egresados/{matricula}', [EgresadosController::class, 'obtenerEgresado']);
+Route::post('/egresados', [EgresadosController::class, 'crearEgresado']);
+Route::put('/egresados/{matricula}', [EgresadosController::class, 'actualizarEgresado']);
+Route::delete('/egresados/{matricula}', [EgresadosController::class, 'eliminarEgresado']);
 
 
 
