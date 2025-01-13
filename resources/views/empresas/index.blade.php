@@ -85,9 +85,13 @@
                         <p>Telefono <input type="text" class="content2--information-texto1" name="telefono" placeholder=" 442 3091600" readonly="readonly"></p>
                         <p>Ubicación: <input type="text" class="content2--information-texto1" name="ubicacion" placeholder=" Santiago de Querétaro, Querétaro" readonly="readonly"> </p>
 
-                        <!-- <div class="content2--information-title1">
+                        <div class="content2--information-title1">
 
-                            <p>Datos de la empresa <a class="content2--referencia" href="Editar-datos-empresa.html"><input type="button" class="boton--editar" name="btn1" value="Editar datos de la empresa"></a></p>
+                            <p>Datos de la empresa 
+                                <a class="content2--referencia" href="{{ route('empresas.edit') }}">
+                                    <input type="button" class="boton--editar" name="btn1" value="Editar datos de la empresa">
+                                </a>
+                            </p>
                             <hr class="line-title2">
                         </div>
                         <div class="content2--information-text1">
@@ -95,7 +99,7 @@
                             <p>Correo electronico <input type="text" class="content2--information-texto1" name="correo" placeholder=" cemex@cemex.com.mx" readonly="readonly"></p>
                             <p>Telefono <input type="text" class="content2--information-texto1" name="telefono" placeholder=" 442 3091600" readonly="readonly"></p>
                             <p>Ubicación: <input type="text" class="content2--information-texto1" name="ubicacion" placeholder=" Santiago de Querétaro, Querétaro" readonly="readonly"> </p>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="content2--information test-nvl-1">
                         <div class="content2--information-title2">
@@ -109,24 +113,6 @@
                             <p>Correo electrónico:<input type="text" class="content2--information-texto1" name="ubicacion" placeholder=" claudia.bustos@cemex.com" readonly="readonly"> </p>
                         </div>
                     </div>
-                        <!-- <form>
-                            <div>
-                                <label for="contacto-directo"> Contacto directo: </label>
-                                <input type="text" class="content2--information-texto1" name="ubicacion" placeholder=" Claudia Guadalupe Bustos Guerrero" readonly="readonly">
-                            </div>
-
-                            <label for="area"> Área: </label>
-                            <input type="" class="content2--information-texto1" name="area" placeholder="">
-
-                            <label for="telefono"> Teléfono: </label>
-                                <input type="" class="content2--information-texto1" name="telefono" placeholder="">
-                            <label for="mail">
-                                Correo electrónico:
-                                <input type="" class="content2--information-texto1" name="mail" placeholder="">
-                            </label>
-                        </form> -->
-                    </div>
-
             <!-- <div class="content2--description test-nvl-1">
                 <div class="content2--description-title">
                     <p>Descripción de la empresa</p>

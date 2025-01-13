@@ -87,14 +87,15 @@ Route::get('/empresa', function() {
 
 Route::get('/empresas/editar', function() {
     return view('empresas.edit'); 
-})->name('empresa.edit');
+})->name('empresas.edit');
 
 Route::get('/crear-oferta-editar', function() {
-    return view('empresas.crear-oferta-editar');
+    // return view('empresas.crear-oferta-editar');
+    return view('empresas.edit');
 })->name('ofertas-editar');
 
 Route::get('/ofertas-laborales-crear-oferta', function() {
-    return view('empresas.ofertas--laborales-crear-oferta'); 
+    return view('ofertas-laborales.ofertas--laborales-crear-oferta'); 
 })->name('ofertas-laborales-crear'); // oferta.create
 
 Route::get('/ofertas-laborales', function() {
@@ -103,7 +104,7 @@ Route::get('/ofertas-laborales', function() {
 
 
 Route::get('/', function() {
-    return redirect()->route('administrador'); 
+    return redirect()->route('login'); 
 });
 
 Route::get('/empresa-egresados/cuenta', function () {
@@ -124,9 +125,9 @@ Route::get('/empresa-egresados/ingreso', function () {
 })->name('empresa_ingreso');
 
 
-Route::get('/empresa-egresados/propuesta', function () {
-    return view('registro-empresa.propuesta-suneo');
-})->name('empresa_propuesta');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 Route::get('/empresa-egresados/cuenta', function () {
     return view('registro-empresa.Crear-Cuenta_Empresa');
@@ -186,8 +187,4 @@ Route::get('/Egresados/Selecciona-tu-universidad', function () {
 Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
     return view('Egresados.TabuladorDeSalarios-Egresados');
 })->name('TabuladorDeSalarios-Egresados');
-
-
-
-
 ?>
