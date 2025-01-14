@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url('../assets/img/fondo_ofertas.jpg');
+    background-image: url('../../assets/img/fondo_ofertas.jpg');
     background-attachment: fixed;
     background-size:cover;
 }
@@ -155,117 +155,127 @@ footer img{
     background-color: var(--contenido-fondo);
     text-align: center;
     color: var(--negro);
+}
+
+/*/////////////////// F O R M U L A R I O ///////////////////*/
+.titulo-contenido {
+    text-align: center;
+    color: var(--txt-navbar-fijo);
     font-family: 'Poppins', sans-serif;
+    padding: 30px 0 5px 0;
 }
 
-.txt-titulo {
-    color: var(--navpags-hover);
-    font-size: 15px;
-    padding: 50px 0;
-}
+form {
+    height: 418px;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
 
-.txt-indicacion {
-    margin: 10px 0 20px 0;
-}
-
-.contenedor-seleccionar-archivos {
-    background-color: var(--txt-navbar-fijo);
-    font-weight: bold;
-    color: var(--blanco);
-
-    position: relative;
-    display: inline-block;
-    top: 0px;
-    left: 0px;
-    height: 35px;
-    border-radius: 4px;
-    top: -4px;
-}
-
-.contenedor-seleccionar-archivos:before {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* SECCIÓN 2 */
+.seccion-1-formulario,
+.seccion-2-formulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 60px;
+}
+
+.contenedor__input-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 5px 0;
+}
+.contenedor__input-label label {
+    margin: 8px 0;
+}
+
+.contenedor-doble {
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    position: absolute;
-    width: 140px;
-    height: 35px;
-    border-radius: 4px;
-    font-size: 13px;
-    box-sizing: border-box;
-    font-family: 'Montserrat-Medium', 'Montserrat Medium', 'Montserrat', sans-serif;
-    color: var(--blanco);
-  }
-  .contenedor-seleccionar-archivos input[type="file"] {
-    opacity: 0;
-    display: inline-block;
-    width: 132px;
-    height: 35px;
-  }
-  #contenedor-seleccionar-archivos::before {
-    content: 'Seleccionar archivo';
-  }
+}
+.contenedor-doble > input,
+.contenedor-doble > option,
+.contenedor-promedio > input {
+    width: 181px;
+}
 
+select {
+    width: 181px;
+   
+}
+option {
+    width: 181px;
+    white-space:pre-wrap;
+    word-wrap: break-word;
+}
 
-
-
-
-input {
+input, select, option {
+    font-family: 'Arial Normal', 'Arial', sans-serif;
     border: 1px solid var(--lista-th);
     border-radius: 4px;
     padding-left: 5px;
     height: 25px;
 }
 
-.input-nombre-archivo {
-    width: 384px;
-    height: 32px;
-    padding-left: 5px;
+.nombre > input,
+.lugar-origen > input{
+    width: 401px;
 }
 
-.txt-sobre-datos {
-    font-family: 'Raleway', sans-serif;
-    font-size: 13px;
-    margin: 80px 0 20px 0;
-    padding: 0 100px;
-    text-align: justify;
-}
-
-.txt-datos-a-cargar {
-    font-family: 'Raleway', sans-serif;
-    font-size: 13px;
-    padding: 0 100px;
-    margin-bottom: 50px;
-    list-style: none;
+.txt-campos-obligatorios {
     text-align: left;
+    margin: 40px 0 0 0;
+}
+
+/* SECCIÓN 2 */
+.seccion-2-formulario {
+    border-left: 1px solid var(--lista-th);
+}
+
+.contenedor-carrera > select {
+    width: 401px;
+}
+
+.contenedor-carrera > option {
+    width: 401px;
+    white-space:pre-wrap;
+    word-wrap: break-word;
 }
 
 .contenedor-botones {
-    display: flex;
-    justify-content: flex-end;
+    margin: 40px 0 0 0;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    margin: 50px;
 }
 
 .contenedor-botones input {
+    color: var(--blanco);
     width: 160px;
     height: 32px;
-    color: var(--blanco);
+}
+
+.btn-cancelar {
+    background-color: var(--lista-th);
+}
+
+.btn-guardar {
+    background-color: var(--txt-navbar-fijo);
+    border: 1px solid var(--lista-th);
 }
 
 .contenedor-botones input:hover {
     cursor: pointer;
 }
-.btn-cancelar {
-    background-color: var(--lista-th);
-    margin-right: 60px;
-}
-
-.btn-subir {
-    background-color: var(--txt-navbar-fijo);
-    border: 1px solid var(--lista-th);
-}
-
-
 
 /* MENSAJE => Egresado agregado */
 .overlay { 

@@ -11,7 +11,7 @@
 <body>
 
     @include('layouts.header')
-    
+
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
         <div class="form-navbar">
