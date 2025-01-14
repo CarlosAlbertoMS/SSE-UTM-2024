@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\admin;
 use App\Http\Controllers\EgresadosController;
-
+use App\Http\Controllers\empresaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
