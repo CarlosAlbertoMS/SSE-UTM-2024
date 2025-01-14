@@ -1,3 +1,4 @@
+<!-- > Ofertas_laborales.blade.php    <!-->
 <!doctype html>
 <html lang="en">
 	
@@ -57,134 +58,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="main--card">
-						<div class="main--card--img">
-							<img src="../assets/img/normal_u392.svg" alt="">
-						</div>
-						<div class="main--card--body">
-							<div class="main--card--body--Title"><p>Ingeniero en Sistema</p></div>
-							<div class="main--card--body--Subtitle"><p>Ingeniería en Computación</p></div>
-							<div class="main--card--body--Text"><p>Estado de México ∙ hace 3 meses</p></div>
-							<div class="main--card--body--Text">
-								<p>
-									Escolaridad: Título y Cédula Profesional en Ingeniería en Sistemas
-									Computacionales • Experiencia: mínima 2 año en puesto similar Manejo de 
-									personal • Manejo de conflictos • Trabajo bajo presión y por resultados 
-									• Proactivo y con iniciativa de innovar • Total…
-								</p>
-							</div>
-							<div class="main--card--body--Text"><p>AOLIK</p></div>
-						</div>
-						<div class="main--card--icons">
-							<div class="main--card-icon--1">
-								<img src="../assets/icons/Marcador_oferta.svg" onclick="Marcador_selected(this)" alt="">
-							</div>
-							<div class="main--card-icon--2">
-								<img src="../assets/icons/Solicitantes_G.svg" alt="">
-								<div class="main-card-icon--Text"><p>8 Solicitantes</p></div>
-							</div>
-						</div>
-					</div>
-					<div class="main--card">
-						<div class="main--card--img">
-							<img src="../assets/img/normal_u392.svg" alt="">
-						</div>
-						<div class="main--card--body">
-							<div class="main--card--body--Title"><p>Ingeniero en Sistema</p></div>
-							<div class="main--card--body--Subtitle"><p>Ingeniería en Computación</p></div>
-							<div class="main--card--body--Text"><p>Estado de México ∙ hace 3 meses</p></div>
-							<div class="main--card--body--Text">
-								<p>
-									Escolaridad: Título y Cédula Profesional en Ingeniería en Sistemas
-									Computacionales • Experiencia: mínima 2 año en puesto similar Manejo de 
-									personal • Manejo de conflictos • Trabajo bajo presión y por resultados 
-									• Proactivo y con iniciativa de innovar • Total…
-								</p>
-							</div>
-							<div class="main--card--body--Text"><p>AOLIK</p></div>
-						</div>
-						<div class="main--card--icons">
-							<div class="main--card-icon--1">
-								<img src="../assets/icons/Marcador_oferta.svg" onclick="Marcador_selected(this)" alt="">
-							</div>
-							<div class="main--card-icon--2">
-								<img src="../assets/icons/Solicitantes_G.svg" alt="">
-								<div class="main-card-icon--Text"><p>8 Solicitantes</p></div>
-							</div>
-						</div>
-					</div>
-					<div class="main--card">
-						<div class="main--card--img">
-							<img src="../assets/img/normal_u392.svg" alt="">
-						</div>
-						<div class="main--card--body">
-							<div class="main--card--body--Title"><p>Ingeniero en Sistema</p></div>
-							<div class="main--card--body--Subtitle"><p>Ingeniería en Computación</p></div>
-							<div class="main--card--body--Text"><p>Estado de México ∙ hace 3 meses</p></div>
-							<div class="main--card--body--Text">
-								<p>
-									Escolaridad: Título y Cédula Profesional en Ingeniería en Sistemas
-									Computacionales • Experiencia: mínima 2 año en puesto similar Manejo de 
-									personal • Manejo de conflictos • Trabajo bajo presión y por resultados 
-									• Proactivo y con iniciativa de innovar • Total…
-								</p>
-							</div>
-							<div class="main--card--body--Text"><p>AOLIK</p></div>
-						</div>
-						<div class="main--card--icons">
-							<div class="main--card-icon--1">
-								<img src="../assets/icons/Marcador_oferta.svg" onclick="Marcador_selected(this)" alt="">
-							</div>
-							<div class="main--card-icon--2">
-								<img src="../assets/icons/Solicitantes_G.svg" alt="">
-								<div class="main-card-icon--Text"><p>8 Solicitantes</p></div>
-							</div>
-						</div>
-					</div>
-					<div class="main--card">
-						<div class="main--card--img">
-							<img src="../assets/img/normal_u392.svg" alt="">
-						</div>
-						<div class="main--card--body">
-							<div class="main--card--body--Title"><p>Ingeniero en Sistema</p></div>
-							<div class="main--card--body--Subtitle"><p>Ingeniería en Computación</p></div>
-							<div class="main--card--body--Text"><p>Estado de México ∙ hace 3 meses</p></div>
-							<div class="main--card--body--Text">
-								<p>
-									Escolaridad: Título y Cédula Profesional en Ingeniería en Sistemas
-									Computacionales • Experiencia: mínima 2 año en puesto similar Manejo de 
-									personal • Manejo de conflictos • Trabajo bajo presión y por resultados 
-									• Proactivo y con iniciativa de innovar • Total…
-								</p>
-							</div>
-							<div class="main--card--body--Text"><p>AOLIK</p></div>
-						</div>
-						<div class="main--card--icons">
-							<div class="main--card-icon--1">
-								<img src="../assets/icons/Marcador_oferta.svg" onclick="Marcador_selected(this)" alt="">
-							</div>
-							<div class="main--card-icon--2">
-								<img src="../assets/icons/Solicitantes_G.svg" alt="">
-								<div class="main-card-icon--Text"><p>8 Solicitantes</p></div>
-							</div>
-						</div>
-					</div>
+					
 					<div class="main--pagination">
-						<div class="main--pagination--opc-1">
-							<a href="">Anterior</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">1</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">2</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">3</a>
-						</div>
-						<div class="main--pagination--opc-1">
-							<a href="">Siguiente</a>
-						</div>
+						
 					</div>
 				</div>
 			</section>

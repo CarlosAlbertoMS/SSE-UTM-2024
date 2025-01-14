@@ -7,7 +7,6 @@
   <title>Inicio</title>
   <!-- <link rel="stylesheet" href="propuesta-suneo.css" /> -->
   <link rel="stylesheet" href="{{ asset('css/Empresa/propuesta-suneo.css') }}"> <!-- Estilos específicos para la página -->
-
 </head>
 
 <body>
@@ -43,6 +42,8 @@
           <div class="main--form-img">
             <img src="../assets/img/u43.png" class="form--img" alt="" />
           </div>
+
+          <!-- TODO: Darle funcionamiento a este formulario para poder iniciar sesión. -->
           <form class="main--form-form" action="#">
             <div class="form--select">
               <img src="../assets/icons/u27.svg" width="16" height="15" alt="" />
@@ -63,9 +64,10 @@
             <div class="form--button-text">
               <a href="#" class="text--forget">¿Olvido su contraseña?</a>
               <button type="submit">Entrar</button>
-              <a href="#" class="register--text">Registrate</a>
+              <a href="{{ route('empresa_ingreso') }}" class="register--text">Registrate</a>
             </div>
           </form>
+
         </div>
         </section>
   </main>

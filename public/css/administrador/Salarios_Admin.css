@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url('../assets/img/fondo_ofertas.jpg');
+    background-image: url('../../assets/img/fondo_ofertas.jpg');
     background-attachment: fixed;
     background-size:cover;
 }
@@ -246,8 +246,9 @@ table th{
 }
 
 #tabla-inicio th{
-    min-width: 80px;
-    font-size: 12px;
+    max-width: 150px;
+    min-width: 90px;
+    font-size: 14px;
     height: 32px;
     font-weight: 400;
 }
@@ -255,8 +256,6 @@ table th{
     font-size: 12px;
     height: 20px;
     font-weight: 400;
-    text-align: left;
-    padding-left: 20px;
 }
 
 #tabla-inicio{
@@ -266,22 +265,10 @@ table th{
     height: 20px;
 }
 
-table tr .Nueva{
-    color: var(--ofertaNueva);
-}
-table .Aceptada{
-    color: var(--ofertaAceptada);
-}
-table .Proceso{
-    color: var(--ofertaEnProceso);
-}
-table .Rechazada{
-    color: var(--ofertaRechazada);
-}
 table td{
     border: 1px;
     text-align: center;
-    padding: 0px 5px;
+    padding: 0px 10px;
     font-size: 10px;
     border-left: 2px solid var(--lista-th);
     border-right: 2px solid var(--lista-th);
@@ -314,12 +301,10 @@ table .tabla-inicio {
   color: white;
 }
 
-
 .pagination {
     margin-top: 10px;
     width: 400px;
 }
-
 
 .pagination a{
     color: var(--blanco);

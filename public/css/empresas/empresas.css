@@ -1,0 +1,26 @@
+.main-bar {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.main-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+}
+
+.header-img1 img, 
+.header-img2 img {
+    height: 100%;
+    width: 100%;
+    max-width: 75;
+    min-height: 73;
+}
+
+.testxd {
+    border: 5px solid red;
+}

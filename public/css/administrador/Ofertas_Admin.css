@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url('../assets/img/fondo_ofertas.jpg');
+    background-image: url('../../assets/img/fondo_ofertas.jpg');
     background-attachment: fixed;
     background-size:cover;
 }
@@ -180,6 +180,7 @@ footer img{
     margin: 0px;
 }
 .form-navbar div a{
+    
     text-decoration: none;
     font-family: 'Raleway-Regular', 'Raleway', sans-serif;
     font-size: 12px;
@@ -230,26 +231,28 @@ footer img{
 
 table{
     height: 418px;
-    font-family: 'Raleway-Regular', 'Raleway', sans-serif;
     border-collapse: collapse;
     border-radius: 4px;
-    width: 90%;
+    width: 980px;
     margin-top: 15px;
+    font-family:'Poppins-Regular', 'Poppins', sans-serif;
 }
 
 table th{
     background-color: var(--lista-th);
-    font-size: 12px;
     color: var(--blanco);
     border-left: 2px solid var(--lista-th);
     border-right: 2px solid var(--lista-th);
 }
 
 #tabla-inicio th{
+    /*min-width: 80px;*/
+    font-size: 12px;
     height: 32px;
-    font-weight: 500;
+    font-weight: 400;
 }
 #tabla-fin th{
+    font-size: 12px;
     height: 20px;
     font-weight: 400;
 }
@@ -261,11 +264,23 @@ table th{
     height: 20px;
 }
 
+table tr .Nueva{
+    color: var(--ofertaNueva);
+}
+table .Aceptada{
+    color: var(--ofertaAceptada);
+}
+table .Proceso{
+    color: var(--ofertaEnProceso);
+}
+table .Rechazada{
+    color: var(--ofertaRechazada);
+}
 table td{
     border: 1px;
     text-align: center;
-    padding: 0;
-    font-size: 13px;
+    padding: 0px 10px;
+    font-size: 10px;
     border-left: 2px solid var(--lista-th);
     border-right: 2px solid var(--lista-th);
 }
