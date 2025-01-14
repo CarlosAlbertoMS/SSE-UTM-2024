@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use App\admin;
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\empresaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,26 +72,35 @@ Route::get('/administrador-egresados/tips', function () {
     return view('administrador.Tips_Admin');
 })->name('administrador_Tips_Admin');
 
+
 // RUTAS PARA EMPRESAS:
+Route::get('/prueba', [empresaController::class, 'index'])->name('prueba');
+
+Route::get('/empresa', function() {
+    return view('empresas.index'); 
+})->name('empresa.index');
+
+// Prueba para modificar el header de todo este apartado xd.
+// Route::get('/header-test', function() {
+//     return view('layouts.empresas.header'); 
+// });
+
+Route::get('/empresas/editar', function() {
+    return view('empresas.edit'); 
+})->name('empresa.edit');
+
 Route::get('/crear-oferta-editar', function() {
     return view('empresas.crear-oferta-editar');
-})->name('ofertas-editar'); // ofertas.edit
-
-Route::get('/datos-de-la-empresa', function() {
-    return view('empresas.Datos-de-la-empresa'); 
-})->name('datos-empresa'); // empresa.index
-
-Route::get('/editar-datos-empresa', function() {
-    return view('empresas.editar-datos-empresa'); 
-})->name('editar-datos-empresa'); // empresa.editar
+})->name('ofertas-editar');
 
 Route::get('/ofertas-laborales-crear-oferta', function() {
     return view('empresas.ofertas--laborales-crear-oferta'); 
 })->name('ofertas-laborales-crear'); // oferta.create
 
 Route::get('/ofertas-laborales', function() {
-    return view('empresas.ofertas-laborales'); 
+    return view('ofertas-laborales.ofertas-laborales'); 
 })->name('ofertas-laborales'); // oferta.index
+
 
 Route::get('/', function() {
     return redirect()->route('administrador'); 

@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" media="(min-width: 800px)" href="{{ asset('css/empresas/editar-datos-empresa.css') }}" />
-  <title>Editar datos de la empresa</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" media="(min-width: 800px)" href="{{ asset('css/empresas/editar-datos-empresa.css') }}" />
+	<title>Editar datos de la empresa</title>
 </head>
 
 <body>
     <header>
-      <!--Inicio del titulo-->
+      	<!--Inicio del titulo-->
         <figure>
             <img src="../assets/img/u26.png" class="header--img1" alt="" />
         </figure>
         <div class="header--title">
-          <p>Bolsa de Trabajo del SUNEO</p>
+          	<p>Bolsa de Trabajo del SUNEO</p>
         </div>
         <figure>
-          <img src="../assets/img/u43.png" class="header--img2" alt="" />
+          	<img src="../assets/img/u43.png" class="header--img2" alt="" />
         </figure>
         <!--Fin del titulo-->
     </header>
-<center>
-<!--Inicio del menu-->
-<div>
-  <ul class="menu">
-  <li ><a class="texto-menu" href="{{ route('datos-empresa') }}">Datos de la Empresa</a></li>
-  <li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
-  <li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
-  <li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
-  </ul>
-</div>
-<!--Fin del menu-->
-</center>
+
+	<center>
+	<!--Inicio del menu-->
+	<div>
+		<ul class="menu">
+		<li> <a class="texto-menu" href="{{ route('empresa.index') }}">Datos de la Empresa</a></li>
+		<li class="icon"><img src="../assets/icons/u18.svg" class="icon--settings"></li>
+		<li class=" icon">  <img src="../assets/icons/u11.svg" class="icon--question"></li>
+		<li class="icon"><img src="../assets/img/u462.PNG" class="icon--profile"></li>
+		</ul>
+	</div>
+	<!--Fin del menu-->
+	</center>
+
     <main>
-      <!--Inicio de la seccion del contenido de los datos-->
-      <section class="main--section">
-           <!--Inicio del titulo-->
-        <div class="main--title">
-          <p>Se encuentra editando los datos correspondientes a su empresa asegúrese de guardar los cambios una vez que termine</p>
-        </div>
-        <!--Fin del titulo-->
-        <!--Inicio de la linea de separacion entre las dos secciones-->
-        <div>
-        <hr class="line-title1">
-        </div>
-     <!--fin de la linea de separacion-->
+      	<!--Inicio de la seccion del contenido de los datos-->
+    	<section class="main--section">
+        	<!--Inicio del titulo-->
+        	<div class="main--title">
+				<p>Se encuentra editando los datos correspondientes a su empresa asegúrese de guardar los cambios una vez que termine</p>
+        	</div>
+        	<!--Fin del titulo-->
+
+        	<!--Inicio de la linea de separacion entre las dos secciones-->
+        	<div>
+        		<hr class="line-title1">
+        	</div>
+     	<!--fin de la linea de separacion-->
+
         <div class="main--content">
-          <div class="content2">
-         <!--Inicio de la segunda seccion-->
-           <div class="content2--information">
-            <!--Inicio del area de la imagen-->
-            <div class="content1--img">
-              <img src="../assets/img/cemex.png" class="img--enterprise" alt="" />
-            </div>
+          	<div class="content2">
+         	<!--Inicio de la segunda seccion-->
+           		<div class="content2--information">
+            	<!--Inicio del area de la imagen-->
+            		<div class="content1--img">
+              			<img src="../assets/img/cemex.png" class="img--enterprise" alt="" />
+            		</div>
             <!--Fin del area de la imagen-->
             <!--Inicio del campo editar imagen-->
              <div class="tamaño">
@@ -167,24 +171,24 @@
       </div>
       <div class="footer--text">
         <div class="footer--textT1">
-        <div class="footer--text1">
-          <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-        </div>
-        <div class="footer--text1">
-          <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-        </div>
+            <div class="footer--text1">
+                <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
+            </div>
+            <div class="footer--text1">
+                <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
+            </div>
       </div>
       <div class="footer--textT2">
         <div class="footer--text1">
-          <p>
-            Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116
-          </p>
+            <p>
+                Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116
+            </p>
         </div>
         <div class="footer--text1">
-          <p>
-            Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P
-            69000
-          </p>
+            <p>
+                Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P
+                69000
+            </p>
         </div>
       </div>
       </div>
@@ -192,28 +196,27 @@
         <aside id="modal" class="modal--container">
       <div class="content-modal">
         <div class="modal--title">
-          <p>Mensaje</p>
+            <p>Mensaje</p>
         </div>
         <div class="container-text1">
         <p>¿Desea guardar los cambios realizados antes de salir?</p>
         </div>
         <div class="modal--container-buttons">
-           <a href="{{ route('editar-datos-empresa') }}" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
-         <a href="#modal2" class="modal-button1"> <span class="modal-button1-text">Guardar</span></a>
-
+            <a href="{{ route('empresa.index') }}" class="modal-button2"> <span class="modal-button1-text">Cerrar</span></a>
+            <a href="#modal2" class="modal-button1"> <span class="modal-button1-text">Guardar</span></a>
         </div>
       </div>
     </aside>
     <aside id="modal2" class="modal--container">
       <div class="content-modal">
         <div class="modal--title">
-          <p>Mensaje</p>
+            <p>Mensaje</p>
         </div>
         <div class="container-text2">
-        <p>¡Enhorabuena!,Cambios guardados con exito</p>
+            <p>¡Enhorabuena!,Cambios guardados con exito</p>
         </div>
         <div class="modal--container-buttons">
-         <a href="{{ route('datos-empresa') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
+            <a href="{{ route('datos-empresa') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
         </div>
       </div>
     </aside>

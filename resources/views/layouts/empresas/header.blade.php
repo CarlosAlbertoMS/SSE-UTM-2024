@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" media="(min-width: 800px)" href="{{ asset('css/empresas/datos-de-la-empresa.css') }}" >
-  <title>Datos de la empresa</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" media="(min-width: 800px)" href="{{ asset('css/empresas/datos-de-la-empresa.css') }}" >
+    <!-- <link rel="stylesheet" media="(min-width: 800px)" href="{{ asset('css/empresas/empresas.css') }}" > -->
+    <title>Datos de la empresa</title>
 </head>
-
+<body>
+   
 @yield('contenido')
 
 <!-- Inicio del footer que es la tercera seccion. -->
-<footer>
+<!-- <footer>
   <div class="footer--div1-img">
   <img src="../assets/img/u26.png" class="footer-img1"  alt="">
   </div>
@@ -51,6 +53,6 @@
     </div>
   </div>
   </div>
-</footer>
+</footer> -->
 <!--Fin del footer que es la tercera seccion-->
 </html>
