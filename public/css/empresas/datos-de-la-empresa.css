@@ -407,10 +407,41 @@ hr.line-title{
 background: #071E33;
 color:white;
 }
-.content2--referencia{
-    position: relative;
-    left: 200px;
+
+/* .content2--referencia {
+  width: 200px;
+  height: 32px;
+  padding: 2px 2px 2px 2px;
+  border-radius: 5px;
+  border: 1px solid rgba(215, 215, 215, 0.92);
+  background-color: rgba(215, 215, 215, 0.92);
+  box-sizing: border-box;
+  font-family: 'Raleway-Light', 'Raleway Light', 'Raleway', sans-serif;
+  font-weight: 200;
+  color: #071e33;
+  text-align: center;
+  line-height: normal;
 }
+
+.content2--referencia:hover {
+  background-color: #071e33;
+  box-sizing: border-box;
+  color: #ffffff;
+} */
+
+.content2--referencia{
+  position: relative;
+  left: 200px;
+}
+
+/* .content2 {
+  width: 690px;
+  height: 467px;
+  padding: 2px 2px 2px 2px;
+  border: 1px solid #797979;
+  background-color: #ffffff;
+  box-sizing: border-box;
+} */
 
 .content2 {
   display: flex;

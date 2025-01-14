@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
-
-use Illuminate\Http\Request;
+use Illuminate\Http\Client\RequestException;
 
 class empresaController extends Controller
 {
-
-    public function index() {
-        $url = env('API_URL') . "empresas";
-        $response = Http::get($url);
-
-        if ($response->successful()) {
+    public function index()
+    {
+        try {
+            $url = env('API_URL') . "empresas";
+            
+            $response = Http::get($url);
+            $response->throw();
             $empresas = $response->json();
+        } catch (RequestException $e) {
+            return back()->withErrors('No se pudieron obtener los datos de las empresas. Inténtalo de nuevo más tarde.');
+        } catch (\Exception $e) {
+            return back()->withErrors('Ocurrió un error inesperado. Por favor, inténtalo más tarde.');
         }
-
-        // return response()->json($empresas);
+    
         return view('empresas.prueba', compact('empresas'));
     }
+    
 }

@@ -216,7 +216,7 @@
             <p>¡Enhorabuena!,Cambios guardados con exito</p>
         </div>
         <div class="modal--container-buttons">
-            <a href="{{ route('datos-empresa') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
+            <a href="{{ route('empresa.index') }}" class="modal-button3"> <span class="modal-button1-text">Cerrar</span></a>
         </div>
       </div>
     </aside>
