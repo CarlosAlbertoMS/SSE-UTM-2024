@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\admin;
 use App\Http\Controllers\EgresadosController;
-use App\Http\Controllers\empresaController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\TabuladorController;
+use App\Http\Controllers\OfertaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,9 +64,11 @@ Route::get('/administrador-egresados/ofertas', function () {
     return view('administrador.Ofertas_Admin');
 })->name('administrador_Ofertas_Admin');
 
-Route::get('/administrador-egresados/salarios', function () {
-    return view('administrador.Salarios_Admin');
-})->name('administrador_Salarios_Admin');
+Route::get('/administrador-egresados/salarios', [OfertaController::class, 'index'])->name('administrador_Salarios_Admin');
+// Route::get('/administrador-egresados/salarios', [TabuladorController::class, 'index'])->name('administrador_Salarios_Admin');
+// Route::get('/administrador-egresados/salarios', function () {
+//     return view('administrador.Salarios_Admin');
+// })->name('administrador_Salarios_Admin');
 
 Route::get('/administrador-egresados/historias', function () {
     return view('administrador.Historias_Admin');
@@ -75,7 +80,7 @@ Route::get('/administrador-egresados/tips', function () {
 
 
 // RUTAS PARA EMPRESAS:
-Route::get('/prueba', [empresaController::class, 'index'])->name('prueba');
+Route::get('/prueba', [EmpresaController::class, 'index'])->name('prueba');
 
 Route::get('/empresa', function() {
     return view('empresas.index'); 
@@ -185,17 +190,14 @@ Route::get('/Egresados/Selecciona-tu-universidad', function () {
     return view('Egresados.Selecciona-tu-universidad');
 })->name('Selecciona-tu-universidad');
 
-Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
-    return view('Egresados.TabuladorDeSalarios-Egresados');
-})->name('TabuladorDeSalarios-Egresados');
+Route::get('/Egresados/TabuladorDeSalarios-Egresados', [TabuladorController::class, 'index'])->name('TabuladorDeSalarios-Egresados');
+// Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
+//     return view('Egresados.TabuladorDeSalarios-Egresados');
+// })->name('TabuladorDeSalarios-Egresados');
 
 Route::get('/egresados', [EgresadosController::class, 'obtenerEgresados']);
 Route::get('/egresados/{matricula}', [EgresadosController::class, 'obtenerEgresado']);
 Route::post('/egresados', [EgresadosController::class, 'crearEgresado']);
 Route::put('/egresados/{matricula}', [EgresadosController::class, 'actualizarEgresado']);
 Route::delete('/egresados/{matricula}', [EgresadosController::class, 'eliminarEgresado']);
-
-
-
-
 ?>
