@@ -62,11 +62,8 @@
 
                 @foreach ($paginador as $tabulador)
                     <tr>
-                        <td> {{ $tabulador['empleo'] }} </td>
-                        <td> {{ $carreras[$tabulador['carrera']] ?? 'Carrera no encontrada' }} </td>
-                        <td> {{ $tabulador['experiencia'] }} años </td>
-                        <td> {{ $tabulador['monto_minimo'] }}</td>
-                        <td> {{ $tabulador['monto_maximo'] }}</td>
+                        <td> {{ $tabulador['titulo_empleo'] }} </td>
+                        <td> {{ $carreras[$tabulador['carrera']] }} </td>
                     </tr>
                 @endforeach
 
@@ -75,11 +72,85 @@
                 </tr> --}} 
             </table>
 
-            {{ $paginador->links() }}
+            @if ($paginador->hasPages())
+                <div class="contenido--navegar">
+                    <ul>
+                        {{-- Botón "Anterior" --}}
+                        @if ($paginador->onFirstPage())
+                            <li class="disabled pag-btn-txt"><span>Anterior</span></li>
+                        @else
+                            <li class="pag-btn-txt"><a href="{{ $paginador->previousPageUrl() }}">Anterior</a></li>
+                        @endif
+
+                        {{-- Números de página (solo 3) --}}
+                        @php
+                            $start = max($paginador->currentPage() - 1, 1);
+                            $end = min($start + 2, $paginador->lastPage());
+                        @endphp
+
+                        @for ($i = $start; $i <= $end; $i++)
+                            @if ($i == $paginador->currentPage())
+                                <li class="pag-btn-num" style="background-color: #6d000e;"><a href="#">{{ $i }}</a></li>
+                            @else
+                                <li class="pag-btn-num"><a href="{{ $paginador->url($i) }}">{{ $i }}</a></li>
+                            @endif
+                        @endfor
+
+                        {{-- Botón "Siguiente" --}}
+                        @if ($paginador->hasMorePages())
+                            <li class="pag-btn-txt"><a href="{{ $paginador->nextPageUrl() }}">Siguiente</a></li>
+                        @else
+                            <li class="disabled pag-btn-txt"><span>Siguiente</span></li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
         </center>
     </section>
+
+    <!-- DESPUES ESTA WEA SE VA A COLOCAR EN EL CSS DE ESTA VISTA, solo Dios sabe cuando :emojiManosRezando:. -->
+    <style>
+        .contenido--navegar {
+            padding-top: 10px;
+            font-family: 'Raleway';
+            font-size: 12px;
+        }
+
+        .contenido--navegar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .contenido--navegar li {
+            padding: 8px 12px;
+            background-color: #555;
+        }
+
+        .pag-btn-num {
+            width: 6%;
+        }
+
+        .pag-btn-txt {
+            width: 12%;
+        }
+        /* 104 66 66 66 104 */
+        
+        .contenido--navegar li a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .contenido--navegar li:hover {
+            background-color: #999;
+        }
+        
+        .contenido--navegar li[style] a {
+            color: white;
+        }
+    </style>
     
-    {{--
     <footer>
         <section id="suneo-img">
             <img src="../assets/img/u26.png">
@@ -106,7 +177,6 @@
             </section>
         </section>
     </footer>
-    --}}
     
 </body>
 </html>

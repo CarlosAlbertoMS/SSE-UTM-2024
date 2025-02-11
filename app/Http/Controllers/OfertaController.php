@@ -36,7 +36,6 @@ class OfertaController extends Controller
             $paginaActual,   // Página actual
             ['path' => request()->url()] // URL base para los links de paginación
         );
-        $paginador->onEachSide(2);
     
         $carreras = Carrera::obtenerCarreras();
         return view('administrador.Salarios_Admin', compact('ofertas', 'carreras', 'paginador'));

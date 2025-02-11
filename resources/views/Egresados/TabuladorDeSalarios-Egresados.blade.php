@@ -88,10 +88,46 @@
                 @endforeach
                 </tbody>
             </table>
+            
+            @if ($paginador->hasPages())
+                <div class="contenido--navegar">
+                    <ul>
+                        {{-- Botón "Anterior" --}}
+                        @if ($paginador->onFirstPage())
+                            <li class="disabled"><span>Anterior</span></li>
+                        @else
+                            <li><a href="{{ $paginador->previousPageUrl() }}">Anterior</a></li>
+                        @endif
+            
+                        {{-- Números de página (solo 3) --}}
+                        @php
+                            $start = max($paginador->currentPage() - 1, 1);
+                            $end = min($start + 2, $paginador->lastPage());
+                        @endphp
+            
+                        @for ($i = $start; $i <= $end; $i++)
+                            @if ($i == $paginador->currentPage())
+                                <li style="background-color: #6d000e;"><a href="#">{{ $i }}</a></li>
+                            @else
+                                <li><a href="{{ $paginador->url($i) }}">{{ $i }}</a></li>
+                            @endif
+                        @endfor
+            
+                        {{-- Botón "Siguiente" --}}
+                        @if ($paginador->hasMorePages())
+                            <li><a href="{{ $paginador->nextPageUrl() }}">Siguiente</a></li>
+                        @else
+                            <li class="disabled"><span>Siguiente</span></li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
 
-            {{ $paginador->links() }}
+            {{-- <div class="custom-pagination">
+                {{ $paginador->links() }}
+            </div> --}}
         </section>
-        <div class="contenido--navegar">
+        <!-- <div class="contenido--navegar">
                 <ul>
                     <li><a href="#">Anterior</a></li>
                     <li><a href="#">1</a></li>
@@ -99,12 +135,9 @@
                     <li><a href="#">3</a></li>
                     <li><a href="#">Siguiente</a></li>
                 </ul>
-            </div>
+            </div> -->
     </section>
-       
-    
-    
-    
+          
     <footer>
         <section id="suneo-img">
             <img src="../assets/img/u26.png">

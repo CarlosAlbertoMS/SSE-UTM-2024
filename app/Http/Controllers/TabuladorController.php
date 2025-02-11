@@ -30,13 +30,13 @@ class TabuladorController extends Model
         $items = array_slice($tabulador, ($paginaActual - 1) * $porPagina, $porPagina);
     
         $paginador = new LengthAwarePaginator(
-            $items,          // Elementos de la página actual
+            $items,            // Elementos de la página actual
             count($tabulador), // Total de elementos
-            $porPagina,      // Elementos por página
-            $paginaActual,   // Página actual
+            $porPagina,        // Elementos por página
+            $paginaActual,
             ['path' => request()->url()] // URL base para los links de paginación
         );
-        $paginador->onEachSide(2);
+        // $paginador->onEachSide(2);
 
         $carreras = Carrera::obtenerCarreras();
         return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador', 'carreras', 'paginador'));
