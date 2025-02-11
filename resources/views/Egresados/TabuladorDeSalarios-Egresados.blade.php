@@ -77,65 +77,20 @@
                 </thead>
                 
                 <tbody>
-                @foreach ($paginador as $tabulador)
-                    <tr>
-                        <td> {{ $tabulador['empleo'] }} </td>
-                        <td> {{ $carreras[$tabulador['carrera']] ?? 'Carrera no encontrada' }} </td>
-                        <td> {{ $tabulador['experiencia'] }} años </td>
-                        <td> {{ $tabulador['monto_minimo'] }}</td>
-                        <td> {{ $tabulador['monto_maximo'] }}</td>
-                    </tr>
-                @endforeach
+                    @foreach ($paginador as $tabulador)
+                        <tr>
+                            <td> {{ $tabulador['empleo'] }} </td>
+                            <td> {{ $carreras[$tabulador['carrera']] ?? 'Carrera no encontrada' }} </td>
+                            <td> {{ $tabulador['experiencia'] }} años </td>
+                            <td> {{ $tabulador['monto_minimo'] }}</td>
+                            <td> {{ $tabulador['monto_maximo'] }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
-            
-            @if ($paginador->hasPages())
-                <div class="contenido--navegar">
-                    <ul>
-                        {{-- Botón "Anterior" --}}
-                        @if ($paginador->onFirstPage())
-                            <li class="disabled"><span>Anterior</span></li>
-                        @else
-                            <li><a href="{{ $paginador->previousPageUrl() }}">Anterior</a></li>
-                        @endif
-            
-                        {{-- Números de página (solo 3) --}}
-                        @php
-                            $start = max($paginador->currentPage() - 1, 1);
-                            $end = min($start + 2, $paginador->lastPage());
-                        @endphp
-            
-                        @for ($i = $start; $i <= $end; $i++)
-                            @if ($i == $paginador->currentPage())
-                                <li style="background-color: #6d000e;"><a href="#">{{ $i }}</a></li>
-                            @else
-                                <li><a href="{{ $paginador->url($i) }}">{{ $i }}</a></li>
-                            @endif
-                        @endfor
-            
-                        {{-- Botón "Siguiente" --}}
-                        @if ($paginador->hasMorePages())
-                            <li><a href="{{ $paginador->nextPageUrl() }}">Siguiente</a></li>
-                        @else
-                            <li class="disabled"><span>Siguiente</span></li>
-                        @endif
-                    </ul>
-                </div>
-            @endif
 
-            {{-- <div class="custom-pagination">
-                {{ $paginador->links() }}
-            </div> --}}
+            x-paginador :paginador="$paginador" />
         </section>
-        <!-- <div class="contenido--navegar">
-                <ul>
-                    <li><a href="#">Anterior</a></li>
-                    <li><a href="#">1</a></li>
-                    <li style="background-color: #6d000e;"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">Siguiente</a></li>
-                </ul>
-            </div> -->
     </section>
           
     <footer>
