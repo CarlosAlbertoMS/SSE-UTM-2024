@@ -35,11 +35,7 @@
                 <a class="header__menu--icons"  href="#"><img src="../assets/img/u462.png" alt="" /></a>
             </div>
         </div>
-
     </header>
-
-    
-    
     
     <section id="contenido">
         <section id="filtro">
@@ -81,80 +77,57 @@
                 </thead>
                 
                 <tbody>
+                @foreach ($paginador as $tabulador)
                     <tr>
-                        <td>Ingeniero en Electrónica</td>
-                        <td>Ing. en Electrónica</td>
-                        <td>Cero años</td>
-                        <td class="colgris">$12,000</td>
-                        <td class="colgris">$13,000</td>
+                        <td> {{ $tabulador['empleo'] }} </td>
+                        <td> {{ $carreras[$tabulador['carrera']] ?? 'Carrera no encontrada' }} </td>
+                        <td> {{ $tabulador['experiencia'] }} años </td>
+                        <td> {{ $tabulador['monto_minimo'] }}</td>
+                        <td> {{ $tabulador['monto_maximo'] }}</td>
                     </tr>
-                    <tr>
-                        <td>Electromecánico</td>
-                        <td>Ing. en Mecánica Automotríz</td>
-                        <td>Tres años</td>
-                        <td class="colgris">$8,000</td>
-                        <td class="colgris">$18,000</td>
-                    </tr>
-                    <tr>
-                        <td>Eléctrico automotriz</td>
-                        <td>Ing. en Mecánica Automotríz</td>
-                        <td>Dos años</td>
-                        <td>$8,000</td>
-                        <td>$11,000</td>
-                    </tr>
-                    <tr>
-                        <td>Mecánico diesel</td>
-                        <td>Ing. en Mecánica Automotríz</td>
-                        <td>Dos años</td>
-                        <td>$8,000</td>
-                        <td >$12,000</td>
-                    </tr>
-                    <tr>
-                        <td>Pintor automotríz</td>
-                        <td>Ing. en Mecánica Automotríz</td>
-                        <td>Dos años</td>
-                        <td>$6,500</td>
-                        <td>$10,000</td>
-                    </tr>
-                    <tr>
-                        <td>Gerente de ventas</td>
-                        <td>Lic. en Ciencias Empresariales</td>
-                        <td>Seis años</td>
-                        <td>$6,000</td>
-                        <td>$30,000</td>
-                    </tr>
-                    <tr>
-                        <td>Ejecutivo de ventas</td>
-                        <td>Lic. en Ciencias Empresariales</td>
-                        <td>Cinco años</td>
-                        <td>$5,000</td>
-                        <td>$20,000</td>
-                    </tr>
-                    <tr>
-                        <td>Auxiliar de finanzas</td>
-                        <td>Lic. en Ciencias Empresariales</td>
-                        <td>Dos años</td>
-                        <td>$7,000</td>
-                        <td>$14,000</td>
-                    </tr>
-                    <tr>
-                        <td>Analista financiero</td>
-                        <td>Lic. en Ciencias Empresariales</td>
-                        <td>Cuatro años</td>
-                        <td>$10,000</td>
-                        <td>$18,000</td>
-                    </tr>
-                    <tr>
-                        <td>Gerente de recursos humanos</td>
-                        <td>Lic. en Ciencias Empresariales</td>
-                        <td>Seis años</td>
-                        <td>$4,300</td>
-                        <td>$25,000</td>
-                    </tr>
+                @endforeach
                 </tbody>
             </table>
+            
+            @if ($paginador->hasPages())
+                <div class="contenido--navegar">
+                    <ul>
+                        {{-- Botón "Anterior" --}}
+                        @if ($paginador->onFirstPage())
+                            <li class="disabled"><span>Anterior</span></li>
+                        @else
+                            <li><a href="{{ $paginador->previousPageUrl() }}">Anterior</a></li>
+                        @endif
+            
+                        {{-- Números de página (solo 3) --}}
+                        @php
+                            $start = max($paginador->currentPage() - 1, 1);
+                            $end = min($start + 2, $paginador->lastPage());
+                        @endphp
+            
+                        @for ($i = $start; $i <= $end; $i++)
+                            @if ($i == $paginador->currentPage())
+                                <li style="background-color: #6d000e;"><a href="#">{{ $i }}</a></li>
+                            @else
+                                <li><a href="{{ $paginador->url($i) }}">{{ $i }}</a></li>
+                            @endif
+                        @endfor
+            
+                        {{-- Botón "Siguiente" --}}
+                        @if ($paginador->hasMorePages())
+                            <li><a href="{{ $paginador->nextPageUrl() }}">Siguiente</a></li>
+                        @else
+                            <li class="disabled"><span>Siguiente</span></li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
+
+            {{-- <div class="custom-pagination">
+                {{ $paginador->links() }}
+            </div> --}}
         </section>
-        <div class="contenido--navegar">
+        <!-- <div class="contenido--navegar">
                 <ul>
                     <li><a href="#">Anterior</a></li>
                     <li><a href="#">1</a></li>
@@ -162,12 +135,9 @@
                     <li><a href="#">3</a></li>
                     <li><a href="#">Siguiente</a></li>
                 </ul>
-            </div>
+            </div> -->
     </section>
-       
-    
-    
-    
+          
     <footer>
         <section id="suneo-img">
             <img src="../assets/img/u26.png">

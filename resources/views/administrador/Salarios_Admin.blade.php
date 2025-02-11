@@ -7,10 +7,8 @@
     <title>Salarios - ADMIN</title>
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Salarios_Admin.css') }}">
-
 </head>
 <body>
-    
 
     @include('layouts.header')
     
@@ -61,112 +59,98 @@
                     <th>Monto mínimo mensual</th>
                     <th>Monto máximo mensual</th>
                 </tr>
-                <!-- Fin del encabezado-->
-                <tr>
-                    <td>Ingeniero en electrónica</td>
-                    <td>Ingeniería en Electronica</td>
-                    <td>Cero años</td>
-                    <td>$12,000</td>
-                    <td>$13,000</td>
-                </tr>
-                <tr>
-                    <td>Electromecánico</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Tres años</td>
-                    <td>$8,000</td>
-                    <td>$18,000</td>
-                </tr>
-                <tr>
-                    <td>Eléctrico automotríz</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$8,000</td>
-                    <td>$12,000</td>
-                </tr>
-                <tr>
-                    <td>Mecánico diesel</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$12,000</td>
-                    <td>$16,000</td>
-                </tr>
-                <tr>
-                    <td>Pintor automotriz</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$15,000</td>
-                    <td>$15,000</td>
-                </tr>
-                <tr>
-                    <td>Gerente de ventas</td>
-                    <td>Licenciatura en Ciencias empresariales
-                    <td>Seis años</td>
-                    <td>$12,000</td>
-                    <td>$13,000</td>
-                </tr>
-                <tr>
-                    <td>Ejecutivo de ventas</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Cinco años</td>
-                    <td>$8,000</td>
-                    <td>$18,000</td>
-                </tr>
-                <tr>
-                    <td>Auxiliar de finanzas</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Dos años</td>
-                    <td>$8,000</td>
-                    <td>$12,000</td>
-                </tr>
-                <tr>
-                    <td>Analista financiero</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Cuatro  años</td>
-                    <td>$12,000</td>
-                    <td>$16,000</td>
-                </tr>
-                <tr>
-                    <td>Gerente de recursos humanos</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Tres  años</td>
-                    <td>$15,000</td>
-                    <td>$15,000</td>
-                </tr>
-                <tr>
-                    <td>Ingeniero en diseño</td>
-                    <td>Ingeniería en diseño</td>
-                    <td>Dos años</td>
-                    <td>$12,000</td>
-                    <td>$16,000</td>
-                </tr>
-                <tr>
-                    <td>Ingeniero Mecánico</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$15,000</td>
-                    <td>$15,000</td>
-                </tr>
 
-                <tr id="tabla-fin">
+                @foreach ($paginador as $tabulador)
+                    <tr>
+                        <td> {{ $tabulador['titulo_empleo'] }} </td>
+                        <td> {{ $carreras[$tabulador['carrera']] }} </td>
+                    </tr>
+                @endforeach
+
+                {{-- <tr id="tabla-fin">
                     <th colspan="5">Total de salarios: 72</th>
-                </tr>
+                </tr> --}} 
             </table>
-            <!--fin de la tabla-->
-            <!--Inicio de la paginacion de la pagina-->
-            <div class="pagination">
-                <ul>
-                    <a href="#"><li class="otrasPaginas">Anterior</li></a>
-                    <a href="#"><li class="otrasPaginas">1</li></a>
-                    <a href="#"><li class="paginasActual">2</li></a>
-                    <a href="#"><li class="otrasPaginas">3</li></a>
-                    <a href="#"><li class="otrasPaginas">Siguiente</li></a>
-                </ul>
-            </div>
-            <!--fin de la paginación-->
-            
+
+            @if ($paginador->hasPages())
+                <div class="contenido--navegar">
+                    <ul>
+                        {{-- Botón "Anterior" --}}
+                        @if ($paginador->onFirstPage())
+                            <li class="disabled pag-btn-txt"><span>Anterior</span></li>
+                        @else
+                            <li class="pag-btn-txt"><a href="{{ $paginador->previousPageUrl() }}">Anterior</a></li>
+                        @endif
+
+                        {{-- Números de página (solo 3) --}}
+                        @php
+                            $start = max($paginador->currentPage() - 1, 1);
+                            $end = min($start + 2, $paginador->lastPage());
+                        @endphp
+
+                        @for ($i = $start; $i <= $end; $i++)
+                            @if ($i == $paginador->currentPage())
+                                <li class="pag-btn-num" style="background-color: #6d000e;"><a href="#">{{ $i }}</a></li>
+                            @else
+                                <li class="pag-btn-num"><a href="{{ $paginador->url($i) }}">{{ $i }}</a></li>
+                            @endif
+                        @endfor
+
+                        {{-- Botón "Siguiente" --}}
+                        @if ($paginador->hasMorePages())
+                            <li class="pag-btn-txt"><a href="{{ $paginador->nextPageUrl() }}">Siguiente</a></li>
+                        @else
+                            <li class="disabled pag-btn-txt"><span>Siguiente</span></li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
         </center>
     </section>
-       
+
+    <!-- DESPUES ESTA WEA SE VA A COLOCAR EN EL CSS DE ESTA VISTA, solo Dios sabe cuando :emojiManosRezando:. -->
+    <style>
+        .contenido--navegar {
+            padding-top: 10px;
+            font-family: 'Raleway';
+            font-size: 12px;
+        }
+
+        .contenido--navegar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .contenido--navegar li {
+            padding: 8px 12px;
+            background-color: #555;
+        }
+
+        .pag-btn-num {
+            width: 6%;
+        }
+
+        .pag-btn-txt {
+            width: 12%;
+        }
+        /* 104 66 66 66 104 */
+        
+        .contenido--navegar li a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .contenido--navegar li:hover {
+            background-color: #999;
+        }
+        
+        .contenido--navegar li[style] a {
+            color: white;
+        }
+    </style>
+    
     <footer>
         <section id="suneo-img">
             <img src="../assets/img/u26.png">
