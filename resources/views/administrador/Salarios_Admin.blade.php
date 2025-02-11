@@ -74,12 +74,12 @@
 
             @if ($paginador->hasPages())
                 <div class="contenido--navegar">
-                    <ul>
+                    <div class="pagination-buttons">
                         {{-- Botón "Anterior" --}}
                         @if ($paginador->onFirstPage())
-                            <li class="disabled pag-btn-txt"><span>Anterior</span></li>
+                            <button class="disabled pag-btn-txt" disabled>Anterior</button>
                         @else
-                            <li class="pag-btn-txt"><a href="{{ $paginador->previousPageUrl() }}">Anterior</a></li>
+                            <button class="pag-btn-txt" onclick="location.href='{{ $paginador->previousPageUrl() }}'">Anterior</button>
                         @endif
 
                         {{-- Números de página (solo 3) --}}
@@ -90,64 +90,62 @@
 
                         @for ($i = $start; $i <= $end; $i++)
                             @if ($i == $paginador->currentPage())
-                                <li class="pag-btn-num" style="background-color: #6d000e;"><a href="#">{{ $i }}</a></li>
+                                <button class="pag-btn-num active">{{ $i }}</button>
                             @else
-                                <li class="pag-btn-num"><a href="{{ $paginador->url($i) }}">{{ $i }}</a></li>
+                                <button class="pag-btn-num" onclick="location.href='{{ $paginador->url($i) }}'">{{ $i }}</button>
                             @endif
                         @endfor
 
                         {{-- Botón "Siguiente" --}}
                         @if ($paginador->hasMorePages())
-                            <li class="pag-btn-txt"><a href="{{ $paginador->nextPageUrl() }}">Siguiente</a></li>
+                            <button class="pag-btn-txt" onclick="location.href='{{ $paginador->nextPageUrl() }}'">Siguiente</button>
                         @else
-                            <li class="disabled pag-btn-txt"><span>Siguiente</span></li>
+                            <button class="disabled pag-btn-txt" disabled>Siguiente</button>
                         @endif
-                    </ul>
+                    </div>
                 </div>
             @endif
+
         </center>
     </section>
 
     <!-- DESPUES ESTA WEA SE VA A COLOCAR EN EL CSS DE ESTA VISTA, solo Dios sabe cuando :emojiManosRezando:. -->
     <style>
-        .contenido--navegar {
+        .pagination-buttons {
+            display: flex;
+            justify-content: center;
             padding-top: 10px;
-            font-family: 'Raleway';
+        }
+
+        .pagination-buttons button {
+            height: 24px;
+            padding: 5px 15px;
+            border: none;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
             font-size: 12px;
         }
 
-        .contenido--navegar ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-        }
-        
-        .contenido--navegar li {
-            padding: 8px 12px;
-            background-color: #555;
+        .pag-btn-txt {
+            width: 12%;
         }
 
         .pag-btn-num {
             width: 6%;
         }
 
-        .pag-btn-txt {
-            width: 12%;
+        .pagination-buttons button:hover {
+            background-color: #ccc;
         }
-        /* 104 66 66 66 104 */
-        
-        .contenido--navegar li a {
-            text-decoration: none;
-            color: white;
+
+        .pagination-buttons .active {
+            background-color: #6d000e;
         }
-        
-        .contenido--navegar li:hover {
-            background-color: #999;
-        }
-        
-        .contenido--navegar li[style] a {
-            color: white;
+
+        .pagination-buttons .disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
     </style>
     
