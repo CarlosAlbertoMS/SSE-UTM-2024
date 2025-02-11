@@ -1,117 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ asset('Directorio-de-empresas.css') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/Egresados/Directorio-de-empresas.css') }}">
     <title>Directorio de Empresas</title>
 </head>
-
-<body>
-    <header>
-        <div class="header--container--1">
-            <div class="header--div0">
-                <img src="{{ asset('assets/img/u43.png') }}" alt="" />
-            </div>
-            <div class="main--title">
-                <p>Sistema de Seguimiento de Egresados y Bolsa de Trabajo</p>
-            </div>
-            <div class="header--div1">
-                <img src="{{ asset('assets/img/utm_u31.png') }}" alt="" />
-            </div>
-        </div>
-        <div class="header--container--2">
-            <div class="header--option--1">
-                <p>Ofertas Laborales</p>
-            </div>
-            <div class="header--option--2">
-                <p>Directorio de Empresas</p>
-            </div>
-            <div class="header--option--3">
-                <p>Tabulador de Salarios</p>
-            </div>
-            <div class="header--option--4">
-                <p>Eventos</p>
-            </div>
-            <div class="header--option--3">
-                <p>Historias de Éxito</p>
-            </div>
-            <div class="header--option--3">
-                <p>Tips y Consejos</p>
-            </div>
-            <div class="header--option--5">
-                <div class="header--icon--1">
-                    <img src="{{ asset('assets/icons/Información_B.png') }}" alt="" />
-                </div>
-                <div class="header--icon--2">
-                    <img src="{{ asset('assets/icons/Ajustes_B.png') }}" alt="" />
-                </div>
-                <div class="header--icon--2">
-                    <img src="{{ asset('assets/img/u462.png') }}" alt="" />
-                </div>
-            </div>
-        </div>
-    </header>
+@include('layouts.Egresadosheader')
     <main>
         <section class="main--section">
             <div class="main--container--1">
-                <div class="main-form--1">
-                    <div><input type="email" id="fname" name="fname" placeholder=" Buscar..."></div>
+                <form class="main-form--1" action="#" method="GET">
+                    <input type="search" id="search" name="search" placeholder="Buscar...">
                     <button type="submit">
-                        <img src="{{ asset('assets/icons/Buscar_B.png') }}" alt="" />
+                        <img src="{{ asset('assets/icons/Buscar_B.png') }}" alt="Buscar">
                     </button>
-                </div>
+                </form>
+                
                 <div class="main-form--2">
                     <div class="main--label--number--offers">
-                        <p> 24 Empresas</p>
+                        <p>{{ count($empresas) }} Empresas</p>
                     </div>
                     <div class="main--order--info">
-                        <p>Ordenar por</p>
-                        <select name="Ordenar">
-                            <option selected value="0"> Relevancia </option>
-                            <option value="1"></option>
+                        <label>Ordenar por:</label>
+                        <select name="ordenar">
+                            <option value="relevancia" selected>Relevancia</option>
+                            <option value="nombre">Nombre A-Z</option>
+                            <option value="recientes">Más recientes</option>
                         </select>
                     </div>
                 </div>
             </div>
+
             <div class="main--container--2">
                 <div class="wrapper">
-                    @foreach ($companies as $company)
-                        <div class="wrapper--cell">
-                            <div class="wrapper--cell--img">
-                                <img src="{{ asset($company->image) }}" alt="">
+                    @foreach ($empresas as $empresa)
+                    <div class="wrapper--cell" data-id="{{ $empresa['id'] }}">
+                        <div class="wrapper--cell--body">
+                            <div class="wrapper--cell--body--title">
+                                <p>{{ $empresa['nombre'] }}</p>
                             </div>
-                            <div class="wrapper--cell--body">
-                                <div class="wrapper--cell--body--title">
-                                    <p>{{ $company->name }}</p>
+                            <div class="wrapper--cell--body--description">
+                                <p>{{ $empresa['descripcion'] }}</p>
+                            </div>
+                            
+                            <div class="wrapper--cell--body--contacto">
+                                <div class="contacto-item">
+                                    <img src="{{ asset('assets/icons/Usuario_B.png') }}" alt="Contacto">
+                                    <span>xdxd</span>
                                 </div>
-                                <div class="wrapper--cell--body--description">
-                                    <p>{{ $company->description }}</p>
+                                <div class="contacto-item">
+                                    <img src="{{ asset('assets/icons/Telefono_B.png') }}" alt="Teléfono">
+                                    <span>{{ $empresa['telefono'] }}</span>
                                 </div>
-                                <div class="wrapper--cell--body--icon1">
-                                    <img src="{{ asset('assets/icons/Usuario_B.png') }}" alt="">
-                                    <div class="wrapper--cell--body-icon1--text">
-                                        <p>{{ $company->contact_person }}</p>
-                                    </div>
-                                </div>
-                                <div class="wrapper--cell--body--icon2">
-                                    <img src="{{ asset('assets/icons/Telefono_B.png') }}" alt="">
-                                    <div class="wrapper--cell--body--icon2--text">
-                                        <p>{{ $company->phone }}</p>
-                                    </div>
-                                </div>
-                                <div class="wrapper--cell--body--icon3">
-                                    <img src="{{ asset('assets/icons/Correo_B.png') }}" alt="">
-                                    <div class="wrapper--cell--body--icon3--text">
-                                        <p>{{ $company->email }}</p>
-                                    </div>
+                                <div class="contacto-item">
+                                    <img src="{{ asset('assets/icons/Correo_B.png') }}" alt="Email">
+                                    <span>{{ $empresa['correo'] }}</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
         </section>
     </main>
+
+    <footer>
+    <div class="footer--container--1">
+        <img src="../assets/img/u26.png" alt="Logo">
+    </div>
+    <div class="footer--container--2">
+        <div class="footer--Title">
+            <div class="footer--title--1"><p>Sobre SUNEO</p></div>
+            <div class="footer--title--1"><p>Privacidad</p></div>
+            <div class="footer--title--1"><p>Empresas</p></div>
+            <div class="footer--title--1"><p>Ayuda</p></div>
+        </div>
+        <div class="footer--Text">
+            <div class="footer--title--2-1">
+                <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
+            </div>
+            <div class="footer--title--2-2">
+                <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
+            </div>
+        </div>
+        <div class="footer--Text">
+            <div class="footer--title--2-1">
+                <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
+            </div>
+            <div class="footer--title--2-2">
+                <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var img_ant = new Image();
+    img_ant.src = "../assets/icons/Marcador_oferta.svg";
+
+    function Marcador_selected(imagen) {
+        if (img_ant.src === imagen.src) {
+            imagen.src = "../assets/icons/Marcador_NG.svg";
+        } else {
+            imagen.src = img_ant.src;
+        }
+    }
+</script>
+
+
+
+<script>
+    
+    document.querySelectorAll('.wrapper--cell').forEach(function(cell) {
+    cell.addEventListener('click', function() {
+        var id = this.getAttribute('data-id');
+        redirectToEmpresa(id);
+    });
+})
+function redirectToEmpresa(id) {
+ 
+    
+   
+}
+</script>
 </body>
 </html>

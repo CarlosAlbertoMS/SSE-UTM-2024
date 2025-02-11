@@ -5,7 +5,7 @@ use App\Models\User;
 use App\admin;
 use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\empresaController;
-
+use App\Http\Controllers\directorioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -159,9 +159,11 @@ Route::get('/empresa-egresados/propuesta', function () {
 //Route::get('/Egresados/Ofertas_laborales', function () {    return view('Egresados.Ofertas_laborales');})->name('Egresados_Ofertas');
 Route::get('/Egresados/Ofertas_laborales', [OfertasController::class, 'index'])->name('Egresados_Ofertas');
 
-Route::get('/Egresados/Directorio-empresas', function () {
+Route::get('/Egresados/Directorio-empresas', [directorioController::class, 'index'])->name('Egresados_Directorio');
+
+/*Route::get('/Egresados/Directorio-empresas', function () {
     return view('Egresados.Directorio-de-empresas');
-})->name('Egresados_Directorio');
+})->name('Egresados_Directorio');*/
 
 Route::get('/Egresados/Informacion-de-empresas', function () {
     return view('Egresados.Informacion-de-empresas');

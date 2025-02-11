@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="{{asset('css/Egresados/Ofertas-laborales.css')}}">
     <title>Ofertas Laborales</title>
 </head>
-
 @include('layouts.Egresadosheader')
-<body>
+
 <main>
     <section class="main--section">
         <div class="main--container--1">
@@ -42,9 +41,7 @@
                     <div class="main--card--body--Text">
                         <p>{{ $oferta['carrera'] }}</p>
                     </div>
-                    <div class="main--card--body--Text">
-                        <p>{{ $oferta['ubicacion'] }}</p>
-                    </div>
+                    
                     <div class="main--card--body--Text">
                         <p>{{ $oferta['descripcion'] }}</p>
                     </div>

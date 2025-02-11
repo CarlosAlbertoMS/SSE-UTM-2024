@@ -9,7 +9,7 @@
 			</div>
 			<div class="header--container--2">
 				<div class="header--option-1"><a href="{{route('Egresados_Ofertas')}}"><p>Ofertas Laborales</p></a></div>
-				<div class="header--option-2"><a href="{{route('Informacion-empresas')}}"><p>Directorio de Empresas</p></a></div>
+				<div class="header--option-2"><a href="{{route('Egresados_Directorio')}}"><p>Directorio de Empresas</p></a></div>
 				<div class="header--option-3"><a href="{{route('TabuladorDeSalarios-Egresados')}}"><p>Tabulador de Salarios</p></a></div>
 				<div class="header--option-4"><a href="{{route('Eventos')}}"><p>Eventos</p></a></div>
 				<div class="header--option-5"><a href="{{route('CasosDeExito-Egresados')}}"><p>Historias de Éxito</p></a></div>
