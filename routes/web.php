@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\admin;
-use App\Http\Controllers\EgresadosController;
+use App\Http\Controllers\OfertasController;
 use App\Http\Controllers\empresaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,6 +77,8 @@ Route::get('/administrador-egresados/tips', function () {
 
 // RUTAS PARA EMPRESAS:
 Route::get('/prueba', [empresaController::class, 'index'])->name('prueba');
+// RUTAS PARA oferta:
+
 
 Route::get('/empresa', function() {
     return view('empresas.index'); 
@@ -153,9 +156,12 @@ Route::get('/empresa-egresados/propuesta', function () {
 })->name('empresa_propuesta');
 
 //Egresados
-Route::get('/Egresados/Ofertas_laborales', function () {
-    return view('Egresados.Ofertas_laborales');
-})->name('Egresados_Ofertas');
+//Route::get('/Egresados/Ofertas_laborales', function () {    return view('Egresados.Ofertas_laborales');})->name('Egresados_Ofertas');
+Route::get('/Egresados/Ofertas_laborales', [OfertasController::class, 'index'])->name('Egresados_Ofertas');
+
+Route::get('/Egresados/Directorio-empresas', function () {
+    return view('Egresados.Directorio-de-empresas');
+})->name('Egresados_Directorio');
 
 Route::get('/Egresados/Informacion-de-empresas', function () {
     return view('Egresados.Informacion-de-empresas');
@@ -189,13 +195,9 @@ Route::get('/Egresados/TabuladorDeSalarios-Egresados', function () {
     return view('Egresados.TabuladorDeSalarios-Egresados');
 })->name('TabuladorDeSalarios-Egresados');
 
-Route::get('/egresados', [EgresadosController::class, 'obtenerEgresados']);
-Route::get('/egresados/{matricula}', [EgresadosController::class, 'obtenerEgresado']);
-Route::post('/egresados', [EgresadosController::class, 'crearEgresado']);
-Route::put('/egresados/{matricula}', [EgresadosController::class, 'actualizarEgresado']);
-Route::delete('/egresados/{matricula}', [EgresadosController::class, 'eliminarEgresado']);
-
-
-
-
+//Route::get('/egresados', [EgresadosController::class, 'obtenerEgresados']);
+//Route::get('/egresados/{matricula}', [EgresadosController::class, 'obtenerEgresado']);
+//Route::post('/egresados', [EgresadosController::class, 'crearEgresado']);
+//Route::put('/egresados/{matricula}', [EgresadosController::class, 'actualizarEgresado']);
+//Route::delete('/egresados/{matricula}', [EgresadosController::class, 'eliminarEgresado']);
 ?>
