@@ -111,9 +111,11 @@
             </table>
 
             <!-- Agregar paginación -->
-            <div class="pagination">
+            {{-- <div class="pagination">
                 {{ $empresas->links() }}
-            </div>
+            </div> --}}
+
+            <x-paginador :paginador="$empresas" />
 
         </center>
 
