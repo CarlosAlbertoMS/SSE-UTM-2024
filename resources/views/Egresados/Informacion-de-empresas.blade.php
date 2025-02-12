@@ -6,6 +6,7 @@
   <link rel="stylesheet" media="(min-width: 800px)" href="{{asset('css/Egresados/informacion-de-empresas.css')}}" />
   <title>Document</title>
 </head>
+
 @include('layouts.Egresadosheader')
     <main>
       <section class="main--section>
@@ -57,8 +58,16 @@
                 <p>Ubicación:</p>
               </diV>
               <diV class="content2--information-text2">
-                <p>CEMEX</p>
-                <p>Queretaro, Queretaro</p>
+              <p>{{ $empresa['nombre'] }}</p>
+              <p>
+    {{ $empresa['calle'] ?? 'N/A' }} 
+    {{ $empresa['numero'] ?? '' }}, 
+    {{ $empresa['colonia'] ?? '' }}, 
+    {{ $empresa['ciudad'] ?? '' }}, 
+    {{ $empresa['estado'] ?? '' }}, 
+    C.P. {{ $empresa['codigo_postal'] ?? '' }}
+</p>
+
               </diV>
               <div class="content2--information-title">
                 <p>Descripción de la empresa</p>
@@ -71,10 +80,10 @@
                 <p>Correo electrónico:</p>
               </diV>
               <diV class="content2--information-text4">
-                <p>Claudia Guadalupe Bustos Guerrero</p>
-                <p>Staffing & Adquisición de Talento-Recursos Humanos</p>
-                <p>52 442 3091600 / Ext. 5007</p>
-                <p>claudia.bustos@cemex.com</p>
+                <p> {{$contacto['nombre']}}</p>
+                <p>{{$contacto['puesto']}}</p>
+                <p>{{$contacto['telefono']}}</p>
+                <p>{{$contacto['correo']}}</p>
               </diV>
             </div>
             <div class="content2--description">
@@ -84,12 +93,7 @@
               </div>
               <div class="content2--description-text">
                 <p>
-                  Nuestra compañía fue fundada en Monterrey, México, en 1906. Empezamos como una empresa
-                  local y, gracias a nuestra visión, evolucionamos hasta convertirnos en una de las compañías
-                  globales líderes en nuestra industria. Ahora contamos con el apoyo de cerca de 43 mil 
-                  colaboradores en todo el mundo. Mantenemos relaciones comerciales con más de cien países y
-                  una red de operaciones con más de cincuenta naciones en la que se produce, distribuye y 
-                  comercializa cemento, concreto premezclado, agregados y productos relacionados.
+                 {{$empresa['descripcion']}}
                 </p>
               </div>
             </div>

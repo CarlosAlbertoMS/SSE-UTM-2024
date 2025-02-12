@@ -158,7 +158,7 @@ header {
 
 .header--option-1 {
   width: 144px;
-  background-color: var(--color-option-selected-menu);
+  
 }
 
 .header--option-1 p {
@@ -167,6 +167,7 @@ header {
 
 .header--option-2 {
   width: 193px;
+  background-color: var(--color-option-selected-menu);
 }
 
 .header--option-2 p {
@@ -456,10 +457,11 @@ header {
 }
 
 .main--pagination {
-  width: 406px;
-  height: 22px;
-  margin: 6px auto 9px 311px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  margin-top: 10px; /* Ajusta el margen según necesites */
 }
 
 .main--pagination div a {

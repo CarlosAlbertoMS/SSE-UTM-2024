@@ -303,6 +303,9 @@ header {
   line-height: normal;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .main--container--2::-webkit-scrollbar {
@@ -394,39 +397,43 @@ header {
   appearance: none;
 }
 
+
 .main--pagination {
-  width: 406px;
-  height: 22px;
-  margin: 6px auto 9px 311px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  margin-top: 10px; /* Ajusta el margen según necesites */
 }
 
 .main--pagination div a {
   box-sizing: border-box;
   font-family: 'Poppins-Regular', 'Poppins', sans-serif;
-  color: var(--text-opc1);
+  color: #ffffff;
   font-size: 0.9rem;
-  border: 1px solid var(--color-pagination);
+  border: 1px solid #555555;
   text-decoration: none;
-  background-color: var(--color-pagination);
+  background-color: #555555;
 }
 
 .main--pagination--opc-1 a {
   padding: 5px 42px 5px 42px;
+  background-color: red;
 }
 
 .main--pagination--opc-2 a {
   padding: 5px 23px 5px 23px;
+  background-color: blue;
 }
 
 .main--pagination div a.active {
-  background-color: var(--color-option-selected-pagination);
-  border: 1px solid var(--color-option-selected-pagination);
+  background-color: #6d000e;
+  border: 1px solid #6d000e;
 }
 
 .main--pagination div a:hover:not(.active) {
-  background-color: var(--color-option-selected-pagination);
-  border: 1px solid var(--color-option-selected-pagination);
+  background-color: #6d000e;
+  border: 1px solid #6d000e;
 }
 
 .main--section {
@@ -436,6 +443,7 @@ header {
   height: 522px;
   margin: 8px auto 0 auto;
 }
+
 footer {
   position: relative;
   display: flex;

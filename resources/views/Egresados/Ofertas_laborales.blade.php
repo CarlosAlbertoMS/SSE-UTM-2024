@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="{{asset('css/Egresados/Ofertas-laborales.css')}}">
     <title>Ofertas Laborales</title>
 </head>
+@php
+    $currentPage = request()->query('page', 1);
+    $perPage = 5; // Cambiar de 8 a 5
+    $totalPages = ceil(count($ofertas) / $perPage);
+    $startIndex = ($currentPage - 1) * $perPage;
+    $visibleEmpresas = array_slice($ofertas, $startIndex, $perPage);
+
+    // Lógica para mostrar solo tres números de página
+    $startPage = max(1, $currentPage - 1);
+    $endPage = min($totalPages, $startPage + 2);
+@endphp
+
 @include('layouts.Egresadosheader')
 
 <main>
@@ -29,7 +41,8 @@
             </div>
         </div>
         <div class="main--container--2">
-            @foreach ($ofertas as $oferta)
+        @foreach ($visibleEmpresas as $oferta)
+
             <div class="main--card">
                 <div class="main--card--img">
                     <img src="../assets/img/normal_u392.svg" alt="Oferta">
@@ -53,10 +66,31 @@
                 </div>
             </div>
             @endforeach
+                  
+<!-- PAGINACIÓN -->
+<div class="main--pagination">
+    @if ($currentPage > 1)
+        <div class="main--pagination--opc-1">
+            <a href="?page={{ $currentPage - 1 }}">Anterior</a>
         </div>
-        <div class="main--pagination">
-            <!-- Aquí se pueden añadir botones o enlaces para la paginación -->
+    @endif
+
+    @for ($i = $startPage; $i <= $endPage; $i++)
+        <div class="main--pagination--opc-2">
+            <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
         </div>
+    @endfor
+
+    @if ($currentPage < $totalPages)
+        <div class="main--pagination--opc-1">
+            <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
+        </div>
+    @endif
+</div>
+
+        </div>
+  
+
     </section>
 </main>
 <footer>
