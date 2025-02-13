@@ -6,277 +6,93 @@
 		<meta charset="UTF-8" />
     	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     	<link rel="stylesheet" href="{{asset('css/Egresados/Eventos.css')}}" />
+    	<link rel="stylesheet" href="{{asset('css/Egresados/TabuladorDeSalarios-Egresados.css')}}">
 		<title>Eventos</title>
 	</head>
 
 	
-@include('layouts.Egresadosheader')
-		<main>
-			<section class="main--section">
-				<div class="main--container--1">
-					<div class="main-form--1">
-						<input type="email" id="fname" name="fname" value="Buscar...">
-						<button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="" /></button>
-					</div>
-					<div class="main-line"></div>
+{{-- @include('layouts.Egresadosheader') --}}
+    <header>
+        <div id="header--encabezado">
+            <img id="header--img1" src="../assets/img/u43.png">
+            <div id="header--titulo">
+                Sistema de Seguimiento de Egresados y Bolsa de Trabajo
+            </div>
+            <img id="header--img2" src="../assets/img/utm_u31.png">
+        </div>
+
+        <div id="header__div--menu">
+            <div class="lista">
+                <ul>
+                    <li><a href="{{route('Egresados_Ofertas')}}">Ofertas Laborales</a></li>
+                    <li><a href="{{route('Informacion-empresas')}}">Directorio de Empresas</a></li>
+                    <li style="background-color: #6d000e;"><a href="{{route('TabuladorDeSalarios-Egresados')}}">Tabulador de Salarios</a></li>
+                    <li><a href="{{route('Eventos')}}">Eventos</a></li>
+                    <li><a href="{{route('CasosDeExito-Egresados')}}">Historias de Éxito</a></li>
+                    <li><a href="#">Tips y Consejos</a></li>
+                </ul>
+            </div>
+            <div class="circulos">
+                <a class="header__menu--icons"  href="#"><img src="../assets/icons/help_ofertas.svg" alt="" /></a>
+                <a class="header__menu--icons"  href="#"><img src="../assets/icons/Ajustes_B.png" alt="" /></a>
+                <a class="header__menu--icons"  href="#"><img src="../assets/img/u462.png" alt="" /></a>
+            </div>
+        </div>
+    </header>
+    
+	<main>
+		<section class="main--section">
+			<div class="main--container--1">
+				<div class="main-form--1">
+					<input type="email" id="fname" name="fname" value="Buscar...">
+					<button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="" /></button>
 				</div>
-				<div class="main--container--2">
-					<div class="container--main--events">
-						<div class="main--events-title"><p>Eventos Proximos</p></div>
-						<div class="main--events-body">
-							<div class="card--main--events-1">
-								<div class="card--main--events-img" style="background-image: linear-gradient( 180deg, rgba(255, 255, 255, 0) 0%, #a30014 90%)">
-									<img src="../assets/img/normal_u1052.svg" alt="">
-									<div class="card--main--events-img-place" style="background-color: #a30014;"><p>UTM, Huajuapan</p></div>
-									<div class="card--main--events-img-title"><p>Semana de la Cultura</p></div>
-									<div class="card--main--events-img-date"><p>27 Septiembre - 14 Hrs</p></div>
+				<div class="main-line"></div>
+			</div>
+			<div class="main--container--2">
+				<div class="container--main--events">
+					<div class="main--events-title"><p>Eventos Proximos</p></div>
+					<div class="main--events-body">
+
+						@foreach ($paginador as $evento)
+							<div class="card--main--events">
+								<div class="card--main--events-img">
+									<img src="{{ $evento['imagen_url'] }}" alt="">
+									<div class="card--main--events-img-place" >
+										<p> {{ $evento['lugar'] }} </p>
+									</div>
+									<div class="card--main--events-img-info">
+										<div class="card--main--events-img-info-title">
+											<p> {{ $evento['nombre'] }} </p>
+										</div>
+										<div class="card--main--events-img-info-date">
+											<p> {{ $evento['fecha'] }} - </p>
+											<p> {{ $evento['fecha_fin'] }} </p>
+										</div>
+									</div>
 								</div>
 								<div class="card--main--events-text-1">
-									<p>
-										Breve descripción del evento y de que 
-										va a tratar y asi shalalalalalala jeje, a lo
-										mucho de unos cuatro o cinco 
-										renglones de textro.
-									</p>
+									<p> {{ $evento['descripcion'] }} </p>
 								</div>
 								<div class="card--main--events-text-2">
 									<p>LEER MÁS</p>
 									<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
 								</div>
 							</div>
-							<div class="card--main--events-2">
-								<div class="card--main--events-img" style="background-image: linear-gradient( 180deg, rgba(255, 255, 255, 0) 0%, #a30014 90%)">
-									<img src="../assets/img/normal_u1052.svg" alt="">
-									<div class="card--main--events-img-place" style="background-color: #a30014"><p>UTM, Huajuapan</p></div>
-									<div class="card--main--events-img-title"><p>Semana de la Cultura</p></div>
-									<div class="card--main--events-img-date"><p>27 Septiembre - 14 Hrs</p></div>
-								</div>
-								<div class="card--main--events-text-1">
-									<p>
-										Breve descripción del evento y de que 
-										va a tratar y asi shalalalalalala jeje, a lo
-										mucho de unos cuatro o cinco 
-										renglones de textro.
-									</p>
-								</div>
-								<div class="card--main--events-text-2">
-									<p>LEER MÁS</p>
-									<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-								</div>
-							</div>
-							<div class="card--main--events-2">
-								<div class="card--main--events-img" style="background-image: linear-gradient( 180deg, rgba(255, 255, 255, 0) 0%, #d7d7d7 90%)">
-									<img src="../assets/img/normal_u1052.svg" alt="">
-									<div class="card--main--events-img-place" style="background-color: #d7d7d7"><p>UTM, Huajuapan</p></div>
-									<div class="card--main--events-img-title"><p>Semana de la Cultura</p></div>
-									<div class="card--main--events-img-date"><p>27 Septiembre - 14 Hrs</p></div>
-								</div>
-								<div class="card--main--events-text-1">
-									<p>
-										Breve descripción del evento y de que 
-										va a tratar y asi shalalalalalala jeje, a lo
-										mucho de unos cuatro o cinco 
-										renglones de textro.
-									</p>
-								</div>
-								<div class="card--main--events-text-2">
-									<p>LEER MÁS</p>
-									<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-								</div>
-							</div>
-							<div class="card--main--events-2">
-								<div class="card--main--events-img" style="background-image: linear-gradient( 180deg, rgba(255, 255, 255, 0) 0%, #632a29 90%)">
-									<img src="../assets/img/normal_u1052.svg" alt="">
-									<div class="card--main--events-img-place" style="background-color: #632a29"><p>UTM, Huajuapan</p></div>
-									<div class="card--main--events-img-title"><p>Semana de la Cultura</p></div>
-									<div class="card--main--events-img-date"><p>27 Septiembre - 14 Hrs</p></div>
-								</div>
-								<div class="card--main--events-text-1">
-									<p>
-										Breve descripción del evento y de que 
-										va a tratar y asi shalalalalalala jeje, a lo
-										mucho de unos cuatro o cinco 
-										renglones de textro.
-									</p>
-								</div>
-								<div class="card--main--events-text-2">
-									<p>LEER MÁS</p>
-									<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container--others--events">
-						<div class="others--events-title"><p>Otros eventos...</p></div>
-						<div class="others--events-body">
-							<div class="others--events-container-cards"> 
-								<div class="others--events-card">
-									<div class="others--events-card-img">
-										<img src="../assets/img/normal_u1216.svg" alt="">
-									</div>
-									<div class="others--events-card-text">
-										<div class="others--events-card-title">
-											<p>Conferencia Diseño</p>
-											<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-										</div>
-										<div class="others--events-card-subtitle"><p>UTM, Huajuapan de León</p></div>
-										<div class="others--events-card-date"><p>26 Septiembre - 14 Hrs</p></div>
-										<div class="others--events-card-body">
-											<p>
-												Breve descripción del evento y de que va a tratar a
-												lo mucho de unos dos renglones porque sino,
-												seria demasiado texto .Breve descripción del 
-												evento y de que va a tratar a lo mucho de unos
-												dos renglones porque sino, seria demasiado texto .
-											</p>
-										</div>
-										<div class="others--events-card-read-more"><p>LEER MÁS</p></div>
-									</div>
-								</div>
-								<div class="others--events-card">
-									<div class="others--events-card-img">
-										<img src="../assets/img/normal_u1216.svg" alt="">
-									</div>
-									<div class="others--events-card-text">
-										<div class="others--events-card-title">
-											<p>Conferencia Diseño</p>
-											<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-										</div>
-										<div class="others--events-card-subtitle"><p>UTM, Huajuapan de León</p></div>
-										<div class="others--events-card-date"><p>26 Septiembre - 14 Hrs</p></div>
-										<div class="others--events-card-body">
-											<p>
-												Breve descripción del evento y de que va a tratar a
-												lo mucho de unos dos renglones porque sino,
-												seria demasiado texto .Breve descripción del 
-												evento y de que va a tratar a lo mucho de unos
-												dos renglones porque sino, seria demasiado texto .
-											</p>
-										</div>
-										<div class="others--events-card-read-more"><p>LEER MÁS</p></div>
-									</div>
-								</div>
-							</div>
-							<div class="others--events-container-cards"> 
-								<div class="others--events-card">
-									<div class="others--events-card-img">
-										<img src="../assets/img/normal_u1216.svg" alt="">
-									</div>
-									<div class="others--events-card-text">
-										<div class="others--events-card-title">
-											<p>Conferencia Diseño</p>
-											<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-										</div>
-										<div class="others--events-card-subtitle"><p>UTM, Huajuapan de León</p></div>
-										<div class="others--events-card-date"><p>26 Septiembre - 14 Hrs</p></div>
-										<div class="others--events-card-body">
-											<p>
-												Breve descripción del evento y de que va a tratar a
-												lo mucho de unos dos renglones porque sino,
-												seria demasiado texto .Breve descripción del 
-												evento y de que va a tratar a lo mucho de unos
-												dos renglones porque sino, seria demasiado texto .
-											</p>
-										</div>
-										<div class="others--events-card-read-more"><p>LEER MÁS</p></div>
-									</div>
-								</div>
-								<div class="others--events-card">
-									<div class="others--events-card-img">
-										<img src="../assets/img/normal_u1216.svg" alt="">
-									</div>
-									<div class="others--events-card-text">
-										<div class="others--events-card-title">
-											<p>Conferencia Diseño</p>
-											<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-										</div>
-										<div class="others--events-card-subtitle"><p>UTM, Huajuapan de León</p></div>
-										<div class="others--events-card-date"><p>26 Septiembre - 14 Hrs</p></div>
-										<div class="others--events-card-body">
-											<p>
-												Breve descripción del evento y de que va a tratar a
-												lo mucho de unos dos renglones porque sino,
-												seria demasiado texto .Breve descripción del 
-												evento y de que va a tratar a lo mucho de unos
-												dos renglones porque sino, seria demasiado texto .
-											</p>
-										</div>
-										<div class="others--events-card-read-more"><p>LEER MÁS</p></div>
-									</div>
-								</div>
-							</div>
-							<div class="others--events-container-cards"> 
-								<div class="others--events-card">
-									<div class="others--events-card-img">
-										<img src="../assets/img/normal_u1216.svg" alt="">
-									</div>
-									<div class="others--events-card-text">
-										<div class="others--events-card-title">
-											<p>Conferencia Diseño</p>
-											<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-										</div>
-										<div class="others--events-card-subtitle"><p>UTM, Huajuapan de León</p></div>
-										<div class="others--events-card-date"><p>26 Septiembre - 14 Hrs</p></div>
-										<div class="others--events-card-body">
-											<p>
-												Breve descripción del evento y de que va a tratar a
-												lo mucho de unos dos renglones porque sino,
-												seria demasiado texto .Breve descripción del 
-												evento y de que va a tratar a lo mucho de unos
-												dos renglones porque sino, seria demasiado texto .
-											</p>
-										</div>
-										<div class="others--events-card-read-more"><p>LEER MÁS</p></div>
-									</div>
-								</div>
-								<div class="others--events-card">
-									<div class="others--events-card-img">
-										<img src="../assets/img/normal_u1216.svg" alt="">
-									</div>
-									<div class="others--events-card-text">
-										<div class="others--events-card-title">
-											<p>Conferencia Diseño</p>
-											<img src="../assets/icons/Marcador_B.svg" onclick="Marcador_selected(this)" alt="">
-										</div>
-										<div class="others--events-card-subtitle"><p>UTM, Huajuapan de León</p></div>
-										<div class="others--events-card-date"><p>26 Septiembre - 14 Hrs</p></div>
-										<div class="others--events-card-body">
-											<p>
-												Breve descripción del evento y de que va a tratar a
-												lo mucho de unos dos renglones porque sino,
-												seria demasiado texto .Breve descripción del 
-												evento y de que va a tratar a lo mucho de unos
-												dos renglones porque sino, seria demasiado texto .
-											</p>
-										</div>
-										<div class="others--events-card-read-more"><p>LEER MÁS</p></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="main--pagination">
-						<div class="main--pagination--opc-1">
-							<a href="">Anterior</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">1</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">2</a>
-						</div>
-						<div class="main--pagination--opc-2">
-							<a href="">3</a>
-						</div>
-						<div class="main--pagination--opc-1">
-							<a href="">Siguiente</a>
-						</div>
+							@php
+                            $descripcion = $empresa['descripcion'] ?? 'N/A';
+                            $descripcionCorta = strlen($descripcion) > 30 ? substr($descripcion, 0, 30) . '...' : $descripcion;
+                            @endphp
+						@endforeach
 					</div>
 				</div>
-			</section>
-		</main>
+
+				<x-paginador :paginador="$paginador" />
+			</div>
+		</section>
+	</main>
 		
-		<footer>
+		{{-- <footer>
 			<div class="footer--container--1">
 				<img src="../assets/img/u26.png" alt="" />
 			</div>
@@ -312,7 +128,7 @@
 					</div>
 				</div>
 			</div>
-		</footer>
+		</footer> --}}
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

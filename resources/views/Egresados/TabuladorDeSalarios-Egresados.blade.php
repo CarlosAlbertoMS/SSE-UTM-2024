@@ -89,7 +89,7 @@
                 </tbody>
             </table>
 
-            x-paginador :paginador="$paginador" />
+            <x-paginador :paginador="$paginador" />
         </section>
     </section>
           

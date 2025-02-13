@@ -10,6 +10,8 @@ use App\Http\Controllers\EgresadosController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\EventosController;
+
 require __DIR__ . '/admin.php';
 
 /*
@@ -123,6 +125,7 @@ Route::get('/Egresados/Informacion-empresas-ofertas-laborales', function () {
 
 Route::get('/Egresados/Informacion-de-empresas/{id}', [directorioController::class, 'obtenerEmpresa'])->name('Informacion-de-empresas');
 
+Route::get('/Egresados/Eventos', [EventosController::class, 'index'])->name('Eventos');
 Route::get('/Egresados/Eventos', function () {
     return view('Egresados.Eventos');
 })->name('Eventos');
