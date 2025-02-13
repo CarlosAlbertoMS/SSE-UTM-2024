@@ -22,7 +22,7 @@
             <div class="lista">
                 <ul>
                     <li><a href="{{route('Egresados_Ofertas')}}">Ofertas Laborales</a></li>
-                    <li><a href="{{route('Informacion-empresas')}}">Directorio de Empresas</a></li>
+                    <li><a href="{{route('Egresados_Directorio')}}">Directorio de Empresas</a></li>
                     <li style="background-color: #6d000e;"><a href="{{route('TabuladorDeSalarios-Egresados')}}">Tabulador de Salarios</a></li>
                     <li><a href="{{route('Eventos')}}">Eventos</a></li>
                     <li><a href="{{route('CasosDeExito-Egresados')}}">Historias de Éxito</a></li>

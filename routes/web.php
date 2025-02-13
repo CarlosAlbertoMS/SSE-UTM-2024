@@ -11,6 +11,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\OfertaController;
 require __DIR__ . '/admin.php';
+require __DIR__ . '/egresados.php';
 
 /*
 |--------------------------------------------------------------------------

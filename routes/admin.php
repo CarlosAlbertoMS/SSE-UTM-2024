@@ -32,9 +32,8 @@ Route::get('/administrador-egresados/admin_agregar_lote', function () {
 })->name('administrador_agregar_lote');
 
 
-Route::get('/administrador-egresados2', function () {
-    return view('administrador.Egresados_Admin');
-})->name('administrador');
+Route::get('/administrador-egresados/egresados', [EgresadosController::class, 'obtener_egresados_paginados'])
+    ->name('administrador');
 
 
 Route::get('/administrador-egresados/empresas', [empresaController::class, 'obtener_empresas'])

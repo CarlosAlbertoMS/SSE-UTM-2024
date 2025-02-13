@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\RequestException;
 
 class EgresadosController extends Controller
 {
@@ -12,6 +13,46 @@ class EgresadosController extends Controller
     /**
      * Obtener todos los egresados.
      */
+
+     public function obtener_egresados_paginados()
+     {
+         $egresados = collect(); // Inicializamos como colección vacía en caso de error.
+         $error = null; 
+     
+         try {
+             $url = env('API_URL') . "egresados";
+             $response = Http::get($url);
+             $response->throw();
+             $data = $response->json();
+     
+             // Obtener totales
+             $totalEgresados = count($data);
+             $noContestado = collect($data)->where('estado', 'No ha contestado')->count();
+             $parcialmente = collect($data)->where('estado', 'Contestado parcialmente')->count();
+             $completamente = collect($data)->where('estado', 'Contestado completamente')->count();
+     
+             // Paginación manual
+             $currentPage = request()->get('page', 1);
+             $perPage = 10; 
+             $egresados = collect($data)->forPage($currentPage, $perPage);
+     
+             $egresados = new \Illuminate\Pagination\LengthAwarePaginator(
+                 $egresados, $totalEgresados, $perPage, $currentPage,
+                 ['path' => request()->url(), 'query' => request()->query()]
+             );
+     
+         } catch (RequestException $e) {
+             $error = 'No se pudieron obtener los datos de las empresas. Inténtalo de nuevo más tarde.';
+         } catch (\Exception $e) {
+             $error = 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
+         }
+         
+         return view('administrador.Egresados_Admin', compact('egresados', 'error', 'totalEgresados', 'noContestado', 'parcialmente', 'completamente'));
+     }
+
+     public function obtener_carrera_generación(){
+        
+     }
     public function obtenerEgresados()
     {
         $response = Http::get("{$this->baseUrl}/egresados");
