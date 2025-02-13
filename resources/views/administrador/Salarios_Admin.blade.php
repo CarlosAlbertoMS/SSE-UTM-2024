@@ -7,10 +7,8 @@
     <title>Salarios - ADMIN</title>
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Salarios_Admin.css') }}">
-
 </head>
 <body>
-    
 
     @include('layouts.header')
     
@@ -61,112 +59,26 @@
                     <th>Monto mínimo mensual</th>
                     <th>Monto máximo mensual</th>
                 </tr>
-                <!-- Fin del encabezado-->
-                <tr>
-                    <td>Ingeniero en electrónica</td>
-                    <td>Ingeniería en Electronica</td>
-                    <td>Cero años</td>
-                    <td>$12,000</td>
-                    <td>$13,000</td>
-                </tr>
-                <tr>
-                    <td>Electromecánico</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Tres años</td>
-                    <td>$8,000</td>
-                    <td>$18,000</td>
-                </tr>
-                <tr>
-                    <td>Eléctrico automotríz</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$8,000</td>
-                    <td>$12,000</td>
-                </tr>
-                <tr>
-                    <td>Mecánico diesel</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$12,000</td>
-                    <td>$16,000</td>
-                </tr>
-                <tr>
-                    <td>Pintor automotriz</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$15,000</td>
-                    <td>$15,000</td>
-                </tr>
-                <tr>
-                    <td>Gerente de ventas</td>
-                    <td>Licenciatura en Ciencias empresariales
-                    <td>Seis años</td>
-                    <td>$12,000</td>
-                    <td>$13,000</td>
-                </tr>
-                <tr>
-                    <td>Ejecutivo de ventas</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Cinco años</td>
-                    <td>$8,000</td>
-                    <td>$18,000</td>
-                </tr>
-                <tr>
-                    <td>Auxiliar de finanzas</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Dos años</td>
-                    <td>$8,000</td>
-                    <td>$12,000</td>
-                </tr>
-                <tr>
-                    <td>Analista financiero</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Cuatro  años</td>
-                    <td>$12,000</td>
-                    <td>$16,000</td>
-                </tr>
-                <tr>
-                    <td>Gerente de recursos humanos</td>
-                    <td>Licenciatura en Ciencias empresariales</td>
-                    <td>Tres  años</td>
-                    <td>$15,000</td>
-                    <td>$15,000</td>
-                </tr>
-                <tr>
-                    <td>Ingeniero en diseño</td>
-                    <td>Ingeniería en diseño</td>
-                    <td>Dos años</td>
-                    <td>$12,000</td>
-                    <td>$16,000</td>
-                </tr>
-                <tr>
-                    <td>Ingeniero Mecánico</td>
-                    <td>Ingeniería en Mecánica Automotríz</td>
-                    <td>Dos años</td>
-                    <td>$15,000</td>
-                    <td>$15,000</td>
-                </tr>
+
+                @foreach ($paginador as $tabulador)
+                    <tr>
+                        <td> {{ $tabulador['empleo'] }} </td>
+                        <td> {{ $carreras[$tabulador['carrera']] }} </td>
+                        <td> {{ $tabulador['experiencia'] }} años</td>
+                        <td> {{ $tabulador['monto_minimo'] }} </td>
+                        <td> {{ $tabulador['monto_maximo'] }} </td>
+                    </tr>
+                @endforeach
 
                 <tr id="tabla-fin">
-                    <th colspan="5">Total de salarios: 72</th>
+                    <th colspan="5">Total de salarios: {{ $tabulador_size }}</th>
                 </tr>
             </table>
-            <!--fin de la tabla-->
-            <!--Inicio de la paginacion de la pagina-->
-            <div class="pagination">
-                <ul>
-                    <a href="#"><li class="otrasPaginas">Anterior</li></a>
-                    <a href="#"><li class="otrasPaginas">1</li></a>
-                    <a href="#"><li class="paginasActual">2</li></a>
-                    <a href="#"><li class="otrasPaginas">3</li></a>
-                    <a href="#"><li class="otrasPaginas">Siguiente</li></a>
-                </ul>
-            </div>
-            <!--fin de la paginación-->
-            
+
+            <x-paginador :paginador="$paginador" />
         </center>
     </section>
-       
+    
     <footer>
         <section id="suneo-img">
             <img src="../assets/img/u26.png">
