@@ -126,9 +126,9 @@ Route::get('/Egresados/Informacion-empresas-ofertas-laborales', function () {
 Route::get('/Egresados/Informacion-de-empresas/{id}', [directorioController::class, 'obtenerEmpresa'])->name('Informacion-de-empresas');
 
 Route::get('/Egresados/Eventos', [EventosController::class, 'index'])->name('Eventos');
-Route::get('/Egresados/Eventos', function () {
-    return view('Egresados.Eventos');
-})->name('Eventos');
+// Route::get('/Egresados/Eventos', function () {
+//     return view('Egresados.Eventos');
+// })->name('Eventos');
 
 Route::get('/Egresados/Eventos-individual', function () {
     return view('Egresados.Eventos-individual');
