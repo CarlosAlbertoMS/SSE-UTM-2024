@@ -7,26 +7,39 @@
     <title>Ofertas Laborales</title>
 </head>
 @php
+    $search = request()->query('search', ''); // Obtener el texto de búsqueda
+
+    // Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
+    $filteredOfertas = empty($search) ? $ofertas : array_filter($ofertas, function ($oferta) use ($search) {
+        return stripos($oferta['titulo_empleo'], $search) !== false;
+    });
+
     $currentPage = request()->query('page', 1);
-    $perPage = 5; // Cambiar de 8 a 5
-    $totalPages = ceil(count($ofertas) / $perPage);
+    $perPage = 5; // Mostrar 5 ofertas por página
+    $totalPages = ceil(count($filteredOfertas) / $perPage);
     $startIndex = ($currentPage - 1) * $perPage;
-    $visibleEmpresas = array_slice($ofertas, $startIndex, $perPage);
+    $visibleEmpresas = array_slice($filteredOfertas, $startIndex, $perPage);
 
     // Lógica para mostrar solo tres números de página
     $startPage = max(1, $currentPage - 1);
     $endPage = min($totalPages, $startPage + 2);
 @endphp
 
+
+
 @include('layouts.Egresadosheader')
 
 <main>
     <section class="main--section">
         <div class="main--container--1">
-            <div class="main-form--1">
-                <input type="text" id="search" name="search" placeholder="Buscar...">
-                <button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="Buscar"></button>
-            </div>
+        <div class="main-form--1">
+    <form method="GET">
+        <input type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
+        <button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="Buscar"></button>
+    </form>
+</div>
+
+
             <div class="main-form--2">
                 <div class="main--label--number--offers">
                     <p>{{ count($ofertas) }} Ofertas</p>

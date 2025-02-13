@@ -8,6 +8,7 @@ use Illuminate\Http\Client\RequestException;
 
 class EgresadosController extends Controller
 {
+    
     private $baseUrl = 'http://localhost:8081'; // Cambia esto por la URL base de tu API
 
     /**
