@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,22 @@
     <title>Ofertas Laborales</title>
 </head>
 @php
-    $search = request()->query('search', ''); // Obtener el texto de búsqueda
+$search = request()->query('search', ''); // Obtener el texto de búsqueda
 
-    // Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
-    $filteredOfertas = empty($search) ? $ofertas : array_filter($ofertas, function ($oferta) use ($search) {
-        return stripos($oferta['titulo_empleo'], $search) !== false;
-    });
+// Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
+$filteredOfertas = empty($search) ? $ofertas : array_filter($ofertas, function ($oferta) use ($search) {
+return stripos($oferta['titulo_empleo'], $search) !== false;
+});
 
-    $currentPage = request()->query('page', 1);
-    $perPage = 5; // Mostrar 5 ofertas por página
-    $totalPages = ceil(count($filteredOfertas) / $perPage);
-    $startIndex = ($currentPage - 1) * $perPage;
-    $visibleEmpresas = array_slice($filteredOfertas, $startIndex, $perPage);
+$currentPage = request()->query('page', 1);
+$perPage = 5; // Mostrar 5 ofertas por página
+$totalPages = ceil(count($filteredOfertas) / $perPage);
+$startIndex = ($currentPage - 1) * $perPage;
+$visibleEmpresas = array_slice($filteredOfertas, $startIndex, $perPage);
 
-    // Lógica para mostrar solo tres números de página
-    $startPage = max(1, $currentPage - 1);
-    $endPage = min($totalPages, $startPage + 2);
+// Lógica para mostrar solo tres números de página
+$startPage = max(1, $currentPage - 1);
+$endPage = min($totalPages, $startPage + 2);
 @endphp
 
 
@@ -32,12 +33,12 @@
 <main>
     <section class="main--section">
         <div class="main--container--1">
-        <div class="main-form--1">
-    <form method="GET">
-        <input type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
-        <button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="Buscar"></button>
-    </form>
-</div>
+            <div class="main-form--1">
+                <form method="GET">
+                    <input type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
+                    <button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="Buscar"></button>
+                </form>
+            </div>
 
 
             <div class="main-form--2">
@@ -54,7 +55,7 @@
             </div>
         </div>
         <div class="main--container--2">
-        @foreach ($visibleEmpresas as $oferta)
+            @foreach ($visibleEmpresas as $oferta)
 
             <div class="main--card">
                 <div class="main--card--img">
@@ -67,7 +68,7 @@
                     <div class="main--card--body--Text">
                         <p>{{ $oferta['carrera'] }}</p>
                     </div>
-                    
+
                     <div class="main--card--body--Text">
                         <p>{{ $oferta['descripcion'] }}</p>
                     </div>
@@ -79,43 +80,49 @@
                 </div>
             </div>
             @endforeach
-                  
-<!-- PAGINACIÓN -->
-<div class="main--pagination">
-    @if ($currentPage > 1)
-        <div class="main--pagination--opc-1">
-            <a href="?page={{ $currentPage - 1 }}">Anterior</a>
-        </div>
-    @endif
 
-    @for ($i = $startPage; $i <= $endPage; $i++)
-        <div class="main--pagination--opc-2">
-            <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
-        </div>
-    @endfor
+            <!-- PAGINACIÓN -->
 
-    @if ($currentPage < $totalPages)
-        <div class="main--pagination--opc-1">
-            <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
+            <div class="main--pagination">
+                @if ($currentPage > 1)
+                <div class="main--pagination--opc-1">
+                    <a href="?page={{ $currentPage - 1 }}">Anterior</a>
+                </div>
+                @endif
+
+                @for ($i = $startPage; $i <= $endPage; $i++)
+                    <div class="main--pagination--opc-2">
+                    <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
+            </div>
+            @endfor
+
+            @if ($currentPage < $totalPages)
+                <div class="main--pagination--opc-1">
+                <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
         </div>
-    @endif
-</div>
+        @endif
+        </div>
 
         </div>
-  
 
-    </section>
-</main>
-<footer>
+        <footer>
     <div class="footer--container--1">
         <img src="../assets/img/u26.png" alt="Logo">
     </div>
     <div class="footer--container--2">
         <div class="footer--Title">
-            <div class="footer--title--1"><p>Sobre SUNEO</p></div>
-            <div class="footer--title--1"><p>Privacidad</p></div>
-            <div class="footer--title--1"><p>Empresas</p></div>
-            <div class="footer--title--1"><p>Ayuda</p></div>
+            <div class="footer--title--1">
+                <p>Sobre SUNEO</p>
+            </div>
+            <div class="footer--title--1">
+                <p>Privacidad</p>
+            </div>
+            <div class="footer--title--1">
+                <p>Empresas</p>
+            </div>
+            <div class="footer--title--1">
+                <p>Ayuda</p>
+            </div>
         </div>
         <div class="footer--Text">
             <div class="footer--title--2-1">
@@ -134,7 +141,10 @@
             </div>
         </div>
     </div>
-</footer>
+</footer>   
+    </section>
+</main>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -150,4 +160,5 @@
     }
 </script>
 </body>
+
 </html>
