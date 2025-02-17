@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
 
     <section id="contenido">

@@ -291,6 +291,7 @@ header {
 .main--container--2 {
   position: relative;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--color-scroll-bar);
   width: 1024px;
@@ -437,20 +438,26 @@ header {
 }
 
 .main--section {
+  background-color: var(--color-block-oferts);
   display: flex;
   flex-direction: column;
   width: 1024px;
-  height: 522px;
-  margin: 8px auto 0 auto;
+  margin: 8px auto;
+  /* height: auto; */
 }
 
+.main--container--1, .main--container--2, footer {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
 footer {
   position: relative;
   display: flex;
   width: 1024px;
   height: 58px;
   background-color: var(--color-block-oferts);
-  margin: 12px auto auto auto;
+  margin: 0 auto; /* o margin: 4px auto; si quieres un pequeño espacio */
 }
 
 .footer--container--1 {
