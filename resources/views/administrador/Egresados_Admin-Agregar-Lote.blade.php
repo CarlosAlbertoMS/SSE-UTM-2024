@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Egresados_Admin-Agregar-Lote.css') }}">
 </head>
+
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
     <section id="contenido">
         <!--
             TU CODIGO AQUI
@@ -42,7 +44,7 @@
                 <a href="Egresados_Admin.html">
                     ***
                     <input type="submit" value="Cancelar" class="btn-cancelar">
-                </a>           
+                </a>
                 <a href="#mensaje-archivo-subido">
                     ***
                     <input type="submit" value="Subir" class="btn-subir">
@@ -50,42 +52,21 @@
             </div>
         </form>
     </section>
-       
-    <footer>
-        <section id="suneo-img">
-            <img src="../assets/img/u26.png">
-        </section>
-        <section id="info-acercade">
-            <nav id="menu-info-acercade">
-                <ul>
-                    <li><a href="#">Sobre SUNEO</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Empresas</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                </ul>
-            </nav>
-            <section id="footer--texto">
-                <section id="footer--texto1">
-                    <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-                    <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-                </section>
-    
-                <section id="footer-texto2">
-                    <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
-                    <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
-                </section>
-            </section>
-        </section>
-    </footer>
+
+    @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->
+
 
     <div id="mensaje-archivo-subido" class="overlay">
         <div id="cuerpo-pop-up">
             <div>
                 <p>Se ha subido con éxito.</p>
-                <a id="cerrar" href="Egresados_Admin.html"><div>Aceptar</div></a>
+                <a id="cerrar" href="Egresados_Admin.html">
+                    <div>Aceptar</div>
+                </a>
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
