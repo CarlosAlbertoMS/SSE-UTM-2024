@@ -9,15 +9,15 @@
 </head>
 
 @php
-    $currentPage = request()->query('page', 1);
-    $perPage = 8;
-    $totalPages = ceil(count($empresas) / $perPage);
-    $startIndex = ($currentPage - 1) * $perPage;
-    $visibleEmpresas = array_slice($empresas, $startIndex, $perPage);
+$currentPage = request()->query('page', 1);
+$perPage = 8;
+$totalPages = ceil(count($empresas) / $perPage);
+$startIndex = ($currentPage - 1) * $perPage;
+$visibleEmpresas = array_slice($empresas, $startIndex, $perPage);
 
-    // Lógica para mostrar solo tres números de página
-    $startPage = max(1, $currentPage - 1);
-    $endPage = min($totalPages, $startPage + 2);
+// Lógica para mostrar solo tres números de página
+$startPage = max(1, $currentPage - 1);
+$endPage = min($totalPages, $startPage + 2);
 @endphp
 
 <body>
@@ -53,95 +53,103 @@
             <div class="main--container--2">
                 <div class="wrapper">
                     @foreach ($visibleEmpresas as $empresa)
-                        <div class="wrapper--cell" data-id="{{ $empresa['id'] }}">
-                            <div class="wrapper--cell--body">
-                                <div class="wrapper--cell--body--title">
-                                    <p>{{ $empresa['nombre'] }}</p>
-                                </div>
-                                <div class="wrapper--cell--body--description">
-                                    <p>{{ $empresa['descripcion'] }}</p>
-                                </div>
-                                <div class="wrapper--cell--body--contacto">
-                                    <div class="contacto-item">
-                                        <img src="{{ asset('assets/icons/Usuario_B.png') }}" alt="Contacto">
-                                        <span>xdxd</span>
-                                    </div>
-                                    <div class="contacto-item">
-                                        <img src="{{ asset('assets/icons/Telefono_B.png') }}" alt="Teléfono">
-                                        <span>{{ $empresa['telefono'] }}</span>
-                                    </div>
-                                    <div class="contacto-item">
-                                        <img src="{{ asset('assets/icons/Correo_B.png') }}" alt="Email">
-                                        <span>{{ $empresa['correo'] }}</span>
-                                    </div>
+                    <div class="wrapper--cell" data-id="{{ $empresa['id'] }}">
+                    <div class="wrapper--cell--img">
+						 		<img src="{{asset('assets/img/cemex.png')}}" alt="">
+						 	</div>
+                        <div class="wrapper--cell--body">
+                            <div class="wrapper--cell--body--title">
+                                <p>{{ $empresa['nombre'] }}</p>
+                            </div>
+                            <div class="wrapper--cell--body--description">
+                                <p>{{ $empresa['descripcion'] }}</p>
+                            </div>
+                            <div class="wrapper--cell--body--icon1">
+                            
+                                <img src="{{ asset('assets/icons/Usuario_B.png') }}" alt="">
+                                <div class="wrapper--cell--body-icon1--text">
+                                    <p>{{ $empresa['contacto_id'] }}</p>
                                 </div>
                             </div>
+                            <div class="wrapper--cell--body--icon2">
+                                <img src="{{ asset('assets/icons/Telefono_B.png') }}" alt="">
+                                <div class="wrapper--cell--body--icon2--text">
+                                    <p>{{ $empresa['telefono'] }}</p>
+                                </div>
+                            </div>
+                            <div class="wrapper--cell--body--icon3">
+						 			<img src="{{ asset('assets/icons/Correo_B.png') }}" alt="">
+						 			<div class="wrapper--cell--body--icon3--text"><p>{{ $empresa['correo'] }}</p></div>
+						 		</div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
-
-                <br>
-
-                <!-- PAGINACIÓN -->
-                <div class="main--pagination">
-                    @if ($currentPage > 1)
-                        <div class="main--pagination--opc-1">
-                            <a href="?page={{ $currentPage - 1 }}">Anterior</a>
-                        </div>
-                    @endif
-
-                    @for ($i = $startPage; $i <= $endPage; $i++)
-                        <div class="main--pagination--opc-2">
-                            <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
-                        </div>
-                    @endfor
-
-                    @if ($currentPage < $totalPages)
-                        <div class="main--pagination--opc-1">
-                            <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
-                        </div>
-                    @endif
-                </div>
+              
             </div>
 
-            <!-- FOOTER DENTRO DE LA SECCIÓN -->
-            <footer>
-                <div class="footer--container--1">
-                    <img src="../assets/img/u26.png" alt="Logo">
+            <br>
+
+            <!-- PAGINACIÓN -->
+            <div class="main--pagination">
+                @if ($currentPage > 1)
+                <div class="main--pagination--opc-1">
+                    <a href="?page={{ $currentPage - 1 }}">Anterior</a>
                 </div>
-                <div class="footer--container--2">
-                    <div class="footer--Title">
-                        <div class="footer--title--1">
-                            <p>Sobre SUNEO</p>
-                        </div>
-                        <div class="footer--title--1">
-                            <p>Privacidad</p>
-                        </div>
-                        <div class="footer--title--1">
-                            <p>Empresas</p>
-                        </div>
-                        <div class="footer--title--1">
-                            <p>Ayuda</p>
-                        </div>
-                    </div>
-                    <div class="footer--Text">
-                        <div class="footer--title--2-1">
-                            <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-                        </div>
-                        <div class="footer--title--2-2">
-                            <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
-                        </div>
-                    </div>
-                    <div class="footer--Text">
-                        <div class="footer--title--2-1">
-                            <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-                        </div>
-                        <div class="footer--title--2-2">
-                            <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
-                        </div>
-                    </div>
+                @endif
+
+                @for ($i = $startPage; $i <= $endPage; $i++)
+                    <div class="main--pagination--opc-2">
+                    <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
+            </div>
+            @endfor
+
+            @if ($currentPage < $totalPages)
+                <div class="main--pagination--opc-1">
+                <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
                 </div>
-            </footer>
+                @endif
+                </div>
+                </div>
+
+                <!-- FOOTER DENTRO DE LA SECCIÓN -->
+                <footer>
+                    <div class="footer--container--1">
+                        <img src="../assets/img/u26.png" alt="Logo">
+                    </div>
+                    <div class="footer--container--2">
+                        <div class="footer--Title">
+                            <div class="footer--title--1">
+                                <p>Sobre SUNEO</p>
+                            </div>
+                            <div class="footer--title--1">
+                                <p>Privacidad</p>
+                            </div>
+                            <div class="footer--title--1">
+                                <p>Empresas</p>
+                            </div>
+                            <div class="footer--title--1">
+                                <p>Ayuda</p>
+                            </div>
+                        </div>
+                        <div class="footer--Text">
+                            <div class="footer--title--2-1">
+                                <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
+                            </div>
+                            <div class="footer--title--2-2">
+                                <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
+                            </div>
+                        </div>
+                        <div class="footer--Text">
+                            <div class="footer--title--2-1">
+                                <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
+                            </div>
+                            <div class="footer--title--2-2">
+                                <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
         </section>
     </main>
 
@@ -179,4 +187,5 @@
     </script>
 
 </body>
+
 </html>
