@@ -7,51 +7,9 @@
   <title>Document</title>
 </head>
 
-<body>
-    <header>
-        <figure>
-            <img src="../assets/img/u43.png" class="header--img1" alt="" />
-        </figure>
-        <div class="header--title">
-          <p>Sistema de Seguimiento de Egresados y Bolsa de Trabajo</p>
-        </div>
-        <figure>
-          <img src="../assets/img/utm_u31.png" class="header--img2" alt="" />
-        </figure>
-    </header>
-    <nav class="menu">
-      <div class="menu--button1">
-      <a href="{{route('Egresados_Ofertas')}}"><p>Ofertas Laborales</p></a>
-      </div>
-      <div class="menu--button2">
-      <a href="{{route('Informacion-empresas')}}"><p>Directorio de Empresas</p></a>
-      </div>
-      <div class="menu--button3">
-      <a href="{{route('TabuladorDeSalarios-Egresados')}}"><p>Tabulador de Salarios</p></a>
-      </div>
-      <div class="menu--button4">
-      <a href="{{route('Eventos')}}"><p>Eventos</p></a>
-      </div>
-      <div class="menu--button5">
-      <a href="{{route('CasosDeExito-Egresados')}}"><p>Historias de Éxito</p></a>
-      </div>
-      <div class="menu--button5">
-        <p>Tips y Consejos</p>
-      </div>
-      <div class="menu--icons">
-        <div class="menu--icon1">
-          <img src="../assets/icons/Información_B.png" class="icon-information" alt="" />
-        </div>
-        <div class="menu--icon2">
-          <img src="../assets/icons/Ajustes_B.png" class="icon-settings" alt="" />
-        </div>
-        <div class="menu--icon3">
-          <img src="../assets/img/u462.png" class="icon-profile" alt="" />
-        </div>
-      </div>
-    </nav>
+@include('layouts.Egresadosheader')
     <main>
-      <section class="main--section">
+      <section class="main--section>
         <div class="main--title">
           <p>Datos de la empresa</p>
         </div>
@@ -100,8 +58,16 @@
                 <p>Ubicación:</p>
               </diV>
               <diV class="content2--information-text2">
-                <p>CEMEX</p>
-                <p>Queretaro, Queretaro</p>
+              <p>{{ $empresa['nombre'] }}</p>
+              <p>
+    {{ $empresa['calle'] ?? 'N/A' }} 
+    {{ $empresa['numero'] ?? '' }}, 
+    {{ $empresa['colonia'] ?? '' }}, 
+    {{ $empresa['ciudad'] ?? '' }}, 
+    {{ $empresa['estado'] ?? '' }}, 
+    C.P. {{ $empresa['codigo_postal'] ?? '' }}
+</p>
+
               </diV>
               <div class="content2--information-title">
                 <p>Descripción de la empresa</p>
@@ -114,10 +80,10 @@
                 <p>Correo electrónico:</p>
               </diV>
               <diV class="content2--information-text4">
-                <p>Claudia Guadalupe Bustos Guerrero</p>
-                <p>Staffing & Adquisición de Talento-Recursos Humanos</p>
-                <p>52 442 3091600 / Ext. 5007</p>
-                <p>claudia.bustos@cemex.com</p>
+                <p> {{$contacto['nombre']}}</p>
+                <p>{{$contacto['puesto']}}</p>
+                <p>{{$contacto['telefono']}}</p>
+                <p>{{$contacto['correo']}}</p>
               </diV>
             </div>
             <div class="content2--description">
@@ -127,12 +93,7 @@
               </div>
               <div class="content2--description-text">
                 <p>
-                  Nuestra compañía fue fundada en Monterrey, México, en 1906. Empezamos como una empresa
-                  local y, gracias a nuestra visión, evolucionamos hasta convertirnos en una de las compañías
-                  globales líderes en nuestra industria. Ahora contamos con el apoyo de cerca de 43 mil 
-                  colaboradores en todo el mundo. Mantenemos relaciones comerciales con más de cien países y
-                  una red de operaciones con más de cincuenta naciones en la que se produce, distribuye y 
-                  comercializa cemento, concreto premezclado, agregados y productos relacionados.
+                 {{$empresa['descripcion']}}
                 </p>
               </div>
             </div>
@@ -140,49 +101,7 @@
         </div>
       </section>
     </main>
-    <footer>
-      <div class="footer--div1-img">
-      <img src="../assets/img/u26.png" class="footer-img1"  alt="">
-      </div>
-      <div class="footer--titleT1">
-        <div class="footer--title1">
-          <p>Sobre SUNEO</p>
-        </div>
-        <div class="footer--title1">
-          <p>Privacidad</p>
-        </div>
-        <div class="footer--title1">
-          <p>Empresas</p>
-        </div>
-        <div class="footer--title1">
-          <p>Ayuda</p>
-        </div>
-      </div>
-      <div class="footer--text">
-        <div class="footer--textT1">
-        <div class="footer--text1">
-          <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-        </div>
-        <div class="footer--text1">
-          <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-        </div>
-      </div>
-      <div class="footer--textT2">
-        <div class="footer--text1">
-          <p>
-            Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116
-          </p>
-        </div>
-        <div class="footer--text1">
-          <p>
-            Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P
-            69000
-          </p>
-        </div>
-      </div>
-      </div>
-    </footer>
-    
+
     <aside id="modal" class="modal--container">
       <div class="content-modal">
         <div class="modal--title">
@@ -228,6 +147,49 @@
       </div>
     </aside>
     
+    <footer>
+    <div class="footer--container--1">
+        <img src="../assets/img/u26.png" alt="Logo">
+    </div>
+    <div class="footer--container--2">
+        <div class="footer--Title">
+            <div class="footer--title--1"><p>Sobre SUNEO</p></div>
+            <div class="footer--title--1"><p>Privacidad</p></div>
+            <div class="footer--title--1"><p>Empresas</p></div>
+            <div class="footer--title--1"><p>Ayuda</p></div>
+        </div>
+        <div class="footer--Text">
+            <div class="footer--title--2-1">
+                <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
+            </div>
+            <div class="footer--title--2-2">
+                <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
+            </div>
+        </div>
+        <div class="footer--Text">
+            <div class="footer--title--2-1">
+                <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
+            </div>
+            <div class="footer--title--2-2">
+                <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var img_ant = new Image();
+    img_ant.src = "../assets/icons/Marcador_oferta.svg";
+
+    function Marcador_selected(imagen) {
+        if (img_ant.src === imagen.src) {
+            imagen.src = "../assets/icons/Marcador_NG.svg";
+        } else {
+            imagen.src = img_ant.src;
+        }
+    }
+</script>
     <script>
      const ratings = {
       score1 : 3.5,
