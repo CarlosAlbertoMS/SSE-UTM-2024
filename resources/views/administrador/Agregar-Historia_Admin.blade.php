@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Configuración básica del documento -->
     <meta charset="UTF-8"> <!-- Codificación de caracteres en UTF-8 -->
@@ -11,9 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}"> <!-- Estilo general -->
     <link rel="stylesheet" href="{{ asset('css/administrador/Agregar-Historia_Admin.css') }}"> <!-- Estilo específico para esta página -->
 </head>
+
 <body>
-    
-    @include('layouts.header') <!-- Archivo de encabezado reutilizable -->
+
+    @include('layouts.administrador.header') <!-- Archivoe de encabezado reutilizable -->
 
     <!-- Sección principal de contenido -->
     <section id="contenido">
@@ -28,9 +30,9 @@
                 <div class="formimg">
                     <div class="brandname">
                         <div class="container--fondo">
-                            <img src="../assets/img/normal_u764.svg"  alt="" /> <!-- Imagen predeterminada -->
-                            <div class="file-select"  id="src-file1">
-                                <input  type="file" name="src-file1" aria-label="Archivo"> <!-- Entrada para cargar archivo -->
+                            <img src="../assets/img/normal_u764.svg" alt="" /> <!-- Imagen predeterminada -->
+                            <div class="file-select" id="src-file1">
+                                <input type="file" name="src-file1" aria-label="Archivo"> <!-- Entrada para cargar archivo -->
                             </div>
                         </div>
                         <!-- Botón para editar o cambiar la imagen -->
@@ -76,40 +78,10 @@
             </div>
         </form>
     </section>
- 
+
     <!-- Pie de página -->
-    <footer>
-        <!-- Imagen del pie de página -->
-        <section id="suneo-img">
-            <img src="../assets/img/u26.png">
-        </section>
+    @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->
 
-        <!-- Información adicional -->
-        <section id="info-acercade">
-            <!-- Menú de enlaces -->
-            <nav id="menu-info-acercade">
-                <ul>
-                    <li><a href="#">Sobre SUNEO</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Empresas</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                </ul>
-            </nav>
-
-            <!-- Texto de contacto -->
-            <section id="footer--texto">
-                <section id="footer--texto1">
-                    <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-                    <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-                </section>
-    
-                <section id="footer-texto2">
-                    <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
-                    <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
-                </section>
-            </section>
-        </section>
-    </footer>
 
     <!-- Ventana emergente de confirmación -->
     <div id="popup" class="overlay">
@@ -117,10 +89,11 @@
             <div>
                 <h2>Mensaje</h2>
                 <p>¡Enhorabuena!, Cambios guardados con éxito</p> <!-- Mensaje de éxito -->
-                <a id="cerrar" href="Historias_Admin.html"><div>Cerrar</div></a> <!-- Botón para cerrar el popup -->
+                <a id="cerrar" href="Historias_Admin.html">
+                    <div>Cerrar</div>
+                </a> <!-- Botón para cerrar el popup -->
             </div>
         </div>
     </div>
-    
 </body>
 </html>
