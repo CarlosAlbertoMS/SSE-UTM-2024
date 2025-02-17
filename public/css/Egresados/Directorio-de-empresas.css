@@ -279,7 +279,9 @@ header {
 }
 
 .wrapper--cell--img img {
-  margin: 6px 20px 6px 9px;
+  margin: 20px 20px 6px 9px;
+  width: 200px; /* Ajusta este valor según el tamaño deseado */
+  height: 150px; /* Mantiene la proporción original */
 }
 
 .wrapper--cell--body {

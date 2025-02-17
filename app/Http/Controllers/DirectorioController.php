@@ -11,35 +11,39 @@ class directorioController extends Controller
     public function index()
     {
         try {
+            // Obtener las empresas
             $url = env('API_URL') . "empresas";
-
             $response = Http::get($url);
-            $response->throw(); // Lanza una excepción si la API no responde correctamente
-
+            $response->throw(); // Lanza una excepción si la API falla
             $empresas = $response->json();
-
-            // Paginación manual
-            $paginaActual = request('page', 1);
-            $porPagina = 10;
-            $totalEmpresas = count($empresas);
-
-            $items = array_slice($empresas, ($paginaActual - 1) * $porPagina, $porPagina);
-
-            $paginador = new LengthAwarePaginator(
-                $items,            // Elementos de la página actual
-                $totalEmpresas,    // Total de elementos
-                $porPagina,        // Elementos por página
-                $paginaActual,
-                ['path' => request()->url()] // URL base para los links de paginación
-            );
-
-            return view('Egresados.Directorio-de-empresas', compact('empresas', 'totalEmpresas', 'paginador'));
+    
+            // Obtener los contactos
+            $contactoUrl = env('API_URL') . "contactos";
+            $contactoResponse = Http::get($contactoUrl);
+            $contactos = $contactoResponse->successful() ? $contactoResponse->json() : [];
+    
+            // Reemplazar 'contacto_id' por el nombre del contacto
+            foreach ($empresas as &$empresa) {
+                if (isset($empresa['contacto_id'])) {
+                    // Buscar el contacto que coincida con el ID
+                    foreach ($contactos as $contacto) {
+                        if ($contacto['id'] == $empresa['contacto_id']) {
+                            // Reemplaza el valor por el nombre (o crea una nueva clave si lo prefieres)
+                            $empresa['contacto_id'] = $contacto['nombre'];
+                            break;
+                        }
+                    }
+                }
+            }
+    
+            return view('Egresados.Directorio-de-empresas', compact('empresas'));
         } catch (RequestException $e) {
             return back()->withErrors('No se pudieron obtener las empresas. Inténtalo de nuevo más tarde.');
         } catch (\Exception $e) {
             return back()->withErrors('Ocurrió un error inesperado. Por favor, inténtalo más tarde.');
         }
     }
+    
 
     public function obtenerEmpresa($empresa_id)
     {
