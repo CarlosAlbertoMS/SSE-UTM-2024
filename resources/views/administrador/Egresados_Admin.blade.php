@@ -82,20 +82,26 @@
                 </thead>
                 <tbody>
 
-
                     @foreach ($egresados as $egresado)
+                    @php
+                    $matricula = $egresado['matricula'] ?? null;
+                    // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
+                    $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
+                    @endphp
+
+                    @if ($matricula && $carreraGeneracion) <!-- Solo muestra la fila si existe matrícula y carreraGeneracion -->
                     <tr>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
+                        <td>{{ $egresado['matricula'] }}</td>
                         <td>{{ ($egresado['ap_paterno'] ?? 'N/A') . ' ' . ($egresado['ap_materno'] ?? 'N/A') . '  ' . ($egresado['nombres'] ?? 'N/A') }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-
-
+                        <td>{{ $carreraGeneracion['carrera'] ?? 'N/A' }}</td>
+                        <td>{{ $carreraGeneracion['generacion'] ?? 'N/A' }}</td>
+                        <td>{{ $egresado['estado'] ?? 'N/A' }}</td>
                     </tr>
+                    @endif
+
                     @endforeach
 
+                </tbody>
                 <tfoot>
                     <tr id="tabla-fin">
                         <th>Total de egresados: {{ $totalEgresados }}</th>
@@ -113,11 +119,10 @@
             <!--Inicio de la paginacion de la pagina-->
             <div class="pagination">
                 <x-paginador :paginador="$egresados" />
-
             </div>
             <!--fin de la paginación-->
-
         </center>
+
     </section>
     @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->
 </body>
