@@ -15,6 +15,12 @@ class TabuladorController extends Controller
         [$tabulador_size, $paginador] = self::getTabuladorContent();
         return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador_size', 'paginador'));
     }
+    public function index2()
+    {
+        [$tabulador_size, $paginador] = self::getTabuladorContent();
+        return view('administrador.Salarios_Admin', compact('tabulador_size', 'paginador'));
+    }
+    
     
     public static function getTabuladorContent()
     {

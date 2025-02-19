@@ -65,7 +65,7 @@
                 @foreach ($paginador as $tabulador)
                 <tr>
                     <td> {{ $tabulador['empleo'] }} </td>
-                    <td> {{ $carreras[$tabulador['carrera']] }} </td>
+                    <td> {{ $tabulador['carrera'] }} </td>
                     <td> {{ $tabulador['experiencia'] }} años</td>
                     <td> {{ $tabulador['monto_minimo'] }} </td>
                     <td> {{ $tabulador['monto_maximo'] }} </td>

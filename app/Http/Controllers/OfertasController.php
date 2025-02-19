@@ -9,6 +9,7 @@ use App\Models\Carrera;
 
 class OfertasController extends Controller
 {
+    
     public function index()
     {
         try {

@@ -104,8 +104,6 @@ Route::get('/empresa-egresados/propuesta', function () {
     return view('registro-empresa.propuesta-suneo');
 })->name('empresa_propuesta');
 
-Route::get('/Egresados/Eventos', [EventosController::class, 'index'])->name('Egresados_Eventos');
-Route::get('/Egresados/Eventos/{id}', [EventosController::class, 'show'])->name('Egresados_Evento.show');|
 /*
 //Egresados
 //Route::get('/Egresados/Ofertas_laborales', function () {    return view('Egresados.Ofertas_laborales');})->name('Egresados_Ofertas');

@@ -10,6 +10,7 @@ use App\Http\Controllers\EgresadosController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\EventosController;
 
 
 //Route::get('/Egresados/Ofertas_laborales', function () {    return view('Egresados.Ofertas_laborales');})->name('Egresados_Ofertas');
@@ -26,6 +27,9 @@ Route::get('/Egresados/Informacion-de-empresas', function () {
 })->name('Informacion-empresas');
 
 
+
+Route::get('/Egresados/Eventos', [EventosController::class, 'index'])->name('Egresados_Eventos');
+Route::get('/Egresados/Eventos/{id}', [EventosController::class, 'show'])->name('Egresados_Evento.show');
 
 Route::get('/Egresados/Informacion-empresas-ofertas-laborales/{idempresa}', [OfertasController::class, 'obtener_ofertas_por_id'])
     ->name('Informacion-empresas-ofertas-laborales');
