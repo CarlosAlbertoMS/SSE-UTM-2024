@@ -20,9 +20,10 @@
           <p>Datos básicos y comentarios recibidos</p>
         </div>
         <div class="main--button2">
-          <a href="{{ route('Informacion-empresas-ofertas-laborales') }}">
-            <p>Ofertas Laborales</p>
-          </a>
+        <a href="{{ route('Informacion-empresas-ofertas-laborales', ['idempresa' => $empresa['id']]) }}">
+    <p>Ofertas Laborales</p>
+</a>
+
         </div>
       </nav>
       <div class="main--content">
@@ -98,10 +99,9 @@
               <p>{{ $empresa['descripcion'] }}</p>
             </div>
           </div>
-          <!-- Botón Regresar dentro del contenedor de información -->
-          
-          <br>
+        
         </div>
+     
       </div>
       <div style="text-align: center; margin-top: 40px;">
             <a href="{{ route('Egresados_Directorio') }}"
