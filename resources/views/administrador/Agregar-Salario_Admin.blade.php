@@ -15,38 +15,40 @@
 
     <section id="contenido">
         
-        <form>
+        <form action ="{{ route('salarios.store') }}" method="POST">
+            @csrf
             <div class="formcamp">
                 <div class="linea">
                     <div class="campo">
                         <div><label for="uname">Título del empleo</label></div>
-                        <div><input type="text" id="uname" name="name" placeholder="Título del empleo"></div>
+                        <div><input type="text" id="empleo" name="empleo" placeholder="Título del empleo"></div>
                     </div>
                     <div class="campo">
                         <div><label for="uname">Experiencia</label></div>
-                        <div><input type="text" id="uname" name="name" placeholder="Años de experiencia"></div>
+                        <div><input type="text" id="experiencia" name="experiencia" placeholder="Años de experiencia"></div>
                     </div>
                 </div>
                 <div class="linea">
                     <div class="campo">
                         <div><label for="uname">Carrera</label></div>
-                        <div><input type="text" id="uname" name="name" placeholder="Carrera"></div>
+                        <div><input type="text" id="carrera" name="carrera" placeholder="Carrera"></div>
                     </div>
                     <div class="linea">
                         <div class="campo">
                             <div><label for="uname">Monto mínimo mensual</label></div>
-                            <div class="campo2"><input type="text" id="uname" name="name" placeholder="Monto mínimo"></div>
+                            <div class="campo2"><input type="text" id="monto_min" name="monto_minimo" placeholder="Monto mínimo"></div>
                         </div>
                         <div class="campo">
                             <div><label for="uname">Monto máximo mensual</label></div>
-                            <div class="campo2"><input type="text" id="uname" name="name" placeholder="Monto máximo"></div>
+                            <div class="campo2"><input type="text" id="monto_max" name="monto_maximo" placeholder="Monto máximo"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="formbutt">
-                <a href="Salarios_Admin.html"><button class="cancelarbtn">Cancelar</button></a>
-                <a href="#popup"><button class="guardarbtn">Guardar</button></a>
+            <a href="Salarios_Admin.html" class="cancelarbtn">Cancelar</a>
+            <button type="submit" class="guardarbtn">Guardar</button>
+
             </div>
         </form>
         

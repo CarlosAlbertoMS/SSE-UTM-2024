@@ -18,27 +18,38 @@
         <center>
             <!--Inicio del formulario-->
             <p class="titulo-contenido">Agregar Egresado(a)</p>
-            <form action="">
+            <form action="/crear-egresado" method="POST">
+            @csrf
                 <!--Parte 1 formulario-->
                 <div class="seccion-1-formulario">
                     <div class="contenedor__input-label nombre">
                         <label for="nombre">*Nombre(s)</label>
-                        <input type="text" name="nombre" id="" placeholder="Ingrese nombre del egresado">
+                        <input type="text" name="nombres" id="" placeholder="Ingrese nombre del egresado">
                     </div>
                     <div class="contenedor__input-label contenedor-doble">
                         <div class="contenedor__input-label">
                             <label for="apellido-paterno">Apellido Paterno</label>
-                            <input type="text" name="apellido-paterno" id="" placeholder="Apellido paterno">
+                            <input type="text" name="ap_paterno" id="" placeholder="Apellido paterno">
                         </div>
                         <div class="contenedor__input-label">
                             <label for="apellido-materno">Apellido Materno</label>
-                            <input type="text" name="apellido-materno" id="" placeholder="Apellido materno">    
+                            <input type="text" name="ap_materno" id="" placeholder="Apellido materno">    
                         </div>
                     </div>
                     <div class="contenedor__input-label contenedor-doble">
                         <div class="contenedor__input-label curp">
                             <label for="curp">Curp</label>
                             <input type="text" name="curp" id="" placeholder="Ingrese curp del egresado">
+                        </div>
+                        <div class="contenedor__input-label contenedor-doble">
+                        <div class="contenedor__input-label curp">
+                            <label for="curp">habilitado</label>
+                            <input type="text" name="habilitado" id="" placeholder="Ingrese curp del egresado">
+                        </div>
+                        <div class="contenedor__input-label contenedor-doble">
+                        <div class="contenedor__input-label curp">
+                            <label for="curp">prep_id</label>
+                            <input type="text" name="preparacion_id" id="" placeholder="Ingrese curp del egresado">
                         </div>
                         <div class="contenedor__input-label">
                             <label for="opciones-genero">Género</label>

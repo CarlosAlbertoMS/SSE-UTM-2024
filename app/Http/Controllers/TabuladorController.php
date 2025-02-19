@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
+use App\Models\Salario;
 
 class TabuladorController extends Model
 {
@@ -40,5 +42,32 @@ class TabuladorController extends Model
 
         $carreras = Carrera::obtenerCarreras();
         return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador', 'tabulador_size', 'carreras', 'paginador'));
+    }
+
+    public function store(Request $request)
+    {
+        // Validación de datos
+        $request->validate([
+            'empleo' => 'required|string|max:255',
+            'experiencia' => 'required|string|max:255',
+            'carrera' => 'required|string|max:255',
+            'monto_minimo' => 'required|numeric',
+            'monto_maximo' => 'required|numeric',
+        ]);
+
+        // Guardar en la base de datos
+        Salario::create([
+            'empleo' => $request->empleo,
+            'experiencia' => $request->experiencia,
+            'carrera' => $request->carrera,
+            'monto_minimo' => $request->monto_minimo,
+            'monto_maximo' => $request->monto_maximo,
+            'activo'        => $request->input('activo', 1),    
+        ]);
+
+        // Redirigir con mensaje de éxito
+       // return redirect()->back()->with('success', 'Salario guardado correctamente');
+       return redirect()->route('salarios.index')->with('success', 'Salario agregado correctamente.');
+
     }
 }
