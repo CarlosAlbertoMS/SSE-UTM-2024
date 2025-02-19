@@ -9,14 +9,8 @@
 </head>
 <body>
     
-    <header>
-        <div id="header--encabezado">
-            <img id="header--img1" src="../assets/img/u43.png">
-            <div id="header--titulo">
-                Sistema de Seguimiento de Egresados y Bolsa de Trabajo
-            </div>
-            <img id="header--img2" src="../assets/img/utm_u31.png">
-        </div>
+    @include('layouts.egresados.header')
+
 
         <div id="header__div--menu">
             <div class="lista">
@@ -73,23 +67,23 @@
                         <th class="thead--gris">Experiencia</th>
                         <th class="thead--gris2">Monto mínimo</th>
                         <th class="thead--gris2">Monto máximo</th>
-                    </tr>
+                    </tr
                 </thead>
                 
                 <tbody>
                     @foreach ($paginador as $tabulador)
                         <tr>
-                            <td> {{ $tabulador['empleo'] }} </td>
-                            <td> {{ $carreras[$tabulador['carrera']] ?? 'Carrera no encontrada' }} </td>
-                            <td> {{ $tabulador['experiencia'] }} años </td>
-                            <td> {{ $tabulador['monto_minimo'] }}</td>
-                            <td> {{ $tabulador['monto_maximo'] }}</td>
+                            <td> {{ $tabulador['empleo'] ?? 'N/A' }} </td>
+                            <td> {{ $tabulador['carrera'] ?? 'N/A' }} </td>
+                            <td> {{ $tabulador['experiencia'] ?? 'N/A' }} años </td>
+                            <td> {{ $tabulador['monto_minimo'] ?? 'N/A' }}</td>
+                            <td> {{ $tabulador['monto_maximo'] ?? 'N/A' }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            x-paginador :paginador="$paginador" />
+            <x-paginador :paginador="$paginador" />
         </section>
     </section>
           

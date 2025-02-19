@@ -29,7 +29,6 @@
   --footer--txt: #7f7f7f;
 }
 
-
 *{
     margin: 0px;
     padding: 0px;
@@ -45,6 +44,7 @@ header{
     width: 1024px;
     margin: 0px auto;
 }
+
 #header--encabezado{
     min-height: 82px;
     background-color: var(--bg--blanco);

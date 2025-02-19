@@ -28,7 +28,9 @@ $endPage = min($totalPages, $startPage + 2);
 
 
 
+
 @include('layouts.Egresadosheader')
+
 
 <main>
     <section class="main--section">

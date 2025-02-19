@@ -20,6 +20,7 @@
     $endPage = min($totalPages, $startPage + 2);
 @endphp
 
+
 @include('layouts.Egresadosheader')
 
 <main>

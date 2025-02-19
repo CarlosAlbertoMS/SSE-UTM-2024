@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -40,7 +40,7 @@
             </div>
     
         </header>
-
+ --}}
 		<div id="contenido">
             <div class="evento__contenedor">
                 <section class="evento__seccion-informacion">
@@ -62,7 +62,7 @@
             </div>
         </div>
 		
-		<footer>
+		{{-- <footer>
             <section id="suneo-img">
                 <img src="../assets/img/u26.png">
             </section>
@@ -89,4 +89,4 @@
             </section>
         </footer>
 	</body>
-</html>
+</html> --}}
