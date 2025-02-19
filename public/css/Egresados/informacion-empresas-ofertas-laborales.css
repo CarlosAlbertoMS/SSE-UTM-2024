@@ -35,15 +35,13 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  background-image: url("../../assets/img/imagen_main.jpg");
-  background-repeat: no-repeat;
-  background-size: 1376px 712px;
-  width: 1391px;
-  background-size: cover;
-}
+body{
+  background-image: url('../../assets/img/imagen_main.jpg');
+  background-attachment: fixed;
+  background-size:cover;
+} 
+
+
 
 header {
   position: relative;
@@ -66,7 +64,7 @@ header {
 .header--container--2 {
   height: 32px;
   display: flex;
- 
+  background-color: var(--color-menu-header);
 }
 
 .header--container--2 div p {
@@ -116,7 +114,65 @@ header {
   margin: 4px 54px 3px auto;
 }
 
+.header--option-1 {
+  width: 144px;
+  
+}
 
+.header--option-1 p {
+  margin-left: 10px;
+}
+
+.header--option-2 {
+  width: 193px;
+  background-color: var(--color-option-selected-menu);
+}
+
+.header--option-2 p {
+  margin-left: 20px;
+}
+
+.header--option-3 {
+  width: 176px;
+}
+
+.header--option-3 p {
+  margin-left: 17px;
+}
+
+.header--option-4 {
+  width: 75px;
+}
+
+.header--option-4 p {
+  margin-left: 11px;
+}
+
+.header--option-5 {
+  width: 128px;
+}
+
+.header--option-5 p {
+  margin-left: 10px;
+}
+
+.header--option-6 {
+  width: 150px;
+}
+
+.header--option-6 p {
+  margin-left: 28px;
+}
+
+.header--option-1:hover, .header--option-2:hover, .header--option-3:hover, .header--option-4:hover, .header--option-5:hover, .header--option-6:hover {
+  background-color: var(--color-option-hover-menu);
+}
+
+.header--option-7 {
+  width: 158px;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .header--icons {
   width: 64px;
@@ -132,6 +188,38 @@ header {
   border-radius: 8px;
 }
 
+
+.main--title p {
+  text-align: center;
+  font-family: "Poppins-Regular", "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.4rem; 
+  color: var(--title-login);
+  margin-top: 26px;
+  margin-bottom: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(80px, 2fr));
+  grid-gap: 30px;
+  grid-auto-rows: minmax(120px,auto);
+  margin-top: 4px;
+  margin-bottom: 12px;
+  margin-left: 30px;
+  margin-right: 60px;
+}
+
+.wrapper--cell {
+    padding: 10px;
+    display: flex;
+    background-color: #B93F4E;
+    border: 2px solid rgb( 196, 90, 103 );
+    cursor: pointer;
+    user-select: none;
+
+}
 .menu {
     list-style-type: none;
     margin: 0;
@@ -516,14 +604,13 @@ div.main--card:hover {
   height: 522px;
   margin: 8px auto 0 auto;
 }
-
 footer {
   position: relative;
   display: flex;
   width: 1024px;
   height: 58px;
   background-color: var(--color-block-oferts);
-  margin: 12px auto auto auto;
+  margin: 0 auto; /* o margin: 4px auto; si quieres un pequeño espacio */
 }
 
 .footer--container--1 {

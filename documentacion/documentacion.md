@@ -37,7 +37,7 @@ Directorio en el proyecto
 </head>
 <body>
     
-    @include('layouts.header') <!-- Archivo de encabezado reutilizable -->
+    @include('layouts.administrador.header') <!-- Archivo de encabezado reutilizable -->
 
     <!-- Sección principal de contenido -->
     <section id="contenido">
@@ -173,7 +173,7 @@ Directorio en el proyecto
 
 </head>
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
         <div class="form-navbar">
@@ -387,7 +387,7 @@ Directorio en el proyecto
 </head>
 <body>
     
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
 
     <section id="contenido">
@@ -492,7 +492,7 @@ Directorio en el proyecto
     <link rel="stylesheet" href="{{ asset('css/administrador/Egresados_Admin-Agregar-Lote.css') }}">
 </head>
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
     <section id="contenido">
         <!--
             TU CODIGO AQUI
@@ -597,7 +597,7 @@ Directorio en el proyecto
 
 </head>
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
         <div class="form-navbar">
@@ -832,7 +832,7 @@ Directorio en el proyecto
     <link rel="stylesheet" href="{{ asset('css/administrador/Egresados_Admin-Agregar-Egresado.css') }}">    
 </head>
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
     <section id="contenido">
         <!--
             TU CODIGO AQUI
@@ -1021,7 +1021,7 @@ Directorio en el proyecto
 <body>
     
 
-    @include('layouts.header')
+    @include('layouts.administrador.header')
     
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
@@ -1236,7 +1236,7 @@ Directorio en el proyecto
 </head>
 <body>
     <!-- Encabezado del sitio -->
-    @include('layouts.header') <!-- Archivo de encabezado reutilizable -->
+    @include('layouts.administrador.header') <!-- Archivo de encabezado reutilizable -->
 
     <!-- Contenido principal -->
     <section id="contenido">
@@ -1381,7 +1381,7 @@ Directorio en el proyecto
 
 </head>
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
 
     <section id="contenido">
@@ -1444,7 +1444,7 @@ Directorio en el proyecto
     <link rel="stylesheet" href="{{ asset('css/administrador/Empresas_Admin.css') }}">
 </head>
 <body>
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
 
     <section id="contenido">
@@ -1680,7 +1680,7 @@ Directorio en el proyecto
 </head>
 <body>
     
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
@@ -2041,7 +2041,7 @@ Directorio en el proyecto
 </head>
 <body>
 
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
@@ -2281,7 +2281,7 @@ Directorio en el proyecto
 <body>
     
 
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->

@@ -279,7 +279,9 @@ header {
 }
 
 .wrapper--cell--img img {
-  margin: 6px 20px 6px 9px;
+  margin: 20px 20px 6px 9px;
+  width: 200px; 
+  height: 150px; 
 }
 
 .wrapper--cell--body {
@@ -495,11 +497,18 @@ header {
 }
 
 .main--section {
+  background-color: var(--color-block-oferts);
   display: flex;
   flex-direction: column;
   width: 1024px;
-  height: 522px;
-  margin: 8px auto 0 auto;
+  margin: 8px auto;
+  /* height: auto; */
+}
+
+.main--container--1, .main--container--2, footer {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 footer {
@@ -508,7 +517,7 @@ footer {
   width: 1024px;
   height: 58px;
   background-color: var(--color-block-oferts);
-  margin: 12px auto auto auto;
+  margin: 0 auto; /* o margin: 4px auto; si quieres un pequeño espacio */
 }
 
 .footer--container--1 {

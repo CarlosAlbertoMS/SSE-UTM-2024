@@ -7,7 +7,7 @@ use App\Http\Controllers\EgresadosController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\OfertaController;
-
+use App\Http\Controllers\OfertasController;
 
 Route::get('/administrador-egresados/eventos/agregar_evento', function () {
     return view('administrador.Agregar-Evento_Admin');
@@ -32,13 +32,20 @@ Route::get('/administrador-egresados/admin_agregar_lote', function () {
 })->name('administrador_agregar_lote');
 
 
-Route::get('/administrador-egresados2', function () {
-    return view('administrador.Egresados_Admin');
-})->name('administrador');
+Route::get('/administrador-egresados/egresados', [EgresadosController::class, 'obtener_egresados_paginados'])
+    ->name('administrador');
 
 
 Route::get('/administrador-egresados/empresas', [empresaController::class, 'obtener_empresas'])
     ->name('administrador_Empresas_Admin');
+
+#Route::get('/administrador-egresados/ofertas', function () {
+#    return view('administrador.Ofertas_Admin');
+#})->name('administrador_Ofertas_Admin');
+
+Route::get('/administrador-egresados/ofertas', [OfertasController::class, 'obtener_ofertas_paginados'])
+    ->name('administrador_Ofertas_Admin');
+
 
 Route::get('/administrador-egresados/estadisticas', function () {
     return view('administrador.Estadisticas_Admin');
@@ -47,11 +54,6 @@ Route::get('/administrador-egresados/estadisticas', function () {
 Route::get('/administrador-egresados/eventos', function () {
     return view('administrador.Eventos_Admin');
 })->name('administrador_Eventos_Admin');
-
-Route::get('/administrador-egresados/ofertas', function () {
-    return view('administrador.Ofertas_Admin');
-})->name('administrador_Ofertas_Admin');
-
 
 
 Route::get('/administrador-egresados/salarios', [OfertaController::class, 'index'])->name('administrador_Salarios_Admin');

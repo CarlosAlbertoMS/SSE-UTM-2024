@@ -12,6 +12,7 @@ use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\EventosController;
 
 require __DIR__ . '/admin.php';
+require __DIR__ . '/egresados.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,9 @@ Route::get('/empresa-egresados/propuesta', function () {
     return view('registro-empresa.propuesta-suneo');
 })->name('empresa_propuesta');
 
+Route::get('/Egresados/Eventos', [EventosController::class, 'index'])->name('Egresados_Eventos');
+Route::get('/Egresados/Eventos/{id}', [EventosController::class, 'show'])->name('Egresados_Evento.show');|
+/*
 //Egresados
 //Route::get('/Egresados/Ofertas_laborales', function () {    return view('Egresados.Ofertas_laborales');})->name('Egresados_Ofertas');
 Route::get('/Egresados/Ofertas_laborales', [OfertasController::class, 'index'])->name('Egresados_Ofertas');
@@ -155,4 +159,5 @@ Route::get('/Egresados/TabuladorDeSalarios-Egresados', [TabuladorController::cla
 //Route::post('/egresados', [EgresadosController::class, 'crearEgresado']);
 //Route::put('/egresados/{matricula}', [EgresadosController::class, 'actualizarEgresado']);
 //Route::delete('/egresados/{matricula}', [EgresadosController::class, 'eliminarEgresado']);
+*/
 ?>
