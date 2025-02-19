@@ -42,14 +42,10 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  background-image: url("../../assets/img/imagen_main.jpg");
-  background-repeat: no-repeat;
-  background-size: 1376px 712px;
-  width: 1391px;
-  background-size: cover;
+body{
+  background-image: url('../../assets/img/imagen_main.jpg');
+  background-attachment: fixed;
+  background-size:cover;
 }
 
 header {
@@ -295,8 +291,8 @@ header {
 
 .card--main--events-img-place {
   width: 90%;
-  /* height: auto; */
-  height: 28%;
+  height: auto;
+  /* height: 28%; */
   position: absolute;
   font-size: clamp(1rem, 4vw, 1.3rem);
   overflow: hidden;
@@ -329,7 +325,6 @@ header {
   width: 100%;
   height: 70%;
   bottom: 0;
-  /* border: solid yellow 5px; */
 }
 
 .card--main--events-img-info-title {
@@ -384,6 +379,7 @@ header {
   margin-left: 16px;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .card--main--events-text-2 p {
@@ -609,11 +605,14 @@ header {
 }
 
 .main--section {
-  display: flex;
-  flex-direction: column;
   width: 1024px;
-  height: 522px;
-  margin: 8px auto 0 auto;
+  background-color: var(--bg--grisTrans);
+  font-family: 'Raleway', sans-serif;
+  color: var(--txt--grisOscuro);
+  text-align: left;
+  line-height: normal;
+  margin: 10px auto;
+  padding: 10px 0px;
 }
 
 footer {
@@ -674,4 +673,15 @@ footer {
   width: 370px;
   height: 14px;
   margin-top: 3px;
+}
+
+.btn-ver-detalle {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: white;
+  font-size: 12px;
 }

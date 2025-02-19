@@ -18,7 +18,7 @@
     $endPage = min($totalPages, $startPage + 2);
 @endphp
 
-@include('layouts.Egresadosheader')
+@include('layouts.egresados.header')
 
 <main>
     <section class="main--section">
