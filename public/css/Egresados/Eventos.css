@@ -27,13 +27,9 @@
   --text-footer: #7f7f7f;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-  border: none;
-  outline: none;
+*{
+  margin: 0px;
+  padding: 0px;
 }
 
 html {
@@ -42,15 +38,13 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  background-image: url("../../assets/img/imagen_main.jpg");
-  background-repeat: no-repeat;
-  background-size: 1376px 712px;
-  width: 1391px;
-  background-size: cover;
+
+body{
+  background-image: url('../../assets/img/imagen_main.jpg');
+  background-attachment: fixed;
+  background-size:cover;
 }
+
 
 header {
   position: relative;
@@ -61,8 +55,10 @@ header {
   height: 114px;
   text-align: center;
   background-color: var(--text-opc1);
-  margin: 0 auto;
+    margin: 0px auto;
 }
+
+
 
 .header--container--1 {
   height: 82px;

@@ -12,7 +12,7 @@
 
 <body>
 
-    @include('layouts.header')
+    @include('layouts.administrador.header')
 
     <section id="contenido">
         <!--Inicio de la segunda barra de navegacion-->
@@ -82,20 +82,26 @@
                 </thead>
                 <tbody>
 
-
                     @foreach ($egresados as $egresado)
+                    @php
+                    $matricula = $egresado['matricula'] ?? null;
+                    // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
+                    $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
+                    @endphp
+
+                    @if ($matricula && $carreraGeneracion) <!-- Solo muestra la fila si existe matrícula y carreraGeneracion -->
                     <tr>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
+                        <td>{{ $egresado['matricula'] }}</td>
                         <td>{{ ($egresado['ap_paterno'] ?? 'N/A') . ' ' . ($egresado['ap_materno'] ?? 'N/A') . '  ' . ($egresado['nombres'] ?? 'N/A') }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['matricula'] ?? 'N/A' }}</td>
-
-
+                        <td>{{ $carreraGeneracion['carrera'] ?? 'N/A' }}</td>
+                        <td>{{ $carreraGeneracion['generacion'] ?? 'N/A' }}</td>
+                        <td>{{ $egresado['estado'] ?? 'N/A' }}</td>
                     </tr>
+                    @endif
+
                     @endforeach
 
+                </tbody>
                 <tfoot>
                     <tr id="tabla-fin">
                         <th>Total de egresados: {{ $totalEgresados }}</th>
@@ -113,39 +119,12 @@
             <!--Inicio de la paginacion de la pagina-->
             <div class="pagination">
                 <x-paginador :paginador="$egresados" />
-
             </div>
             <!--fin de la paginación-->
-
         </center>
+
     </section>
-
-    <footer>
-        <section id="suneo-img">
-            <img src="../assets/img/u26.png">
-        </section>
-        <section id="info-acercade">
-            <nav id="menu-info-acercade">
-                <ul>
-                    <li><a href="#">Sobre SUNEO</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Empresas</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                </ul>
-            </nav>
-            <section id="footer--texto">
-                <section id="footer--texto1">
-                    <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-                    <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-                </section>
-
-                <section id="footer-texto2">
-                    <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
-                    <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
-                </section>
-            </section>
-        </section>
-    </footer>
+    @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->
 </body>
 
 </html>
