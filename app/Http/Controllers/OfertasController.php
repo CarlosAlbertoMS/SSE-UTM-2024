@@ -48,6 +48,57 @@ class OfertasController extends Controller
             return back()->withErrors('Ocurrió un error inesperado. Por favor, inténtalo más tarde.');
         }
     }
+   
+    public function obtener_ofertas_por_id($idempresa)
+    {
+        try {
+            $url = env('API_URL') . "ofertas";
+            $response = Http::get($url);
+            $response->throw();
+    
+            $allOfertas = $response->json();
+    
+            // Verifica si se obtuvieron datos de la API
+            if (empty($allOfertas)) {
+                dd("No se obtuvieron ofertas de la API. Verifica la conexión o la URL.");
+            } else {
+                // Muestra los datos obtenidos para verificar su estructura
+              //  dd("Conexión exitosa. Datos obtenidos:", $allOfertas);
+            }
+    
+            // Si ya verificaste, comenta o elimina el dd() y continúa:
+            
+            $ofertas = array_filter($allOfertas, function($oferta) use ($idempresa) {
+                return isset($oferta['empresa_id']) && $oferta['empresa_id'] == $idempresa;
+            });
+    
+            foreach ($ofertas as &$oferta) {
+                $oferta['carrera'] = Carrera::obtenerNombre($oferta['carrera']);
+            }
+            unset($oferta);
+    
+            $paginaActual = request('page', 1);
+            $porPagina = 5;
+            $totalOfertas = count($ofertas);
+            $items = array_slice($ofertas, ($paginaActual - 1) * $porPagina, $porPagina);
+    
+            $paginador = new LengthAwarePaginator(
+                $items,
+                $totalOfertas,
+                $porPagina,
+                $paginaActual,
+                ['path' => request()->url()]
+            );
+    
+            return view('Egresados.Informacion-empresas-ofertas-laborales', compact('ofertas', 'totalOfertas', 'paginador', 'idempresa'));
+            
+        } catch (RequestException $e) {
+            dd("Error en la conexión a la API: " . $e->getMessage());
+        } catch (\Exception $e) {
+            dd("Error inesperado: " . $e->getMessage());
+        }
+    }
+    
     public function obtener_ofertas_paginados()
     {
         try {

@@ -80,16 +80,13 @@ $endPage = min($totalPages, $startPage + 2);
                 </div>
             </div>
             @endforeach
-
             <!-- PAGINACIÓN -->
-
             <div class="main--pagination">
                 @if ($currentPage > 1)
                 <div class="main--pagination--opc-1">
                     <a href="?page={{ $currentPage - 1 }}">Anterior</a>
                 </div>
                 @endif
-
                 @for ($i = $startPage; $i <= $endPage; $i++)
                     <div class="main--pagination--opc-2">
                     <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
@@ -106,42 +103,42 @@ $endPage = min($totalPages, $startPage + 2);
         </div>
 
         <footer>
-    <div class="footer--container--1">
-        <img src="../assets/img/u26.png" alt="Logo">
-    </div>
-    <div class="footer--container--2">
-        <div class="footer--Title">
-            <div class="footer--title--1">
-                <p>Sobre SUNEO</p>
+            <div class="footer--container--1">
+                <img src="../assets/img/u26.png" alt="Logo">
             </div>
-            <div class="footer--title--1">
-                <p>Privacidad</p>
+            <div class="footer--container--2">
+                <div class="footer--Title">
+                    <div class="footer--title--1">
+                        <p>Sobre SUNEO</p>
+                    </div>
+                    <div class="footer--title--1">
+                        <p>Privacidad</p>
+                    </div>
+                    <div class="footer--title--1">
+                        <p>Empresas</p>
+                    </div>
+                    <div class="footer--title--1">
+                        <p>Ayuda</p>
+                    </div>
+                </div>
+                <div class="footer--Text">
+                    <div class="footer--title--2-1">
+                        <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
+                    </div>
+                    <div class="footer--title--2-2">
+                        <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
+                    </div>
+                </div>
+                <div class="footer--Text">
+                    <div class="footer--title--2-1">
+                        <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
+                    </div>
+                    <div class="footer--title--2-2">
+                        <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
+                    </div>
+                </div>
             </div>
-            <div class="footer--title--1">
-                <p>Empresas</p>
-            </div>
-            <div class="footer--title--1">
-                <p>Ayuda</p>
-            </div>
-        </div>
-        <div class="footer--Text">
-            <div class="footer--title--2-1">
-                <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
-            </div>
-            <div class="footer--title--2-2">
-                <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
-            </div>
-        </div>
-        <div class="footer--Text">
-            <div class="footer--title--2-1">
-                <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
-            </div>
-            <div class="footer--title--2-2">
-                <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
-            </div>
-        </div>
-    </div>
-</footer>   
+        </footer>
     </section>
 </main>
 
