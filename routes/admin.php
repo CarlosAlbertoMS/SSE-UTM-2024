@@ -69,3 +69,8 @@ Route::get('/administrador-egresados/historias', function () {
 Route::get('/administrador-egresados/tips', function () {
     return view('administrador.Tips_Admin');
 })->name('administrador_Tips_Admin');
+
+
+Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.store');
+
+Route::get('/salarios', [TabuladorController::class, 'index'])->name('salarios.index');

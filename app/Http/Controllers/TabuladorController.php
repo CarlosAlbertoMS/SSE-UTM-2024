@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
+use App\Models\Salario;
 
-class TabuladorController extends Controller 
+class TabuladorController extends Controller
 {
     public function index()
     {
@@ -20,8 +22,8 @@ class TabuladorController extends Controller
         [$tabulador_size, $paginador] = self::getTabuladorContent();
         return view('administrador.Salarios_Admin', compact('tabulador_size', 'paginador'));
     }
-    
-    
+
+
     public static function getTabuladorContent()
     {
         try {
@@ -43,9 +45,9 @@ class TabuladorController extends Controller
         $paginaActual = request('page', 1);
         $porPagina = 10;
         $tabulador_size = count($tabuladores);
-    
+
         $items = array_slice($tabuladores, ($paginaActual - 1) * $porPagina, $porPagina);
-    
+
         $paginador = new LengthAwarePaginator(
             $items,            // Elementos de la página actual
             count($tabuladores), // Total de elementos
@@ -55,5 +57,30 @@ class TabuladorController extends Controller
         );
 
         return [$tabulador_size, $paginador];
+    }
+    public function store(Request $request)
+    {
+        // Validación de datos
+        $request->validate([
+            'empleo' => 'required|string|max:255',
+            'experiencia' => 'required|string|max:255',
+            'carrera' => 'required|string|max:255',
+            'monto_minimo' => 'required|numeric',
+            'monto_maximo' => 'required|numeric',
+        ]);
+
+        // Guardar en la base de datos
+        Salario::create([
+            'empleo' => $request->empleo,
+            'experiencia' => $request->experiencia,
+            'carrera' => $request->carrera,
+            'monto_minimo' => $request->monto_minimo,
+            'monto_maximo' => $request->monto_maximo,
+            'activo'        => $request->input('activo', 1),
+        ]);
+
+        // Redirigir con mensaje de éxito
+        // return redirect()->back()->with('success', 'Salario guardado correctamente');
+        return redirect()->route('salarios.index')->with('success', 'Salario agregado correctamente.');
     }
 }

@@ -18,11 +18,14 @@
         <!--Inicio de la segunda barra de navegacion-->
         <div class="form-navbar">
             <div class="submenu">
-                <div><a href="Agregar-Salario_Admin.html">
-                        <img src="../assets/icons/agregar_r.svg" class="item-r">
-                        <span class="fijos">Agregar Salario</span>
-                    </a>
-                </div>
+   
+
+                <a href="{{ route('administrador_agregar_salario') }}"
+                    class="{{ Route::currentRouteName() == 'administrador_agregar_salario' ? 'pestanaActual' : 'otrasPestañas' }}">
+                    <img src="../assets/icons/agregar_r.svg" class="item-r">
+                    <span class="fijos">Agregar Salario</span>                
+                </a>
+                
                 <div><a href="">
                         <img src="../assets/icons/u164.svg" class="item-r">
                         <span class="fijos">Descargar PDF</span>
