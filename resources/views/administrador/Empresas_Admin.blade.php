@@ -110,16 +110,8 @@
                 </tfoot>
             </table>
 
-            <!-- Agregar paginación -->
-            {{-- <div class="pagination">
-                {{ $empresas->links() }}
-            </div> --}}
-
             <x-paginador :paginador="$empresas" />
-
         </center>
-
-
     </section>
 
     @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->

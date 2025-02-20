@@ -56,7 +56,7 @@ Route::get('/administrador-egresados/eventos', function () {
 })->name('administrador_Eventos_Admin');
 
 
-Route::get('/administrador-egresados/salarios', [OfertaController::class, 'index'])->name('administrador_Salarios_Admin');
+Route::get('/administrador-egresados/salarios', [TabuladorController::class, 'index2'])->name('administrador_Salarios_Admin');
 // Route::get('/administrador-egresados/salarios', [TabuladorController::class, 'index'])->name('administrador_Salarios_Admin');
 // Route::get('/administrador-egresados/salarios', function () {
 //     return view('administrador.Salarios_Admin');
@@ -69,3 +69,8 @@ Route::get('/administrador-egresados/historias', function () {
 Route::get('/administrador-egresados/tips', function () {
     return view('administrador.Tips_Admin');
 })->name('administrador_Tips_Admin');
+
+
+Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.store');
+
+Route::get('/salarios', [TabuladorController::class, 'index'])->name('salarios.index');
