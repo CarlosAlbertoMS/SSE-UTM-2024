@@ -20,7 +20,6 @@
 	@include('layouts.egresados.header')
    
 	<main>
-		{{ asset('js/eventos.js') }}
 		<section class="main--section">
 			<div class="main--container--1">
 				<x-buscador></x-buscador>
