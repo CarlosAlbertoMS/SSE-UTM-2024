@@ -1,8 +1,8 @@
+<link rel="stylesheet" href="{{asset('css/Egresados/paginador.css')}}">
+
 @if ($paginador->hasPages())
-    {{-- <div class="contenido--navegar"> --}}
     <div>
         <div class="pagination-buttons">
-            {{-- Botón "Anterior" --}}
             @if ($paginador->onFirstPage())
                 <button class="disabled pag-btn-txt" disabled>Anterior</button>
             @else
@@ -23,7 +23,6 @@
                 @endif
             @endfor
 
-            {{-- Botón "Siguiente" --}}
             @if ($paginador->hasMorePages())
                 <button class="pag-btn-txt" onclick="location.href='{{ $paginador->nextPageUrl() }}'">Siguiente</button>
             @else
@@ -32,43 +31,3 @@
         </div>
     </div>
 @endif
-
-<!-- DESPUES ESTA WEA SE VA A COLOCAR EN EL CSS DE ESTA VISTA, solo Dios sabe cuando :emojiManosRezando:. -->
-<style>
-    .pagination-buttons {
-        display: flex;
-        justify-content: center;
-        padding-top: 10px;
-    }
-
-    .pagination-buttons button {
-        height: 24px;
-        padding: 5px 15px;
-        border: none;
-        background-color: #555;
-        color: white;
-        cursor: pointer;
-        font-size: 12px;
-    }
-
-    .pag-btn-txt {
-        width: 12%;
-    }
-
-    .pag-btn-num {
-        width: 6%;
-    }
-
-    .pagination-buttons button:hover {
-        background-color:rgb(127, 127, 127);
-    }
-
-    .pagination-buttons .active {
-        background-color: #6d000e;
-    }
-
-    .pagination-buttons .disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
-</style>

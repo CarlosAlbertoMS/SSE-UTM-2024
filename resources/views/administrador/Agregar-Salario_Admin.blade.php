@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,15 @@
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Agregar-Salario_Admin.css') }}">
 </head>
+
 <body>
-    
+
     @include('layouts.administrador.header')
 
 
     <section id="contenido">
-        
-        <form action ="{{ route('salarios.store') }}" method="POST">
+
+        <form action="{{ route('salarios.store') }}" method="POST">
             @csrf
             <div class="formcamp">
                 <div class="linea">
@@ -46,14 +48,18 @@
                 </div>
             </div>
             <div class="formbutt">
-            <a href="Salarios_Admin.html" class="cancelarbtn">Cancelar</a>
-            <button type="submit" class="guardarbtn">Guardar</button>
+                <a href="{{ route('administrador_Salarios_Admin') }}" 
+                    class="{{ Route::currentRouteName() == 'administrador_Salarios_Admin' ? 'pestanaActual' : 'otrasPestañas' }}">
+                    <span class="cancelarbtn">Cancelar</span>                
+                </a>
+                <button type="submit" class="guardarbtn">Guardar</button>
+
 
             </div>
         </form>
-        
+
     </section>
-       
+
     <footer>
         <section id="suneo-img">
             <img src="../assets/img/u26.png">
@@ -72,7 +78,7 @@
                     <p>Coordinación de Vinculación de Alumnos y Egresados UTM</p>
                     <p>De Lunes a Viernes de 8:00 a 13:00 y de 16:00 a 19:00 hrs</p>
                 </section>
-    
+
                 <section id="footer-texto2">
                     <p>Teléfonos: (953) 53 203 99 o (953) 53 202 14 ext. 113 o 116</p>
                     <p>Carretera a Acatlima Km. 2.5 Huajuapan de León, Oaxaca, México C.P 69000</p>
@@ -80,16 +86,19 @@
             </section>
         </section>
     </footer>
-    
+
     <div id="popup" class="overlay">
         <div id="popupBody">
             <div>
                 <h2>Mensaje</h2>
                 <p>¡Enhorabuena!, Cambios guardados con éxito</p>
-                <a id="cerrar" href="Salarios_Admin.html"><div>Cerrar</div></a>
+                <a id="cerrar" href="Salarios_Admin.html">
+                    <div>Cerrar</div>
+                </a>
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>

@@ -7,51 +7,24 @@
     <title>Casos de Éxito</title>
     <link rel="stylesheet" href="{{asset('css/Egresados/CasosDeExito-Egresados.css')}}">
 </head>
+
 <body>
-
-    <header>
-        <div id="header--encabezado">
-            <img id="header--img1" src="../assets/img/u43.png">
-            <div id="header--titulo">
-                Sistema de Seguimiento de Egresados y Bolsa de Trabajo
-            </div>
-            <img id="header--img2" src="../assets/img/utm_u31.png">
-        </div>
-
-        <div id="header__div--menu">
-            <div class="lista">
-                <ul>
-                    <li><a href="{{route('Egresados_Ofertas')}}">Ofertas Laborales</a></li>
-                    <li><a href="{{route('Informacion-empresas')}}">Directorio de Empresas</a></li>
-                    <li><a href="{{route('TabuladorDeSalarios-Egresados')}}">Tabulador de Salarios</a></li>
-                    <li><a href="{{route('Eventos')}}">Eventos</a></li>
-                    <li style="background-color: var(--bg--guinda);"><a href="{{route('CasosDeExito-Egresados')}}">Historias de Éxito</a></li>
-                    <li><a href="#">Tips y Consejos</a></li>
-                </ul>
-            </div>
-            <div class="circulos">
-                <a class="header__menu--icons"  href="#"><img src="../assets/icons/help_ofertas.svg" alt="" /></a>
-                <a class="header__menu--icons"  href="#"><img src="../assets/icons/Ajustes_B.png" alt="" /></a>
-                <a class="header__menu--icons"  href="#"><img src="../assets/img/u462.png" alt="" /></a>
-            </div>
-        </div>
-
-    </header>
+    @include('layouts.egresados.header')
 
     <section id="contenido">
 
-        <section id="contenido--busqueda">
+        {{-- <section id="contenido--busqueda"> --}}
 
-            <div class="buscador">
+            {{-- <div class="buscador">
                 <input type="search" placeholder="Buscar..."/>
                 <button type="button">
                 <img src="../assets/icons/Buscar_B.png">
             </button>
             </div>
+            <div id="linea"></div> --}}
+            <x-buscador></x-buscador>
 
-            <div id="linea"></div>
-
-        </section>
+        {{-- </section> --}}
 
         <section id="contenido--informacion">
 

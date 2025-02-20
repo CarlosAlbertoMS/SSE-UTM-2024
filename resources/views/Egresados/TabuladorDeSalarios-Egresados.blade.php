@@ -9,33 +9,7 @@
 </head>
 <body>
     
-    <header>
-        <div id="header--encabezado">
-            <img id="header--img1" src="../assets/img/u43.png">
-            <div id="header--titulo">
-                Sistema de Seguimiento de Egresados y Bolsa de Trabajo
-            </div>
-            <img id="header--img2" src="../assets/img/utm_u31.png">
-        </div>
-
-        <div id="header__div--menu">
-            <div class="lista">
-                <ul>
-                    <li><a href="{{route('Egresados_Ofertas')}}">Ofertas Laborales</a></li>
-                    <li><a href="{{route('Egresados_Directorio')}}">Directorio de Empresas</a></li>
-                    <li style="background-color: #6d000e;"><a href="{{route('TabuladorDeSalarios-Egresados')}}">Tabulador de Salarios</a></li>
-                    <li><a href="{{route('Eventos')}}">Eventos</a></li>
-                    <li><a href="{{route('CasosDeExito-Egresados')}}">Historias de Éxito</a></li>
-                    <li><a href="#">Tips y Consejos</a></li>
-                </ul>
-            </div>
-            <div class="circulos">
-                <a class="header__menu--icons"  href="#"><img src="../assets/icons/help_ofertas.svg" alt="" /></a>
-                <a class="header__menu--icons"  href="#"><img src="../assets/icons/Ajustes_B.png" alt="" /></a>
-                <a class="header__menu--icons"  href="#"><img src="../assets/img/u462.png" alt="" /></a>
-            </div>
-        </div>
-    </header>
+    @include('layouts.egresados.header')
     
     <section id="contenido">
         <section id="filtro">
@@ -73,23 +47,23 @@
                         <th class="thead--gris">Experiencia</th>
                         <th class="thead--gris2">Monto mínimo</th>
                         <th class="thead--gris2">Monto máximo</th>
-                    </tr>
+                    </tr
                 </thead>
                 
                 <tbody>
                     @foreach ($paginador as $tabulador)
                         <tr>
-                            <td> {{ $tabulador['empleo'] }} </td>
-                            <td> {{ $carreras[$tabulador['carrera']] ?? 'Carrera no encontrada' }} </td>
-                            <td> {{ $tabulador['experiencia'] }} años </td>
-                            <td> {{ $tabulador['monto_minimo'] }}</td>
-                            <td> {{ $tabulador['monto_maximo'] }}</td>
+                            <td> {{ $tabulador['empleo'] ?? 'N/A' }} </td>
+                            <td> {{ $tabulador['carrera'] ?? 'N/A' }} </td>
+                            <td> {{ $tabulador['experiencia'] ?? 'N/A' }} años </td>
+                            <td> {{ $tabulador['monto_minimo'] ?? 'N/A' }}</td>
+                            <td> {{ $tabulador['monto_maximo'] ?? 'N/A' }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            x-paginador :paginador="$paginador" />
+            <x-paginador :paginador="$paginador" />
         </section>
     </section>
           

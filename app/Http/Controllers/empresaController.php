@@ -15,12 +15,15 @@ class empresaController extends Controller
             $response = Http::get($url);
             $response->throw();
             $empresas = $response->json();
+
             echo ($empresas);
+
         } catch (RequestException $e) {
             return back()->withErrors('No se pudieron obtener los datos de las empresas. Inténtalo de nuevo más tarde.');
         } catch (\Exception $e) {
             return back()->withErrors('Ocurrió un error inesperado. Por favor, inténtalo más tarde.');
         }
+
 
         return view('Egresados.', compact('empresas'));
     }
@@ -62,4 +65,5 @@ class empresaController extends Controller
 
         return view('administrador.Empresas_Admin', compact('empresas', 'error', 'totalEgresados', 'noContestado', 'parcialmente', 'completamente'));
     }
+
 }
