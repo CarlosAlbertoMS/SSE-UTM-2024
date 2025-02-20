@@ -21,7 +21,7 @@
 @endphp
 
 
-@include('layouts.egresados.header')
+@include('layouts.Egresadosheader')
 
 <main>
     <section class="main--section">

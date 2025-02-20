@@ -7,24 +7,24 @@
     <title>Casos de Éxito</title>
     <link rel="stylesheet" href="{{asset('css/Egresados/CasosDeExito-Egresados.css')}}">
 </head>
-
 <body>
-    @include('layouts.egresados.header')
+
+@include('layouts.egresados.header')
 
     <section id="contenido">
 
-        {{-- <section id="contenido--busqueda"> --}}
+        <section id="contenido--busqueda">
 
-            {{-- <div class="buscador">
+            <div class="buscador">
                 <input type="search" placeholder="Buscar..."/>
                 <button type="button">
                 <img src="../assets/icons/Buscar_B.png">
             </button>
             </div>
-            <div id="linea"></div> --}}
-            <x-buscador></x-buscador>
 
-        {{-- </section> --}}
+            <div id="linea"></div>
+
+        </section>
 
         <section id="contenido--informacion">
 

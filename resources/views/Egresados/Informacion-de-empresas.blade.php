@@ -8,9 +8,8 @@
   <title>Información de la Empresa</title>
 </head>
 
-@include('layouts.egresados.header')
-
 <body>
+  @include('layouts.Egresadosheader')
   <main>
     <section class="main--section">
       <div class="main--title">

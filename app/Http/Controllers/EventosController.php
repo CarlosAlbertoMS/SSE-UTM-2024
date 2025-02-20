@@ -10,10 +10,11 @@ use \DateTime;
 
 class EventosController extends Controller
 {
+    private $baseUrl = 'http://localhost:8081/';
+
     public function index()
     {
-        $baseUrl = env('API_URL');
-        $urlEventos = $baseUrl . "eventos";
+        $urlEventos = $this->baseUrl . "eventos";
 
         try {
             $response = Http::get($urlEventos);
@@ -68,8 +69,7 @@ class EventosController extends Controller
 
     public function show($id)
     {
-        $baseUrl = env('API_URL');
-        $urlEventoID = $baseUrl . "eventos/{$id}";
+        $urlEventoID = $this->baseUrl . "eventos/{$id}";
 
         try {
             $response = Http::get($urlEventoID);

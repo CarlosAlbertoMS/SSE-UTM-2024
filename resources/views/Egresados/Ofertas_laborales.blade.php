@@ -7,27 +7,30 @@
     <link rel="stylesheet" href="{{asset('css/Egresados/Ofertas-laborales.css')}}">
     <title>Ofertas Laborales</title>
 </head>
-
 @php
-    $search = request()->query('search', ''); // Obtener el texto de búsqueda
+$search = request()->query('search', ''); // Obtener el texto de búsqueda
 
-    // Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
-    $filteredOfertas = empty($search) ? $ofertas : array_filter($ofertas, function ($oferta) use ($search) {
-    return stripos($oferta['titulo_empleo'], $search) !== false;
-    });
+// Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
+$filteredOfertas = empty($search) ? $ofertas : array_filter($ofertas, function ($oferta) use ($search) {
+return stripos($oferta['titulo_empleo'], $search) !== false;
+});
 
-    $currentPage = request()->query('page', 1);
-    $perPage = 5; // Mostrar 5 ofertas por página
-    $totalPages = ceil(count($filteredOfertas) / $perPage);
-    $startIndex = ($currentPage - 1) * $perPage;
-    $visibleEmpresas = array_slice($filteredOfertas, $startIndex, $perPage);
+$currentPage = request()->query('page', 1);
+$perPage = 5; // Mostrar 5 ofertas por página
+$totalPages = ceil(count($filteredOfertas) / $perPage);
+$startIndex = ($currentPage - 1) * $perPage;
+$visibleEmpresas = array_slice($filteredOfertas, $startIndex, $perPage);
 
-    // Lógica para mostrar solo tres números de página
-    $startPage = max(1, $currentPage - 1);
-    $endPage = min($totalPages, $startPage + 2);
+// Lógica para mostrar solo tres números de página
+$startPage = max(1, $currentPage - 1);
+$endPage = min($totalPages, $startPage + 2);
 @endphp
 
-@include('layouts.egresados.header')
+
+
+
+@include('layouts.Egresadosheader')
+
 
 <main>
     <section class="main--section">

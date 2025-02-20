@@ -6,10 +6,8 @@
 	<link rel="stylesheet" href="{{ asset('css/Egresados/informacion-empresas-ofertas-laborales.css') }}" />
 	<title>Ofertas Laborales</title>
 </head>
-
-@include('layouts.egresados.header')
-
 <body>
+	@include('layouts.Egresadosheader')
 	<main>
 		<!-- Inicio de la sección principal -->
 		<section class="main--section">
