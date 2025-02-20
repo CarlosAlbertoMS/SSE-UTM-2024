@@ -10,6 +10,7 @@ use App\Http\Controllers\EgresadosController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\EventosController;
+use App\Http\Controllers\HistoriasController;
 
 require __DIR__ . '/admin.php';
 require __DIR__ . '/egresados.php';
@@ -104,6 +105,19 @@ Route::get('/empresa-egresados/propuesta', function () {
     return view('registro-empresa.propuesta-suneo');
 })->name('empresa_propuesta');
 
+Route::get('/Egresados/TabuladorDeSalarios-Egresados', [TabuladorController::class, 'index'])->name('Egresados_Tabulador');
+Route::get('/Egresados/Eventos', [EventosController::class, 'index'])->name('Egresados_Eventos');
+Route::get('/Egresados/Eventos/{id}', [EventosController::class, 'show'])->name('Egresados_Evento.show');
+
+// Route::get('/Egresados/Informacion-empresas-ofertas-laborales', function () {
+//     return view('Egresados.Informacion-empresas-ofertas-laborales');
+// })->name('Informacion-empresas-ofertas-laborales');
+
+Route::get('/Egresados/Informacion-de-empresas/{id}', [directorioController::class, 'obtenerEmpresa'])->name('Informacion-de-empresas');
+
+Route::get('/Egresados/HistoriasExito', [HistoriasController::class, 'index'])->name('Egresados_Historias');
+
+
 /*
 //Egresados
 //Route::get('/Egresados/Ofertas_laborales', function () {    return view('Egresados.Ofertas_laborales');})->name('Egresados_Ofertas');
@@ -137,9 +151,6 @@ Route::get('/Egresados/Eventos-individual', function () {
     return view('Egresados.Eventos-individual');
 })->name('Eventos-individual');
 
-Route::get('/Egresados/CasosDeExito-Egresados', function () {
-    return view('Egresados.CasosDeExito-Egresados');
-})->name('Egresados_Historias');
 
 Route::get('/Egresados/ingreso-ingresa-tus-datos', function () {
     return view('Egresados.ingreso-ingresa-tus-datos');
