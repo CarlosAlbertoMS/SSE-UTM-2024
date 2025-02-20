@@ -84,7 +84,7 @@ $endPage = min($totalPages, $startPage + 2);
             <div class="main--pagination">
                 @if ($currentPage > 1)
                 <div class="main--pagination--opc-1">
-                    <a href="?page={{ $currentPage - 1 }}">Anterior</a>
+                     <a href="?page={{ $currentPage - 1 }}">Anterior</a>
                 </div>
                 @endif
                 @for ($i = $startPage; $i <= $endPage; $i++)

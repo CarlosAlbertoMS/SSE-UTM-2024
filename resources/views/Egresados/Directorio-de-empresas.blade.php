@@ -9,15 +9,22 @@
 </head>
 
 @php
-    $currentPage = request()->query('page', 1);
-    $perPage = 8;
-    $totalPages = ceil(count($empresas) / $perPage);
-    $startIndex = ($currentPage - 1) * $perPage;
-    $visibleEmpresas = array_slice($empresas, $startIndex, $perPage);
+$search = request()->query('search', ''); // Obtener el texto de búsqueda
 
-    // Lógica para mostrar solo tres números de página
-    $startPage = max(1, $currentPage - 1);
-    $endPage = min($totalPages, $startPage + 2);
+// Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
+$filteredEmpresas = empty($search) ? $empresas : array_filter($empresas, function ($empresa) use ($search) {
+return stripos($empresa['nombre'], $search) !== false;
+});
+
+$currentPage = request()->query('page', 1);
+$perPage = 8;
+$totalPages = ceil(count($filteredEmpresas) / $perPage);
+$startIndex = ($currentPage - 1) * $perPage;
+$visibleEmpresas = array_slice($filteredEmpresas, $startIndex, $perPage);
+
+// Lógica para mostrar solo tres números de página
+$startPage = max(1, $currentPage - 1);
+$endPage = min($totalPages, $startPage + 2);
 @endphp
 
 @include('layouts.Egresadosheader')
@@ -26,12 +33,12 @@
     <section class="main--section">
         <!-- CONTENEDOR 1: BÚSQUEDA Y ORDENAMIENTO -->
         <div class="main--container--1">
-            <form class="main-form--1" action="#" method="GET">
-                <input type="search" id="search" name="search" placeholder="Buscar...">
-                <button type="submit">
-                    <img src="{{ asset('assets/icons/Buscar_B.png') }}" alt="Buscar">
-                </button>
-            </form>
+        <div class="main-form--1">
+                <form method="GET">
+                    <input type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
+                    <button type="submit"><img src="../assets/icons/buscar_oferta.svg" alt="Buscar"></button>
+                </form>
+            </div>  
 
             <div class="main-form--2">
                 <div class="main--label--number--offers">
@@ -52,60 +59,60 @@
         <div class="main--container--2">
             <div class="wrapper">
                 @foreach ($visibleEmpresas as $empresa)
-                    <div class="wrapper--cell" data-id="{{ $empresa['id'] }}">
-                        <div class="wrapper--cell--img">
-                            <img src="{{ asset('assets/img/cemex.png') }}" alt="">
+                <div class="wrapper--cell" data-id="{{ $empresa['id'] }}">
+                    <div class="wrapper--cell--img">
+                        <img src="{{ asset('assets/img/cemex.png') }}" alt="empresa">
+                    </div>
+                    <div class="wrapper--cell--body">
+                        <div class="wrapper--cell--body--title">
+                            <p>{{ $empresa['nombre'] }}</p>
                         </div>
-                        <div class="wrapper--cell--body">
-                            <div class="wrapper--cell--body--title">
-                                <p>{{ $empresa['nombre'] }}</p>
+                        <div class="wrapper--cell--body--description">
+                            <p>{{ $empresa['descripcion'] }}</p>
+                        </div>
+                        <div class="wrapper--cell--body--icon1">
+                            <img src="{{ asset('assets/icons/Usuario_B.png') }}" alt="">
+                            <div class="wrapper--cell--body-icon1--text">
+                                <p>{{ $empresa['contacto_id'] }}</p>
                             </div>
-                            <div class="wrapper--cell--body--description">
-                                <p>{{ $empresa['descripcion'] }}</p>
+                        </div>
+                        <div class="wrapper--cell--body--icon2">
+                            <img src="{{ asset('assets/icons/Telefono_B.png') }}" alt="">
+                            <div class="wrapper--cell--body--icon2--text">
+                                <p>{{ $empresa['telefono'] }}</p>
                             </div>
-                            <div class="wrapper--cell--body--icon1">
-                                <img src="{{ asset('assets/icons/Usuario_B.png') }}" alt="">
-                                <div class="wrapper--cell--body-icon1--text">
-                                    <p>{{ $empresa['contacto_id'] }}</p>
-                                </div>
-                            </div>
-                            <div class="wrapper--cell--body--icon2">
-                                <img src="{{ asset('assets/icons/Telefono_B.png') }}" alt="">
-                                <div class="wrapper--cell--body--icon2--text">
-                                    <p>{{ $empresa['telefono'] }}</p>
-                                </div>
-                            </div>
-                            <div class="wrapper--cell--body--icon3">
-                                <img src="{{ asset('assets/icons/Correo_B.png') }}" alt="">
-                                <div class="wrapper--cell--body--icon3--text">
-                                    <p>{{ $empresa['correo'] }}</p>
-                                </div>
+                        </div>
+                        <div class="wrapper--cell--body--icon3">
+                            <img src="{{ asset('assets/icons/Correo_B.png') }}" alt="">
+                            <div class="wrapper--cell--body--icon3--text">
+                                <p>{{ $empresa['correo'] }}</p>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
 
             <!-- PAGINACIÓN (dentro de main--container--2) -->
             <div class="main--pagination">
                 @if ($currentPage > 1)
-                    <div class="main--pagination--opc-1">
-                        <a href="?page={{ $currentPage - 1 }}">Anterior</a>
-                    </div>
+                <div class="main--pagination--opc-1">
+                    <a href="?page={{ $currentPage - 1 }}">Anterior</a>
+                </div>
                 @endif
 
                 @for ($i = $startPage; $i <= $endPage; $i++)
                     <div class="main--pagination--opc-2">
-                        <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
-                    </div>
-                @endfor
-
-                @if ($currentPage < $totalPages)
-                    <div class="main--pagination--opc-1">
-                        <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
-                    </div>
-                @endif
+                    <a href="?page={{ $i }}" class="{{ $currentPage == $i ? 'active' : '' }}">{{ $i }}</a>
             </div>
+            @endfor
+
+            @if ($currentPage < $totalPages)
+                <div class="main--pagination--opc-1">
+                <a href="?page={{ $currentPage + 1 }}">Siguiente</a>
+        </div>
+        @endif
+        </div>
         </div>
 
         <!-- FOOTER DENTRO DE LA SECCIÓN -->
