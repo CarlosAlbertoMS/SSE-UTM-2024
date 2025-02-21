@@ -12,6 +12,7 @@ use App\Models\Salario;
 
 class TabuladorController extends Controller
 {
+    //Es solamente para redirigirlo a distintas vistas
     public function index()
     {
         [$tabulador_size, $paginador] = self::getTabuladorContent();
@@ -58,29 +59,40 @@ class TabuladorController extends Controller
 
         return [$tabulador_size, $paginador];
     }
+
     public function store(Request $request)
     {
-        // Validación de datos
         $request->validate([
-            'empleo' => 'required|string|max:255',
-            'experiencia' => 'required|string|max:255',
-            'carrera' => 'required|string|max:255',
-            'monto_minimo' => 'required|numeric',
-            'monto_maximo' => 'required|numeric',
+            'empleo' => 'required|string|max:200',
+            'experiencia' => 'required|integer|min:0',
+            'carrera' => 'required|integer|min:1',
+            'monto_minimo' => 'required|numeric|min:0',
+            'monto_maximo' => 'required|numeric|min:0',
+            'unidad_tiempo' => 'required|in:meses,años',
+            'unidad_monto' => 'required|in:mensuales,anuales',
+            'activo' => 'required|boolean',
         ]);
 
-        // Guardar en la base de datos
-        Salario::create([
-            'empleo' => $request->empleo,
-            'experiencia' => $request->experiencia,
-            'carrera' => $request->carrera,
-            'monto_minimo' => $request->monto_minimo,
-            'monto_maximo' => $request->monto_maximo,
-            'activo'        => $request->input('activo', 1),
-        ]);
+        try {
+            $response = Http::post(env('API_URL') . "tabulador", [
+                'empleo' => $request->empleo,
+                'carrera' => (int)$request->carrera,
+                'experiencia' => (int)$request->experiencia,
+                'unidad_tiempo' => $request->unidad_tiempo,
+                'monto_minimo' => (string)$request->monto_minimo, // Convertir a string
+                'monto_maximo' => (string)$request->monto_maximo, // Convertir a string
+                'unidad_monto' => $request->unidad_monto,
+                'activo' => (int)$request->activo,
+            ]);
 
-        // Redirigir con mensaje de éxito
-        // return redirect()->back()->with('success', 'Salario guardado correctamente');
-        return redirect()->route('salarios.index')->with('success', 'Salario agregado correctamente.');
+            $response->throw();
+
+            // Almacenar mensaje en la sesión
+            session()->flash('success', 'Salario agregado exitosamente');
+
+            return redirect()->route('administrador_Salarios_Admin');
+        } catch (RequestException $e) {
+            return back()->withErrors('Error: ' . $e->getMessage());
+        }
     }
 }

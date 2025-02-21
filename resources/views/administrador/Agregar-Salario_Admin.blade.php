@@ -33,7 +33,7 @@
                 <div class="linea">
                     <div class="campo">
                         <div><label for="uname">Carrera</label></div>
-                        <div><input type="text" id="carrera" name="carrera" placeholder="Carrera"></div>
+                        <div><input type="number" id="carrera" name="carrera" placeholder="Carrera"></div>
                     </div>
                     <div class="linea">
                         <div class="campo">
@@ -44,17 +44,18 @@
                             <div><label for="uname">Monto máximo mensual</label></div>
                             <div class="campo2"><input type="text" id="monto_max" name="monto_maximo" placeholder="Monto máximo"></div>
                         </div>
+                        <input type="hidden" name="unidad_tiempo" value="meses"> <!-- o 'años' -->    
+                        <input type="hidden" name="unidad_monto" value="mensuales"> <!-- o 'anuales' -->
+                        <input type="hidden" name="activo" value="1">
                     </div>
                 </div>
+
             </div>
             <div class="formbutt">
-                <a href="{{ route('administrador_Salarios_Admin') }}" 
-                    class="{{ Route::currentRouteName() == 'administrador_Salarios_Admin' ? 'pestanaActual' : 'otrasPestañas' }}">
-                    <span class="cancelarbtn">Cancelar</span>                
+                <a href="{{ route('administrador_Salarios_Admin') }}" class="cancelarbtn">
+                    Cancelar
                 </a>
                 <button type="submit" class="guardarbtn">Guardar</button>
-
-
             </div>
         </form>
 
@@ -87,17 +88,6 @@
         </section>
     </footer>
 
-    <div id="popup" class="overlay">
-        <div id="popupBody">
-            <div>
-                <h2>Mensaje</h2>
-                <p>¡Enhorabuena!, Cambios guardados con éxito</p>
-                <a id="cerrar" href="Salarios_Admin.html">
-                    <div>Cerrar</div>
-                </a>
-            </div>
-        </div>
-    </div>
 
 </body>
 

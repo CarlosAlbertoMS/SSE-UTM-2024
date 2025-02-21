@@ -1,5 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
+@if (session('success'))
+    <div id="success-message" class="success-message2">
+        {{ session('success') }}
+    </div>
+@endif
+
+<style>
+.success-message2 {
+    background-color: #38a169; /* Verde */
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 1.125rem; /* 18px */
+    transition: transform 0.3s ease-in-out;
+}
+
+.success-message2:hover {
+    transform: scale(1.05);
+}
+</style>
+
+<script>
+    // Desaparece el mensaje después de 3 segundos
+    setTimeout(function() {
+        var message = document.getElementById('success-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }, 3000); // 3000ms = 3 segundos
+</script>
 
 <head>
     <meta charset="UTF-8">
@@ -10,8 +43,9 @@
     <link rel="stylesheet" href="{{ asset('css/administrador/Salarios_Admin.css') }}">
 </head>
 
-<body>
 
+<body>
+    
     @include('layouts.administrador.header')
 
     <section id="contenido">

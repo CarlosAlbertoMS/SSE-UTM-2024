@@ -72,5 +72,3 @@ Route::get('/administrador-egresados/tips', function () {
 
 
 Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.store');
-
-Route::get('/salarios', [TabuladorController::class, 'index'])->name('salarios.index');
