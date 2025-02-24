@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-
+use App\Carrera;
 use Illuminate\Http\Client\RequestException;
 
 class EgresadosController extends Controller
@@ -121,11 +121,64 @@ class EgresadosController extends Controller
      */
     public function crearEgresado(Request $request)
     {
-        $response = Http::post("{$this->baseUrl}/egresados", $request->all());
+
+
+        
+
+        // Ahora, preparas los datos para enviar a FastAPI
+        
+
+        $preparacion =[
+           'generacion' => $request->generacion,
+            'carrera' => $request->carrera,
+            'fecha_inicio' => $request->fecha_inicio,
+            'fecha_fin' => $request->fecha_fin,
+            'promedio' => $request->promedio, // Convertir a string
+            'forma_titulacion' => $request->forma_titulacion, // Convertir a string
+            'fecha_titulo' => $request->fecha_titulo,
+            
+        ];
+        $responsePreparacion = Http::post("{$this->baseUrl}/preparacion", $preparacion);
+        $dataPreparacion = $responsePreparacion->json();
+
+        // Extraer el ID si existe
+        $preparacion_id = $dataPreparacion['id'] ?? null;
+        
+        if (!$preparacion_id) {
+            return response()->json([
+                'error' => 'No se pudo obtener el ID de preparación desde FastAPI',
+                'response' => $dataPreparacion
+            ], 500);
+        }
+        $egresado = [
+            'nombres'       => $request->input('nombres'),
+            'ap_paterno'    => $request->input('ap_paterno'),
+            'ap_materno'    => $request->input('ap_materno'),
+            'curp'          => $request->input('curp'),
+            'genero'        => $request->input('genero'),
+            'fecha_nacimiento' => $request->input('fecha_nacimiento'),
+            'nacionalidad'  => $request->input('nacionalidad'),
+            'lugar_origen'  => $request->input('lugar_origen'),
+            'matricula'     => $request->input('matricula'),
+            //'generacion'    => $request->input('generacion'),
+            'preparacion_id' => $preparacion_id, // Aquí agregamos el ID de la preparación
+            'habilitado'    => 1, // Este valor se envía automáticamente
+        ];
+
+        if (!$responsePreparacion->successful()) {
+            return response()->json([
+                'error'   => 'No se pudo crear la preparación en FastAPI',
+                'details' => $responsePreparacion->json()
+            ], $responsePreparacion->status());
+        }
+
+       // $response = Http::post("{$this->baseUrl}/egresados", $request->all());
+       $response = Http::post("{$this->baseUrl}/egresados", $egresado);
+
 
         if ($response->successful()) {
-            return response()->json($response->json(), 201);
-        }
+            return redirect()->route('administrador');
+                }
 
         return response()->json([
             'error' => 'No se pudo crear el egresado',

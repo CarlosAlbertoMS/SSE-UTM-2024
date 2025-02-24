@@ -10,22 +10,21 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use App\Models\Salario;
 
-class TabuladorController extends Controller
+class PreparacionController extends Controller
 {
     //Es solamente para redirigirlo a distintas vistas
     public function index()
     {
         [$tabulador_size, $paginador] = self::getTabuladorContent();
-        $carreras = Carrera::obtenerCarreras();
-        return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador_size', 'paginador', 'carreras'));
+        return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador_size', 'paginador'));
     }
-
     public function index2()
     {
         [$tabulador_size, $paginador] = self::getTabuladorContent();
         return view('administrador.Salarios_Admin', compact('tabulador_size', 'paginador'));
     }
-    
+
+
     public static function getTabuladorContent()
     {
         try {
@@ -64,60 +63,36 @@ class TabuladorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'empleo' => 'required|string|max:200',
-            'experiencia' => 'required|integer|min:0',
-            'carrera' => 'required|integer|min:1',
-            'monto_minimo' => 'required|numeric|min:0',
-            'monto_maximo' => 'required|numeric|min:0',
-            'unidad_tiempo' => 'required|in:meses,años',
-            'unidad_monto' => 'required|in:mensuales,anuales',
-            'activo' => 'required|boolean',
+            'carrera' => 'required|string|max:200',
+            'generacion' => 'required|integer|min:0',
+            'fecha_inicio' => 'required|string|max:200',
+            'fecha_fin' => 'required|string|max:200',
+            'promedio' => 'required|numeric|min:0',
+            'forma_titulacion' => 'required|string|max:200',
+            'fecha_titulo' => 'required|string|max:200',
+            
         ]);
 
         try {
             $response = Http::post(env('API_URL') . "tabulador", [
-                'empleo' => $request->empleo,
-                'carrera' => (int)$request->carrera,
-                'experiencia' => (int)$request->experiencia,
-                'unidad_tiempo' => $request->unidad_tiempo,
-                'monto_minimo' => (string)$request->monto_minimo, // Convertir a string
-                'monto_maximo' => (string)$request->monto_maximo, // Convertir a string
-                'unidad_monto' => $request->unidad_monto,
-                'activo' => (int)$request->activo,
+                'generacion' => $request->generacion,
+                'carrera' => $request->carrera,
+                'fecha_inicio' => $request->fecha_inicio,
+                'fecha_fin' => $request->fecha_fin,
+                'promedio' => $request->monto_minimo, // Convertir a string
+                'forma_titulacion' => $request->monto_maximo, // Convertir a string
+                'fecha_titulo' => $request->unidad_monto,
+                
             ]);
 
             $response->throw();
 
             // Almacenar mensaje en la sesión
-            session()->flash('success', 'Salario agregado exitosamente');
+            session()->flash('success', 'preparacion agregada exitosamente');
 
             return redirect()->route('administrador_Salarios_Admin');
         } catch (RequestException $e) {
             return back()->withErrors('Error: ' . $e->getMessage());
         }
-    }
-
-    public function filtrarPorCarrera($idCarrera) 
-    {
-        $baseUrl = env('API_URL');
-        $urlCarreraId = $baseUrl . "tabulador/carrera/{$idCarrera}";
-
-        try {
-            $response = Http::get($urlCarreraId);
-            $response->throw();
-
-            $tabulador = $response->json();
-            return $tabulador;
-        } catch (RequestException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Tabulador no asociado a la carrera indicada',
-            ], 404);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error interno del servidor',
-            ], 500);
-        }   
     }
 }
