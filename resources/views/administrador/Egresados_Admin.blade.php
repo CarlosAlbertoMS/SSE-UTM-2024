@@ -10,6 +10,7 @@
 
 </head>
 
+
 <body>
 
     @include('layouts.administrador.header')
@@ -51,11 +52,12 @@
                 </div>
             </div>
             <!--Inicio del buscador de la pagina-->
-            <form>
-                <input class="texto-busqueda" type="text" placeholder="Buscar...">
-                <button class="btn-btn-warning" type="submit"><img src="../assets/icons/Buscar_B.PNG"></button>
+            <form method="GET">
+                    <input  class="texto-busqueda" type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
+                    <button class="btn-btn-warning" type="submit"><img src="../assets/icons/Buscar_B.PNG" alt="Buscar"></button>
             </form>
-            <!--fin del buscador-->
+         
+            <!--fin del buscador"-->
         </div>
         <div class="linea"></div>
         <!--
@@ -84,6 +86,7 @@
 
                     @foreach ($egresados as $egresado)
                     @php
+                    
                     $matricula = $egresado['matricula'] ?? null;
                     // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
                     $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
