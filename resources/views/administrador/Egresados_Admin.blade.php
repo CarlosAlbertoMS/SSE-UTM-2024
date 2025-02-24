@@ -115,12 +115,7 @@
                 </tfoot>
             </table>
 
-            <!--fin de la tabla-->
-            <!--Inicio de la paginacion de la pagina-->
-            <div class="pagination">
-                <x-paginador :paginador="$egresados" />
-            </div>
-            <!--fin de la paginación-->
+            <x-paginador :paginador="$egresados" />
         </center>
 
     </section>
