@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\OfertasController;
+use App\Models\Carrera;
 
 Route::get('/administrador-egresados/eventos/agregar_evento', function () {
     return view('administrador.Agregar-Evento_Admin');
@@ -24,7 +25,8 @@ Route::get('/administrador-egresados/agregar_salario', function () {
 
 
 Route::get('/administrador-egresados/admin_agregar_egresado', function () {
-    return view('administrador.Egresados_Admin-Agregar-Egresado');
+    $carreras = Carrera::obtenerCarreras();
+    return view('administrador.Egresados_Admin-Agregar-Egresado', compact('carreras'));
 })->name('administrador_agregar_egresado');
 
 Route::get('/administrador-egresados/admin_agregar_lote', function () {
@@ -72,3 +74,5 @@ Route::get('/administrador-egresados/tips', function () {
 
 
 Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.store');
+
+Route::post('/egresados',[EgresadosController::class, 'crearEgresado'])->name('egresados.crearEgresado');
