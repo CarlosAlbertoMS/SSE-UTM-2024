@@ -107,9 +107,9 @@
                         <div class="contenedor__input-label">
                             <label for="forma-titulacion">Forma de titulación</label>
                             <select name="forma_titulacion">
-                                <option value="tesis" selected="selected">Tesis</option>
-                                <option value="sin-titulacion">Sin titulación</option>
-                                <option value="Ceneval">Ceneval</option>
+                                <option value="Tesis" selected="selected">Tesis</option>
+                                <option value="No titulado">Sin titulación</option>
+                                <option value="CENEVAL">Ceneval</option>
                             </select>
                         </div>
                         <div class="contenedor__input-label">
