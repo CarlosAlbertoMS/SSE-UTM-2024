@@ -13,14 +13,15 @@ class TabuladorController extends Controller
     public function index()
     {
         [$tabulador_size, $paginador] = self::getTabuladorContent();
-        return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador_size', 'paginador'));
+        $carreras = Carrera::obtenerCarreras();
+        return view('Egresados.TabuladorDeSalarios-Egresados', compact('tabulador_size', 'paginador', 'carreras'));
     }
+
     public function index2()
     {
         [$tabulador_size, $paginador] = self::getTabuladorContent();
         return view('administrador.Salarios_Admin', compact('tabulador_size', 'paginador'));
     }
-    
     
     public static function getTabuladorContent()
     {
@@ -55,5 +56,29 @@ class TabuladorController extends Controller
         );
 
         return [$tabulador_size, $paginador];
+    }
+
+    public function filtrarPorCarrera($idCarrera) 
+    {
+        $baseUrl = env('API_URL');
+        $urlCarreraId = $baseUrl . "tabulador/carrera/{$idCarrera}";
+
+        try {
+            $response = Http::get($urlCarreraId);
+            $response->throw();
+
+            $tabulador = $response->json();
+            return $tabulador;
+        } catch (RequestException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tabulador no asociado a la carrera indicada',
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error interno del servidor',
+            ], 500);
+        }   
     }
 }
