@@ -9,19 +9,20 @@
 </head>
 
 @php
-$search = request()->query('search', ''); // Obtener el texto de búsqueda
+$search = request()->query('search', '');
 
 // Si hay una búsqueda, filtrar; si no, mostrar todas las ofertas
-$filteredEmpresas = empty($search) ? $empresas : array_filter($empresas, function ($empresa) use ($search) {
-return stripos($empresa['nombre'], $search) !== false;
-});
+    $filteredEmpresas = empty($search) ? $empresas : array_filter($empresas, function ($empresa) use ($search) {
+    return stripos($empresa['nombre'], $search) !== false;
+    });
 
+
+// Paginación
 $currentPage = request()->query('page', 1);
 $perPage = 8;
 $totalPages = ceil(count($filteredEmpresas) / $perPage);
 $startIndex = ($currentPage - 1) * $perPage;
 $visibleEmpresas = array_slice($filteredEmpresas, $startIndex, $perPage);
-
 // Lógica para mostrar solo tres números de página
 $startPage = max(1, $currentPage - 1);
 $endPage = min($totalPages, $startPage + 2);
@@ -47,11 +48,7 @@ $endPage = min($totalPages, $startPage + 2);
                 </div>
                 <div class="main--order--info">
                     <label>Ordenar por:</label>
-                    <select name="ordenar">
-                        <option value="relevancia" selected>Relevancia</option>
-                        <option value="nombre">Nombre A-Z</option>
-                        <option value="recientes">Más recientes</option>
-                    </select>
+       
                 </div>
             </div>
         </div>
