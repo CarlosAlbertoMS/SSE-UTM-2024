@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Egresados_Admin-Agregar-Lote.css') }}">
 </head>
-
+<script>
+    document.getElementById("btn-seleccionar-archivo").addEventListener("change", function () {
+        let fileName = this.files[0] ? this.files[0].name : "";
+        document.getElementById("nombre_archivo").value = fileName;
+    });
+</script>
 <body>
     @include('layouts.administrador.header')
     <section id="contenido">
@@ -17,13 +22,14 @@
             TU CODIGO AQUI
         -->
         <p class="txt-titulo">Instrucciones para subir lote</p>
-        <form action="">
+        <form action="{{ route('egresados.cargarEgresadosExcel') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <p class="txt-indicacion">Texto donde se especifica el tipo de archivo que se usará para subir los datos.</p>
             <div class="contenedor-inputs">
                 <div class="contenedor-seleccionar-archivos" id="contenedor-seleccionar-archivos">
-                    <input type="file" name="seleccionar-archivo" id="btn-seleccionar-archivo" class="btn-seleccionar-archivo">
+                    <input type="file" name="excel" id="btn-seleccionar-archivo" class="btn-seleccionar-archivo">
                 </div>
-                <input type="text" name="nombre-archivo" id="" placeholder="Nombre del archivo" class="input-nombre-archivo">
+                <input type="text" name="nombre_archivo" id="nombre_archivo" placeholder="Nombre del archivo" value="{{ session('fileName', old('nombre_archivo')) }}"  class="input-nombre-archivo">
             </div>
 
             <p class="txt-sobre-datos">
@@ -41,14 +47,14 @@
                 </li>
             </ul>
             <div class="contenedor-botones">
-                <a href="Egresados_Admin.html">
-                    ***
-                    <input type="submit" value="Cancelar" class="btn-cancelar">
-                </a>
-                <a href="#mensaje-archivo-subido">
-                    ***
-                    <input type="submit" value="Subir" class="btn-subir">
-                </a>
+                {{-- <a href="Egresados_Admin.html"> --}}
+                   
+                    <button type="submit" value="Cancelar" class="btn-cancelar">Cancelar</button>
+               {{--  </a> --}}
+                {{--  <a href="#mensaje-archivo-subido">--}}
+                    
+                    <button type="submit" value="Subir" class="btn-subir">Subir</button>
+                {{--  </a>--}}
             </div>
         </form>
     </section>

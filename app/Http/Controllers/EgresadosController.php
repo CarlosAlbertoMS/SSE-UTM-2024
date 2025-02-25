@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use App\Carrera;
 use Illuminate\Http\Client\RequestException;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\EgresadoImport;
 
 class EgresadosController extends Controller
 {
@@ -120,12 +122,7 @@ class EgresadosController extends Controller
      * Crear un nuevo egresado.
      */
     public function crearEgresado(Request $request)
-    {
-
-
-        
-
-        // Ahora, preparas los datos para enviar a FastAPI
+    {     // Ahora, preparas los datos para enviar a FastAPI
         
 
         $preparacion =[
@@ -219,4 +216,108 @@ class EgresadosController extends Controller
             'details' => $response->json()
         ], $response->status());
     }
+    // Para depuración
+    
+    public function cargarEgresadosExcel(Request $request)
+{
+    $request->validate([
+        'excel' => 'required|mimes:xlsx,xls'
+    ]);
+
+    try {
+        $excel = $request->file('excel');
+        $fileName = $excel->getClientOriginalName(); // Obtener el nombre del archivo
+
+        $egresados = Excel::toCollection(new EgresadoImport, $excel)->first();
+
+        if ($egresados->isEmpty()) {
+            
+                session()->flash('error', "El archivo '$fileName' no contiene datos.");
+                session()->flash('fileName', $fileName);
+                return redirect()->route('administrador');
+
+                // Pasar el nombre del archivo a la vista
+            
+        }
+
+        foreach ($egresados as $row) {
+            $this->crearEgresado2($row);
+        }
+
+        session()->flash('fileName', $fileName);
+
+
+        return redirect()->route('administrador')->with([
+            'success' => "El archivo '$fileName' se cargó correctamente.",
+            'fileName' => $fileName // Pasar el nombre del archivo a la vista
+        ]);
+
+    } catch (\Exception $e) {
+        return redirect()->route('administrador')->with([
+            'error' => "Error al procesar el archivo '$fileName': " . $e->getMessage(),
+            'fileName' => $fileName // Pasar el nombre del archivo a la vista
+        ]);
+    }
+}
+     
+
+
+    public function crearEgresado2($data)
+{
+    try {
+        // 🔹 Preparación de datos para FastAPI
+        $preparacion = [
+            'generacion' => (string) $data['generacion'],  // Asegura que sea string
+            'carrera' => (string) $data['carrera'],        
+            'fecha_inicio' => (string) $data['fecha_inicio'],  
+            'fecha_fin' => (string) $data['fecha_fin'],
+            'promedio' => (string) number_format((float) $data['promedio'], 2, '.', ''), // Formatea y convierte a string
+            'forma_titulacion' => (string) $data['forma_titulacion'],
+            'fecha_titulo' => (string) $data['fecha_titulo'],
+        ];
+        // 🔹 Enviar la preparación a FastAPI
+        $responsePreparacion = Http::post("{$this->baseUrl}/preparacion", $preparacion);
+        $dataPreparacion = $responsePreparacion->json();
+        $preparacion_id = $dataPreparacion['id'] ?? null;
+
+        if (!$preparacion_id) {
+            return response()->json([
+                'error' => 'Error en preparación',
+                'details' => $dataPreparacion
+            ], 500);
+        }
+
+        // 🔹 Enviar el egresado a FastAPI con el `preparacion_id`
+        $egresado = [
+            'nombres' => $data['nombres'],
+            'ap_paterno' => $data['ap_paterno'],
+            'ap_materno' => $data['ap_materno'],
+            'curp' => $data['curp'],
+            'genero' => $data['genero'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
+            'nacionalidad' => $data['nacionalidad'],
+            'lugar_origen' => $data['lugar_origen'],
+            'matricula' => (string) $data['matricula'],
+            'preparacion_id' => $preparacion_id,
+            'habilitado' => 1,
+        ];
+
+        $response = Http::post("{$this->baseUrl}/egresados", $egresado);
+       // dd($response->json()); 
+
+        if (!$response->successful()) {
+            return response()->json([
+                'error' => 'Error al crear el egresado',
+                'details' => $response->json()
+            ], $response->status());
+        }
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Excepción en Laravel',
+            'details' => $e->getMessage()
+        ], 500);
+    }
+}
+
 }

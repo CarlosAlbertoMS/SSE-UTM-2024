@@ -76,3 +76,5 @@ Route::get('/administrador-egresados/tips', function () {
 Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.store');
 
 Route::post('/egresados',[EgresadosController::class, 'crearEgresado'])->name('egresados.crearEgresado');
+
+Route::post('/cargar-egresados', [EgresadosController::class, 'cargarEgresadosExcel'])->name('egresados.cargarEgresadosExcel');
