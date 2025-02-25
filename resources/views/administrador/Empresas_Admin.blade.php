@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Empresas_Admin.css') }}">
     <script src="{{ asset('js/ocultar.js') }}"></script>
+    <script src="{{ asset('js/verDetalles.js') }}"></script>
 
 </head>
 
@@ -32,7 +33,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="">
+                    <a href="#" id="btn-ver-detalles">
                         <img src="../assets/icons/ver_oferta.svg" class="item-r">
                         <span class="nofijos">Ver Detalles</span>
                     </a>
@@ -61,7 +62,9 @@
                 {{ $error }}
             </div>
             @endif
-
+            <div class="error-message" id="select-row-message">
+                ⚠️ Por favor, seleccione una fila primero.
+            </div>
             <table>
                 <thead>
                     <tr id="tabla-inicio">
@@ -102,7 +105,9 @@
                         <th>Total de empresas</th>
                         <th>{{ $totalEgresados }}</th>
                         <th></th>
-                        <th></th>
+                        <th>
+                            <div id="mostrar-id" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></div>
+                        </th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -117,5 +122,45 @@
     @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->
 
 </body>
+<style>
+    #shape {
+        width: 24px;
+        height: 16px;
+        background-color: #6d000e;
+        box-sizing: border-box;
+    }
+
+    /* Mensaje de error */
+    .error-message {
+        color: #ff0000;
+        padding: 10px;
+        margin: 10px 0;
+        display: none;
+        /* Oculto inicialmente */
+    }
+
+    /* Fila seleccionada */
+    tr.selected {
+        background-color: var(--lista-hover);
+        cursor: pointer;
+    }
+
+    /* Botón "Ver Detalles" desactivado */
+    #btn-ver-detalles .nofijos {
+        color: var(--txt-navbar-nofijo);
+        /* Gris */
+        pointer-events: none;
+        /* Deshabilita clic */
+    }
+
+    /* Botón "Ver Detalles" activado */
+    #btn-ver-detalles.active .nofijos  {
+        color: #ff0000 !important;
+        /* Rojo */
+        pointer-events: auto;
+        /* Habilita clic */
+    }
+</style>
+
 
 </html>

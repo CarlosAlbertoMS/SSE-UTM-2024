@@ -196,9 +196,11 @@ footer img{
 .form-navbar .fijos{
     color: var(--txt-navbar-fijo);
 }
+
 .form-navbar .nofijos{
     color: var(--txt-navbar-nofijo);
 }
+
 .texto-busqueda{
     width: 250px;
     height: 32px;
