@@ -4,27 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casos de Éxito</title>
     <link rel="stylesheet" href="{{asset('css/Egresados/CasosDeExito-Egresados.css')}}">
+    <link rel="stylesheet" href="{{asset('css/Egresados/Eventos.css')}}">
+
+    <title>Casos de Éxito</title>
 </head>
 
+@include('layouts.egresados.header')
+
 <body>
-    @include('layouts.egresados.header')
-
     <section id="contenido">
-
-        {{-- <section id="contenido--busqueda"> --}}
-
-            {{-- <div class="buscador">
-                <input type="search" placeholder="Buscar..."/>
-                <button type="button">
-                <img src="../assets/icons/Buscar_B.png">
-            </button>
-            </div>
-            <div id="linea"></div> --}}
+		<div class="main--container--1">
             <x-buscador></x-buscador>
+        </div>
 
-        {{-- </section> --}}
+        <hr style="max-width: 986px; margin: 10px auto;">
 
         <section id="contenido--informacion">
 

@@ -48,7 +48,9 @@ $endPage = min($totalPages, $startPage + 2);
                 </div>
                 <div class="main--order--info">
                     <label>Ordenar por:</label>
-       
+                    <select>
+                        <option>no se</option>
+                    </select>
                 </div>
             </div>
         </div>

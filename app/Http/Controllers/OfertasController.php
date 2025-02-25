@@ -26,23 +26,9 @@ class OfertasController extends Controller
             }
             unset($oferta); // Evita problemas con referencias posteriores
 
-            // Paginación manual
-            $paginaActual = request('page', 1);
-
-            $porPagina = 5;
-            $totalOfertas = count($ofertas);
-
-            $items = array_slice($ofertas, ($paginaActual - 1) * $porPagina, $porPagina);
-
-            $paginador = new LengthAwarePaginator(
-                $items,            // Elementos de la página actual
-                $totalOfertas,     // Total de elementos
-                $porPagina,        // Elementos por página
-                $paginaActual,
-                ['path' => request()->url()] // URL base para los links de paginación
-            );
-
-            return view('Egresados.Ofertas_laborales', compact('ofertas', 'totalOfertas', 'paginador'));
+          
+         
+            return view('Egresados.Ofertas_laborales', compact('ofertas'));
         } catch (RequestException $e) {
             return back()->withErrors('No se pudieron obtener las ofertas. Inténtalo de nuevo más tarde.');
         } catch (\Exception $e) {

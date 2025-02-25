@@ -22,37 +22,63 @@ class EgresadosController extends Controller
     {
         $egresados = collect(); // Inicializamos como colección vacía en caso de error.
         $error = null;
-
+    
         try {
             $url = env('API_URL') . "egresados";
             $response = Http::get($url);
             $response->throw();
             $data = $response->json();
-
+    
             if (!is_array($data)) {
                 throw new \Exception('La API no devolvió un array válido.');
             }
-
-            // Obtener totales
-            $totalEgresados = count($data);
-            $noContestado = collect($data)->where('estado', 'No ha contestado')->count();
-            $parcialmente = collect($data)->where('estado', 'Contestado parcialmente')->count();
-            $completamente = collect($data)->where('estado', 'Contestado completamente')->count();
-
+    
+            // Convertir los datos a colección para trabajar cómodamente
+            $data = collect($data);
+    
+            // Filtrar por búsqueda (por nombre completo)
+            $search = request()->query('search', '');
+            if (!empty($search)) {
+                $data = $data->filter(function ($egresado) use ($search) {
+                    // Si los egresados vienen como array, usa la notación de corchetes
+                    // Si son objetos, usa ->; aquí asumiremos array
+                    $nombreCompleto = trim(
+                        ($egresado['ap_paterno'] ?? '') . ' ' .
+                        ($egresado['ap_materno'] ?? '') . ' ' .
+                        ($egresado['nombres'] ?? '')
+                    );
+                    return stripos($nombreCompleto, $search) !== false;
+                })->values(); // values() para reindexar la colección
+            }
+    
+            // Obtener totales de egresados (filtrados)
+            $totalEgresados = $data->count();
+            $noContestado = $data->where('estado', 'No ha contestado')->count();
+            $parcialmente = $data->where('estado', 'Contestado parcialmente')->count();
+            $completamente = $data->where('estado', 'Contestado completamente')->count();
+    
             // Paginación manual
             $currentPage = max(1, (int) request()->get('page', 1));
-            $perPage = 10; // Ahora estamos paginando en bloques de 5
-            $paginatedData = collect($data)->chunk($perPage);
-            $egresados = $paginatedData->get($currentPage - 1, collect());
-
-            // Extraer solo las matrículas de los egresados paginados
+            $perPage = 10; // Número de egresados por página
+            // Obtener los ítems para la página actual
+            $currentItems = $data->forPage($currentPage, $perPage);
+    
+            $egresados = new \Illuminate\Pagination\LengthAwarePaginator(
+                $currentItems,
+                $totalEgresados,
+                $perPage,
+                $currentPage,
+                [
+                    'path'  => request()->url(),
+                    'query' => request()->query(),
+                ]
+            );
+    
+            // Si necesitas obtener carrerasGeneraciones para cada egresado de la página:
             $matriculas = $egresados->pluck('matricula');
-
-            // Obtener la carrera y generación de cada egresado
             $carrerasGeneraciones = [];
             foreach ($matriculas as $matricula) {
                 $carreraUrl = env('API_URL') . "egresado/carrera-generacion/{$matricula}";
-
                 try {
                     $carreraResponse = Http::get($carreraUrl);
                     $carreraResponse->throw();
@@ -62,17 +88,6 @@ class EgresadosController extends Controller
                     $carrerasGeneraciones[$matricula] = ['carrera' => null, 'generacion' => null];
                 }
             }
-
-            // Imprimir en la terminal
-            //dump($carrerasGeneraciones);
-
-            $egresados = new \Illuminate\Pagination\LengthAwarePaginator(
-                $egresados,
-                $totalEgresados,
-                $perPage,
-                $currentPage,
-                ['path' => request()->url(), 'query' => request()->query()]
-            );
         } catch (RequestException $e) {
             Log::error('Error al obtener egresados: ' . $e->getMessage());
             $error = 'No se pudieron obtener los datos de los egresados. Inténtalo más tarde.';
@@ -80,10 +95,10 @@ class EgresadosController extends Controller
             Log::error('Error inesperado: ' . $e->getMessage());
             $error = 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
         }
-
+    
         return view('administrador.Egresados_Admin', compact('egresados', 'error', 'totalEgresados', 'noContestado', 'parcialmente', 'completamente', 'carrerasGeneraciones'));
     }
-
+    
 
 
 
