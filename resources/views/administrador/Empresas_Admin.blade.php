@@ -39,7 +39,7 @@
                     </a>
                 </div>
                 <div class="submenulastchild">
-                    <a href="">
+                    <a href="#" id="btn-eliminar">
                         <img src="../assets/icons/eliminar_oferta.svg" class="item-r">
                         <span class="nofijos">Eliminar</span>
                     </a>
@@ -106,7 +106,6 @@
                         <th>{{ $totalEgresados }}</th>
                         <th></th>
                         <th>
-                            <div id="mostrar-id" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></div>
                         </th>
                         <th></th>
                         <th></th>
@@ -142,7 +141,6 @@
     /* Fila seleccionada */
     tr.selected {
         background-color: var(--lista-hover);
-        cursor: pointer;
     }
 
     /* Botón "Ver Detalles" desactivado */
@@ -154,7 +152,13 @@
     }
 
     /* Botón "Ver Detalles" activado */
-    #btn-ver-detalles.active .nofijos  {
+    #btn-ver-detalles.active .nofijos {
+        color: #ff0000 !important;
+        /* Rojo */
+        pointer-events: auto;
+        /* Habilita clic */
+    }
+    #btn-eliminar.active .nofijos {
         color: #ff0000 !important;
         /* Rojo */
         pointer-events: auto;
