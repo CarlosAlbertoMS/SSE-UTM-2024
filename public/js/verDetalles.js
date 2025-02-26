@@ -1,47 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const filas = document.querySelectorAll('tbody tr');
-    const btnVerDetalles = document.getElementById('btn-ver-detalles');
-    const errorMessage = document.getElementById('select-row-message');
-    const mostrarId = document.getElementById('mostrar-id'); // Referencia al div
-    const tabla = document.querySelector('table');
-    let filaSeleccionada = null;
+document.addEventListener("DOMContentLoaded", function () {
+    const filas = document.querySelectorAll("tbody tr");
+    const btnVerDetalles = document.getElementById("btn-ver-detalles");
+    const btnEditar = document.getElementById("btn-editar");
 
-    // Seleccionar fila al hacer clic
-    filas.forEach(fila => {
-        fila.addEventListener('click', () => {
-            filas.forEach(f => f.classList.remove('selected'));
-            fila.classList.add('selected');
-            filaSeleccionada = fila;
-            btnVerDetalles.classList.add('active');
-            errorMessage.style.display = 'none';
+    let idSeleccionado = null; // Variable para almacenar la matrícula seleccionada
 
-            // Extraer el ID y mostrarlo en pantalla
-            const id = filaSeleccionada.cells[0].textContent.trim();
-            mostrarId.textContent = `ID seleccionado: ${id}`;
+    // Evento para seleccionar una fila
+    filas.forEach((fila) => {
+        fila.addEventListener("click", function () {
+            filas.forEach(f => f.classList.remove("selected")); // Quitar selección previa
+            fila.classList.add("selected"); // Agregar selección a la actual
+            idSeleccionado = fila.cells[0].textContent.trim(); // Obtener matrícula (columna 0)
         });
     });
 
-    // Deseleccionar al hacer clic fuera de la tabla
-    document.addEventListener('click', (e) => {
-        if (!tabla.contains(e.target) && !e.target.closest('#btn-ver-detalles')) {
-            filas.forEach(f => f.classList.remove('selected'));
-            btnVerDetalles.classList.remove('active');
-            filaSeleccionada = null;
-            errorMessage.style.display = 'none';
-            mostrarId.textContent = ""; // Limpiar el mensaje
+    // Evento para el botón "Ver Detalles"
+    btnVerDetalles.addEventListener("click", function (e) {
+        if (idSeleccionado) {
+            window.location.href = `/egresados/${idSeleccionado}/ver`;
+        } else {
+            e.preventDefault();
+            alert("⚠️ Por favor, selecciona un egresado primero.");
         }
     });
 
-    // Extraer solo el ID al hacer clic en "Ver Detalles"
-    btnVerDetalles.addEventListener('click', (e) => {
-        if (!filaSeleccionada) {
-            e.preventDefault();
-            errorMessage.style.display = 'block';
-            setTimeout(() => errorMessage.style.display = 'none', 3000);
+    // Evento para el botón "Editar"
+    btnEditar.addEventListener("click", function (e) {
+        if (idSeleccionado) {
+            window.location.href = `/egresados/${idSeleccionado}/editar`;
         } else {
-            const id = filaSeleccionada.cells[0].textContent.trim();
-            mostrarId.textContent = `ID seleccionado: ${id}`;
-            window.location.href = `/detalles-empresa/${id}`;
+            e.preventDefault();
+            alert("⚠️ Por favor, selecciona un egresado primero.");
         }
     });
 });

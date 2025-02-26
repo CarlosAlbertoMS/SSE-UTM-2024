@@ -42,7 +42,8 @@
                         <span class="nofijos">Ver Detalles</span>
                     </a>
                 </div>
-                <div><a href="">
+                <div>
+                    <a href="#" id="btn-editar">
                         <img src="../assets/icons/editar_oferta.svg" class="item-r">
                         <span class="nofijos">Editar</span>
                     </a>
@@ -55,8 +56,10 @@
             </div>
             <!--Inicio del buscador de la pagina-->
             <form method="GET">
-                <input class="texto-busqueda" type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
-                <button class="btn-btn-warning" type="submit"><img src="../assets/icons/Buscar_B.PNG" alt="Buscar"></button>
+                <input class="texto-busqueda" type="text" id="search" name="search" placeholder="Buscar..."
+                    value="{{ request()->query('search', '') }}">
+                <button class="btn-btn-warning" type="submit"><img src="../assets/icons/Buscar_B.PNG"
+                        alt="Buscar"></button>
             </form>
 
             <!--fin del buscador"-->
@@ -68,9 +71,9 @@
         <center>
             <!--Inicio de la tabla-->
             @if ($error)
-            <div class="error-message">
-                {{ $error }}
-            </div>
+                <div class="error-message">
+                    {{ $error }}
+                </div>
             @endif
             <div class="error-message" id="select-row-message">
                 ⚠️ Por favor, seleccione una fila primero.
@@ -89,22 +92,24 @@
                 <tbody>
 
                     @foreach ($egresados as $egresado)
-                    @php
+                                        @php
 
-                    $matricula = $egresado['matricula'] ?? null;
-                    // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
-                    $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
-                    @endphp
+                                            $matricula = $egresado['matricula'] ?? null;
+                                            // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
+                                            $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
+                                        @endphp
 
-                    @if ($matricula && $carreraGeneracion) <!-- Solo muestra la fila si existe matrícula y carreraGeneracion -->
-                    <tr>
-                        <td>{{ $egresado['matricula'] }}</td>
-                        <td>{{ ($egresado['ap_paterno'] ?? 'N/A') . ' ' . ($egresado['ap_materno'] ?? 'N/A') . '  ' . ($egresado['nombres'] ?? 'N/A') }}</td>
-                        <td>{{ $carreraGeneracion['carrera'] ?? 'N/A' }}</td>
-                        <td>{{ $carreraGeneracion['generacion'] ?? 'N/A' }}</td>
-                        <td>{{ $egresado['estado'] ?? 'N/A' }}</td>
-                    </tr>
-                    @endif
+                                        @if ($matricula && $carreraGeneracion)
+                                            <!-- Solo muestra la fila si existe matrícula y carreraGeneracion -->
+                                            <tr>
+                                                <td>{{ $egresado['matricula'] }}</td>
+                                                <td>{{ ($egresado['ap_paterno'] ?? 'N/A') . ' ' . ($egresado['ap_materno'] ?? 'N/A') . '  ' . ($egresado['nombres'] ?? 'N/A') }}
+                                                </td>
+                                                <td>{{ $carreraGeneracion['carrera'] ?? 'N/A' }}</td>
+                                                <td>{{ $carreraGeneracion['generacion'] ?? 'N/A' }}</td>
+                                                <td>{{ $egresado['estado'] ?? 'N/A' }}</td>
+                                            </tr>
+                                        @endif
 
                     @endforeach
 

@@ -78,3 +78,9 @@ Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.
 Route::post('/egresados',[EgresadosController::class, 'crearEgresado'])->name('egresados.crearEgresado');
 
 Route::post('/cargar-egresados', [EgresadosController::class, 'cargarEgresadosExcel'])->name('egresados.cargarEgresadosExcel');
+
+Route::get('/egresados/{id}/editar', [EgresadosController::class, 'editar'])->name('egresados.editar');
+
+Route::put('/egresados/{matricula}/actualizar', [EgresadosController::class, 'actualizarEgresado'])->name('egresados.actualizarEgresado');
+
+Route::get('/egresados/{id}/ver', [EgresadosController::class, 'ver'])->name('egresados.ver');

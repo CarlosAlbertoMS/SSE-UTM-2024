@@ -48,12 +48,14 @@
             </ul>
             <div class="contenedor-botones">
                 {{-- <a href="Egresados_Admin.html"> --}}
-                   
-                    <button type="submit" value="Cancelar" class="btn-cancelar">Cancelar</button>
+                <a href="{{ route('administrador') }}">
+                            <input type="button" value="Cancelar" class="btn-cancelar">
+                        </a>
                {{--  </a> --}}
                 {{--  <a href="#mensaje-archivo-subido">--}}
-                    
+                <a href="{{ route('administrador') }}">
                     <button type="submit" value="Subir" class="btn-subir">Subir</button>
+                    </a>
                 {{--  </a>--}}
             </div>
         </form>
