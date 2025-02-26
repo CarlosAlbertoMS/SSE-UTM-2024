@@ -73,9 +73,7 @@ Route::get('/administrador-egresados/tips', function () {
 
 Route::post('/salarios', [TabuladorController::class, 'store'])->name('salarios.store');
 
-<<<<<<< Updated upstream
 Route::get('/salarios', [TabuladorController::class, 'index'])->name('salarios.index');
-=======
 Route::post('/egresados',[EgresadosController::class, 'crearEgresado'])->name('egresados.crearEgresado');
 
 Route::post('/cargar-egresados', [EgresadosController::class, 'cargarEgresadosExcel'])->name('egresados.cargarEgresadosExcel');
@@ -85,4 +83,3 @@ Route::get('/egresados/{id}/editar', [EgresadosController::class, 'editar'])->na
 Route::put('/egresados/{matricula}/actualizar', [EgresadosController::class, 'actualizarEgresado'])->name('egresados.actualizarEgresado');
 
 Route::get('/egresados/{id}/ver', [EgresadosController::class, 'ver'])->name('egresados.ver');
->>>>>>> Stashed changes

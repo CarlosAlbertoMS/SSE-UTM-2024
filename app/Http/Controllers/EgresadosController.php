@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Client\RequestException;
-<<<<<<< Updated upstream
-=======
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\EgresadoImport;
 use App\Models\Egresado;
->>>>>>> Stashed changes
-
+use App\Models\Carrera;
 class EgresadosController extends Controller
 {
 
@@ -193,8 +190,6 @@ class EgresadosController extends Controller
             'details' => $response->json()
         ], $response->status());
     }
-<<<<<<< Updated upstream
-=======
     // Para depuración
     
     public function cargarEgresadosExcel(Request $request)
@@ -339,5 +334,4 @@ public function ver($matricula){
 
 
 
->>>>>>> Stashed changes
 }
