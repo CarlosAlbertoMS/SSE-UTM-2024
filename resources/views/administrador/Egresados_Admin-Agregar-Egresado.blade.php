@@ -130,9 +130,9 @@
                         <input type="text" name="promedio" id="" placeholder="Promedio">
                     </div>
                     <div class="contenedor__input-label contenedor-botones">
-                        <a href="Egresados_Admin.html">
-                            <input type="submit" value="Cancelar" class="btn-cancelar" id="btn-cancelar">
-                        </a>
+                    <a href="{{ route('administrador') }}">
+                        <input type="button" value="Cancelar" class="btn-cancelar">
+                    </a>
                         
                         <a href="#mensaje-egresado-agregado">
                             ***

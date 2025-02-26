@@ -41,6 +41,7 @@
                 </li>
             </ul>
             <div class="contenedor-botones">
+<<<<<<< Updated upstream
                 <a href="Egresados_Admin.html">
                     ***
                     <input type="submit" value="Cancelar" class="btn-cancelar">
@@ -49,6 +50,18 @@
                     ***
                     <input type="submit" value="Subir" class="btn-subir">
                 </a>
+=======
+                {{-- <a href="Egresados_Admin.html"> --}}
+                <a href="{{ route('administrador') }}">
+                            <input type="button" value="Cancelar" class="btn-cancelar">
+                        </a>
+               {{--  </a> --}}
+                {{--  <a href="#mensaje-archivo-subido">--}}
+                <a href="{{ route('administrador') }}">
+                    <button type="submit" value="Subir" class="btn-subir">Subir</button>
+                    </a>
+                {{--  </a>--}}
+>>>>>>> Stashed changes
             </div>
         </form>
     </section>

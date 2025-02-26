@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Client\RequestException;
+<<<<<<< Updated upstream
+=======
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\EgresadoImport;
+use App\Models\Egresado;
+>>>>>>> Stashed changes
 
 class EgresadosController extends Controller
 {
@@ -138,17 +144,38 @@ class EgresadosController extends Controller
      */
     public function actualizarEgresado(Request $request, $matricula)
     {
+       // dd($request->all());
+
+        // Primero, actualiza
+        //  los datos del egresado
         $response = Http::put("{$this->baseUrl}/egresados/{$matricula}", $request->all());
-
+    
         if ($response->successful()) {
-            return response()->json($response->json(), 200);
+            // Si el preparacion_id es parte de los datos, actualiza la preparación también
+            if ($request->has('preparacion_id')) {
+                $id=$request->input('preparacion_id');
+                $preparacionData = $request->only([ 'carrera','generacion','fecha_inicio', 'fecha_fin', 'promedio', 'forma_titulacion']);
+                $preparacionResponse = Http::put("{$this->baseUrl}/preparacion/{$id}", $preparacionData);
+    
+                if (!$preparacionResponse->successful()) {
+                    // Si la actualización de la preparación falla, redirige con error
+                    return redirect()->route('administrador') // La ruta que manejas para la lista de egresados
+                        ->with('error', 'La preparación no pudo ser actualizada');
+                }
+            }
+    
+            // Si todo fue exitoso, redirige con mensaje de éxito
+            return redirect()->route('administrador') // La ruta que manejas para la lista de egresados
+                ->with('success', 'Egresado y preparación actualizados correctamente');
         }
-
+    
+        // Si la actualización del egresado falla, retorna un mensaje de error
         return response()->json([
             'error' => 'No se pudo actualizar el egresado',
             'details' => $response->json()
         ], $response->status());
     }
+    
 
     /**
      * Eliminar un egresado por su matrícula.
@@ -166,4 +193,151 @@ class EgresadosController extends Controller
             'details' => $response->json()
         ], $response->status());
     }
+<<<<<<< Updated upstream
+=======
+    // Para depuración
+    
+    public function cargarEgresadosExcel(Request $request)
+{
+   // dd($request->all());
+    $request->validate([
+        'excel' => 'required|mimes:xlsx,xls'
+    ]);
+
+    try {
+        $excel = $request->file('excel');
+        $fileName = $excel->getClientOriginalName(); // Obtener el nombre del archivo
+
+        $egresados = Excel::toCollection(new EgresadoImport, $excel)->first();
+
+        if ($egresados->isEmpty()) {
+            
+                session()->flash('error', "El archivo '$fileName' no contiene datos.");
+                session()->flash('fileName', $fileName);
+                return redirect()->route('administrador');
+
+                // Pasar el nombre del archivo a la vista
+            
+        }
+
+        foreach ($egresados as $row) {
+            $this->crearEgresado2($row);
+        }
+
+        session()->flash('fileName', $fileName);
+
+
+        return redirect()->route('administrador')->with([
+            'success' => "El archivo '$fileName' se cargó correctamente.",
+            'fileName' => $fileName // Pasar el nombre del archivo a la vista
+        ]);
+
+    } catch (\Exception $e) {
+        return redirect()->route('administrador')->with([
+            'error' => "Error al procesar el archivo '$fileName': " . $e->getMessage(),
+            'fileName' => $fileName // Pasar el nombre del archivo a la vista
+        ]);
+    }
+}
+     
+
+
+    public function crearEgresado2($data)
+{
+
+    try {
+        // 🔹 Preparación de datos para FastAPI
+        $preparacion = [
+            'generacion' => (string) $data['generacion'],  // Asegura que sea string
+            'carrera' => (string) $data['carrera'],        
+            'fecha_inicio' => (string) $data['fecha_inicio'],  
+            'fecha_fin' => (string) $data['fecha_fin'],
+            'promedio' => (string) number_format((float) $data['promedio'], 2, '.', ''), // Formatea y convierte a string
+            'forma_titulacion' => (string) $data['forma_titulacion'],
+            'fecha_titulo' => (string) $data['fecha_titulo'],
+        ];
+        // 🔹 Enviar la preparación a FastAPI
+        $responsePreparacion = Http::post("{$this->baseUrl}/preparacion", $preparacion);
+        $dataPreparacion = $responsePreparacion->json();
+        $preparacion_id = $dataPreparacion['id'] ?? null;
+
+        if (!$preparacion_id) {
+            return response()->json([
+                'error' => 'Error en preparación',
+                'details' => $dataPreparacion
+            ], 500);
+        }
+
+        // 🔹 Enviar el egresado a FastAPI con el `preparacion_id`
+        $egresado = [
+            'nombres' => $data['nombres'],
+            'ap_paterno' => $data['ap_paterno'],
+            'ap_materno' => $data['ap_materno'],
+            'curp' => $data['curp'],
+            'genero' => $data['genero'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
+            'nacionalidad' => $data['nacionalidad'],
+            'lugar_origen' => $data['lugar_origen'],
+            'matricula' => (string) $data['matricula'],
+            'preparacion_id' => $preparacion_id,
+            'habilitado' => 1,
+        ];
+
+        $response = Http::post("{$this->baseUrl}/egresados", $egresado);
+       // dd($response->json()); 
+
+        if (!$response->successful()) {
+            return response()->json([
+                'error' => 'Error al crear el egresado',
+                'details' => $response->json()
+            ], $response->status());
+        }
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Excepción en Laravel',
+            'details' => $e->getMessage()
+        ], 500);
+    }
+}
+
+public function editar($matricula)
+{
+    // Petición a FastAPI para obtener el egresado
+    $response = Http::get("{$this->baseUrl}/egresados/$matricula");
+
+    if ($response->failed()) {
+        return redirect()->back()->with('error', 'No se pudo obtener la información del egresado');
+    }
+
+    $egresado = $response->json();  // Convertir la respuesta en un array
+
+    // Petición para obtener la lista de carreras desde FastAPI (si es necesario)
+    $carreras = Carrera::obtenerCarreras();
+
+    //$egresado['preparacion_id'] = $egresado['preparacion_id'] ?? null;
+
+    $response2 = Http::get("{$this->baseUrl}/preparacion/{$egresado['preparacion_id']}");
+    $preparacion = $response2->json();
+    
+    // Retornar la vista con los datos obtenidos desde FastAPI
+    return view('administrador.Editar_Egresado', compact('egresado', 'carreras', 'preparacion'));
+}
+
+public function ver($matricula){
+    $response = Http::get("{$this->baseUrl}/egresados/$matricula");    
+    $egresado = $response->json(); 
+    $carreras = Carrera::obtenerCarreras();
+    $response2 = Http::get("{$this->baseUrl}/preparacion/{$egresado['preparacion_id']}");
+    $preparacion = $response2->json();
+    return view('administrador.Ver_Egresados', compact('egresado', 'carreras', 'preparacion'));
+
+}
+
+
+
+
+
+
+>>>>>>> Stashed changes
 }
