@@ -43,6 +43,7 @@ class EgresadosController extends Controller
                     $nombreCompleto = trim(
                         ($egresado['ap_paterno'] ?? '') . ' ' .
                         ($egresado['ap_materno'] ?? '') . ' ' .
+                         ($egresado['matricula'] ?? '') . ' ' .
                         ($egresado['nombres'] ?? '')
                     );
                     return stripos($nombreCompleto, $search) !== false;

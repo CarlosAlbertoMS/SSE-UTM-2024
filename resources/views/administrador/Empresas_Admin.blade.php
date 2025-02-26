@@ -46,11 +46,9 @@
             </div>
 
             <!-- Inicio del buscador de la página -->
-            <form>
-                <input class="texto-busqueda" type="text" placeholder="Buscar...">
-                <button class="btn-btn-warning" type="submit">
-                    <img src="../assets/icons/Buscar_B.PNG">
-                </button>
+            <form method="GET">
+                    <input  class="texto-busqueda" type="text" id="search" name="search" placeholder="Buscar..." value="{{ request()->query('search', '') }}">
+                    <button class="btn-btn-warning" type="submit"><img src="../assets/icons/Buscar_B.PNG" alt="Buscar"></button>
             </form>
             <!-- Fin del buscador -->
         </div>
@@ -100,7 +98,7 @@
                 <tfoot>
                     <tr id="tabla-fin">
                         <th>Total de empresas</th>
-                        <th>{{ $totalEgresados }}</th>
+                        <th>{{ $totalEmpresas }}</th>
                         <th></th>
                         <th></th>
                         <th></th>

@@ -90,33 +90,48 @@ class OfertasController extends Controller
     {
         try {
             $url = env('API_URL') . "ofertas";
-
             $response = Http::get($url);
-            $response->throw(); // Lanza una excepción si la API no responde correctamente
-
+            $response->throw(); // Lanza excepción si hay error
             $ofertas = $response->json();
-
+    
             // Reemplazar el número de la carrera con su nombre
             foreach ($ofertas as &$oferta) {
                 $oferta['carrera'] = Carrera::obtenerNombre($oferta['carrera']);
             }
-            unset($oferta); // Evita problemas con referencias posteriores
-
+            unset($oferta);
+    
+            // Convertir a colección para facilitar el filtrado y la paginación
+            $data = collect($ofertas);
+    
+            // Aplicar filtro por búsqueda (por título del empleo)
+            $search = request()->query('search', '');
+            if (!empty($search)) {
+                $data = $data->filter(function ($oferta) use ($search) {
+                    // En este ejemplo filtramos por el campo "titulo_empleo"
+                    $titulo = trim($oferta['titulo_empleo'] ?? '');
+                    return stripos($titulo, $search) !== false;
+                })->values(); // Reindexamos la colección
+            }
+    
+            // Obtener el total de ofertas filtradas
+            $totalOfertas = $data->count();
+    
             // Paginación manual
             $paginaActual = request('page', 1);
             $porPagina = 5;
-            $totalOfertas = count($ofertas);
-
-            $items = array_slice($ofertas, ($paginaActual - 1) * $porPagina, $porPagina);
-
-            $paginador = new LengthAwarePaginator(
-                $items,            // Elementos de la página actual
-                $totalOfertas,     // Total de elementos
-                $porPagina,        // Elementos por página
+            $currentItems = $data->forPage($paginaActual, $porPagina);
+    
+            $paginador = new \Illuminate\Pagination\LengthAwarePaginator(
+                $currentItems,
+                $totalOfertas,
+                $porPagina,
                 $paginaActual,
-                ['path' => request()->url()] // URL base para los links de paginación
+                [
+                    'path'  => request()->url(),
+                    'query' => request()->query(), // Para mantener los parámetros en los links
+                ]
             );
-
+    
             return view('administrador.Ofertas_Admin', compact('ofertas', 'totalOfertas', 'paginador'));
         } catch (RequestException $e) {
             return back()->withErrors('No se pudieron obtener las ofertas. Inténtalo de nuevo más tarde.');
@@ -124,4 +139,5 @@ class OfertasController extends Controller
             return back()->withErrors('Ocurrió un error inesperado. Por favor, inténtalo más tarde.');
         }
     }
+    
 }
