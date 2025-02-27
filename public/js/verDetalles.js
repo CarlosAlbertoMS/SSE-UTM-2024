@@ -1,67 +1,109 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const filas = document.querySelectorAll('tbody tr');
-    const btnVerDetalles = document.getElementById('btn-ver-detalles');
-    const btnEliminar = document.getElementById('btn-eliminar');
-    const errorMessage = document.getElementById('select-row-message');
-    const mostrarId = document.getElementById('mostrar-id');
-    const tabla = document.querySelector('table');
+document.addEventListener("DOMContentLoaded", function () {
+    const filas = document.querySelectorAll("tbody tr");
+    const btnVerDetalles = document.getElementById("btn-ver-detalles");
+    const btnEditar = document.getElementById("btn-editar");
+    const btnEliminar = document.getElementById("btn-eliminar");
+    const errorMessage = document.getElementById("select-row-message");
+    const mostrarId = document.getElementById("mostrar-id");
+    const tabla = document.querySelector("table");
+
+    let idSeleccionado = null;
     let filaSeleccionada = null;
 
-    // Seleccionar fila al hacer clic
-    filas.forEach(fila => {
-        fila.addEventListener('click', () => {
-            filas.forEach(f => f.classList.remove('selected'));
-            fila.classList.add('selected');
-            filaSeleccionada = fila;
-            btnVerDetalles.classList.add('active');
-            btnEliminar.classList.add('active');
-            errorMessage.style.display = 'none';
 
-            const id = filaSeleccionada.cells[0].textContent.trim();
-            mostrarId.textContent = `ID seleccionado: ${id}`;
+    const rutaActual = window.location.pathname;
+    console.log("Ruta actual:", rutaActual);
+
+    function obtenerRutaVer() {
+        if (!idSeleccionado) return null;
+        if (rutaActual.includes("/egresados")) return `/egresados/${idSeleccionado}/ver`;
+        if (rutaActual.includes("/empresas")) return `/empresas/${idSeleccionado}/ver`;
+        if (rutaActual.includes("/ofertas")) return `/ofertas/${idSeleccionado}/ver`;
+        if (rutaActual.includes("/salarios")) return `/salarios/${idSeleccionado}/ver`;
+        return null;
+    }
+
+
+    // Función para actualizar estado de los botones
+    function actualizarBotones() {
+        const activo = !!idSeleccionado;
+        btnVerDetalles.classList.toggle("active", activo);
+        btnEditar.classList.toggle("active", activo);
+        btnEliminar.classList.toggle("active", activo);
+
+        btnVerDetalles.disabled = !activo;
+        btnEditar.disabled = !activo;
+        btnEliminar.disabled = !activo;
+    }
+
+    // Evento para seleccionar una fila
+    filas.forEach((fila) => {
+        fila.addEventListener("click", function () {
+            filas.forEach(f => f.classList.remove("selected"));
+            fila.classList.add("selected");
+            filaSeleccionada = fila;
+            idSeleccionado = fila.cells[0].textContent.trim();
+            mostrarId.textContent = `ID seleccionado: ${idSeleccionado}`;
+
+            actualizarBotones();
+            errorMessage.style.display = "none"; // Oculta el mensaje si había un error
         });
     });
 
-    // CORRECCIÓN: Modificar esta condición
-    document.addEventListener('click', (e) => {
-        const clickEnBotones = e.target.closest('#btn-ver-detalles') || e.target.closest('#btn-eliminar');
+    // Deseleccionar fila si se hace clic fuera de la tabla o en botones
+    document.addEventListener("click", (e) => {
+        const clickEnBotones = e.target.closest("#btn-ver-detalles") || e.target.closest("#btn-editar") || e.target.closest("#btn-eliminar");
         if (!tabla.contains(e.target) && !clickEnBotones) {
-            filas.forEach(f => f.classList.remove('selected'));
-            btnVerDetalles.classList.remove('active');
-            btnEliminar.classList.remove('active');
+            filas.forEach(f => f.classList.remove("selected"));
             filaSeleccionada = null;
-            errorMessage.style.display = 'none';
+            idSeleccionado = null;
             mostrarId.textContent = "";
+
+            actualizarBotones();
+            errorMessage.style.display = "none";
         }
     });
 
-    // Resto del código sin cambios...
-    btnVerDetalles.addEventListener('click', (e) => {
-        if (!filaSeleccionada) {
+    // Función para mostrar mensaje de error
+    function mostrarMensajeError() {
+        errorMessage.textContent = "⚠️ Seleccione una fila primero";
+        errorMessage.style.display = "block";
+        setTimeout(() => errorMessage.style.display = "none", 1000);
+    }
+
+    // Eventos de los botones
+    btnVerDetalles.addEventListener("click", function (e) {
+        if (!idSeleccionado) {
             e.preventDefault();
-            errorMessage.textContent = "⚠️ Seleccione una fila primero";
-            errorMessage.style.display = 'block';
-            setTimeout(() => errorMessage.style.display = 'none', 3000);
+            mostrarMensajeError();
         } else {
-            const id = filaSeleccionada.cells[0].textContent.trim();
-            window.location.href = `/detalles-empresa/${id}`;
+            const ruta = obtenerRutaVer();
+            if (ruta) {
+                window.location.href = ruta;
+            }
         }
     });
-    
-    btnEliminar.addEventListener('click', (e) => {
+
+    btnEditar.addEventListener("click", function (e) {
+        if (!idSeleccionado) {
+            e.preventDefault();
+            mostrarMensajeError();
+        } else {
+            window.location.href = `/egresados/${idSeleccionado}/editar`;
+        }
+    });
+
+    btnEliminar.addEventListener("click", function (e) {
         e.preventDefault();
-        
-        if (!filaSeleccionada) {
-            errorMessage.textContent = "⚠️ Seleccione una fila primero";
-            errorMessage.style.display = 'block';
-            setTimeout(() => errorMessage.style.display = 'none', 3000);
+        if (!idSeleccionado) {
+            mostrarMensajeError();
             return;
         }
-
-        const id = filaSeleccionada.cells[0].textContent.trim();
-        
-        if (confirm('¿Está seguro de eliminar esta empresa?')) {
-            window.location.href = `empresas/eliminar/${id}`;
+        if (confirm("¿Está seguro de eliminar esta empresa?")) {
+            window.location.href = `/empresas/eliminar/${idSeleccionado}`;
         }
     });
+
+    // Inicialmente, los botones deben estar deshabilitados
+    actualizarBotones();
 });

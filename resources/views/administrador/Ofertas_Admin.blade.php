@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Ofertas_Admin.css') }}">
     <script src="{{ asset('js/ocultar.js') }}"></script>
+    <script src="{{ asset('js/verDetalles.js') }}"></script>
 
 </head>
 

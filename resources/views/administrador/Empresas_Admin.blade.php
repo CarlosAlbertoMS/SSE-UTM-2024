@@ -158,6 +158,7 @@
         pointer-events: auto;
         /* Habilita clic */
     }
+
     #btn-eliminar.active .nofijos {
         color: #ff0000 !important;
         /* Rojo */
@@ -165,6 +166,5 @@
         /* Habilita clic */
     }
 </style>
-
 
 </html>
