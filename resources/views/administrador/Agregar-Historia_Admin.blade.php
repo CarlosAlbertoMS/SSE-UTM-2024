@@ -19,7 +19,8 @@
 
     <!-- Sección principal de contenido -->
     <section id="contenido">
-        <form>
+        <form action="{{ route('historias.crearHistoria') }}" method="POST" enctype="multipart/form-data">
+        @csrf
             <!-- Título de la sección -->
             <div class="divh1">
                 <h1>Crear Historia de Éxito</h1>
@@ -32,7 +33,7 @@
                         <div class="container--fondo">
                             <img src="../assets/img/normal_u764.svg" alt="" /> <!-- Imagen predeterminada -->
                             <div class="file-select" id="src-file1">
-                                <input type="file" name="src-file1" aria-label="Archivo"> <!-- Entrada para cargar archivo -->
+                            <input type="file" name="imagen" id="imagenInput" aria-label="Archivo" accept="image/*">
                             </div>
                         </div>
                         <!-- Botón para editar o cambiar la imagen -->
@@ -51,11 +52,11 @@
                     <div class="linea">
                         <div class="campo">
                             <div><label for="uname">Título</label></div> <!-- Etiqueta para el título -->
-                            <div><input type="text" id="uname" name="name" placeholder="Título de la historia"></div> <!-- Entrada para el título -->
+                            <div><input type="text" id="uname" name="titulo" placeholder="Título de la historia"></div> <!-- Entrada para el título -->
                         </div>
                         <div class="campo">
                             <div><label for="uname">Universidad</label></div> <!-- Etiqueta para la universidad -->
-                            <div><input type="text" id="uname" name="name" placeholder="Universidad.."></div> <!-- Entrada para la universidad -->
+                            <div><input type="text" id="uname" name="universidad" placeholder="Universidad.."></div> <!-- Entrada para la universidad -->
                         </div>
                     </div>
 
@@ -64,16 +65,17 @@
                         <div class="campo">
                             <div><label for="uname">Descripcción del evento</label></div> <!-- Etiqueta para la descripción -->
                             <div>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Descripcción del evento.."></textarea> <!-- Área de texto -->
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" placeholder="Descripcción del evento.."></textarea> <!-- Área de texto -->
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="activo" value="1">
+
 
                     <!-- Botones de acción -->
                     <div class="formbutt">
                         <a href="Historias_Admin.html"><button class="cancelarbtn">Cancelar</button></a> <!-- Botón de cancelar -->
-                        <a href="#popup"><button class="guardarbtn">Guardar</button></a> <!-- Botón de guardar -->
-                    </div>
+                        <input type="submit" value="Guardar" class="btn-guardar" id="btn-guardar">                    </div>
                 </div>
             </div>
         </form>

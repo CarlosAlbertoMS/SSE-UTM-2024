@@ -18,7 +18,7 @@
         <!--Inicio de la segunda barra de navegacion-->
         <div class="form-navbar">
             <div class="submenu">
-                <div><a href="Agregar-Evento_Admin.html">
+                <div><a href="{{ route('administrador_agregar_evento') }}">
                         <img src="../assets/icons/agregar_r.svg" class="item-r">
                         <span class="fijos">Agregar Evento</span>
                     </a>

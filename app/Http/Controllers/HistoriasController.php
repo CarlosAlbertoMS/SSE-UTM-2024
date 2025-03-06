@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class HistoriasController extends Controller
 {
+    private $baseUrl = 'http://localhost:8081';
     public function index()
     {
         $baseUrl = env('API_URL');
@@ -40,4 +41,42 @@ class HistoriasController extends Controller
 
         return view('Egresados.HistoriasExito', compact('historias_size', 'paginador'));
     }
+
+    public function crearHistoria(Request $request)
+    {     // Ahora, preparas los datos para enviar a FastAPI
+        $rutaImagen = null;
+    
+        if ($request->hasFile('imagen')) {
+            // Guarda la imagen en storage/app/public/imagenes
+            $rutaImagen = $request->file('imagen')->store('public/imagenes');
+            
+            // Convierte la ruta a accesible por URL
+            $rutaImagen = str_replace('public/', 'storage/', $rutaImagen);
+        }
+
+        $historia =[
+           'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'activo' => $request->activo,  
+            'imagen_url' => $rutaImagen,
+            'universidad' => $request ->universidad,      
+            
+        ];      
+        
+       
+       
+       // $response = Http::post("{$this->baseUrl}/egresados", $request->all());
+       $response = Http::post("{$this->baseUrl}/historiaexito", $historia);
+
+
+        if ($response->successful()) {
+            return redirect()->route('administrador_Historias_Admin');
+                }
+
+        return response()->json([
+            'error' => 'No se pudo crear la historia',
+            'details' => $response->json()
+        ], $response->status());
+    }
+
 }

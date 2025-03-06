@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TabuladorController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\OfertasController;
+use App\Http\Controllers\HistoriasController;
 use App\Models\Carrera;
 
 Route::get('/administrador-egresados/eventos/agregar_evento', function () {
@@ -84,3 +85,13 @@ Route::get('/egresados/{id}/editar', [EgresadosController::class, 'editar'])->na
 Route::put('/egresados/{matricula}/actualizar', [EgresadosController::class, 'actualizarEgresado'])->name('egresados.actualizarEgresado');
 
 Route::get('/egresados/{id}/ver', [EgresadosController::class, 'ver'])->name('egresados.ver');
+
+Route::get('/administrador-egresados/admin_agregar_evento', function () {
+    return view('administrador.Eventos_Admin');
+})->name('administrador_agregar_evento');
+
+Route::get('/administrador-egresados/admin_agregar_historia', function () {
+    return view('administrador.Agregar-Historia_Admin');
+})->name('administrador.Agregar-Historia_Admin');
+
+Route::post('/administrador-egresados/historias/guardar', [HistoriasController::class, 'crearHistoria'])->name('historias.crearHistoria');
