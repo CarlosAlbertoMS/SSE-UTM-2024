@@ -10,7 +10,7 @@
                 $nombreCorto = mb_strlen($nombre) > 35 ? mb_substr($nombre, 0, 35, 'UTF-8') . '...' : $nombre;
 
                 $descripcion = $evento['descripcion'] ?? 'N/A';
-                   $descripcionCorta = strlen($descripcion) > 100 ? substr($descripcion, 0, 100) . '...' : $descripcion;
+                $descripcionCorta = strlen($descripcion) > 100 ? substr($descripcion, 0, 100) . '...' : $descripcion;
             @endphp
             <div class="card--main--events">
                 <div class="card--main--events-img">

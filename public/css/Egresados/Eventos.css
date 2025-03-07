@@ -86,7 +86,8 @@ body {
 }
 
 .container--main--events {
-  	height: 410px;
+  	/* height: 410px; */
+	height: 90%;
   	display: flex;
   	flex-direction: column;
   	background-color: var(--color-main-events);
@@ -124,7 +125,6 @@ body {
   	margin: 0px 15px;
   	display: flex;
   	flex-direction: column;
-	border: solid peru 5px;
 }
 
 .card--main--events-img {
@@ -133,7 +133,7 @@ body {
   	display: flex;
   	position: relative;
   	border-radius: 5px;
-  	background-image: linear-gradient( 180deg, rgba(255, 255, 255, 0) 0%, #a30014 90%);
+  	/* background-image: linear-gradient( 180deg, rgba(255, 255, 255, 0) 0%, #a30014 90%); */
 }
 
 .card--main--events-img img {
@@ -160,7 +160,7 @@ body {
   	text-align: right;
   	line-height: normal;
   	justify-content: flex-end;
-  	background-color: #a30014;
+	background-color: #a30014;
 }
 
 .card--main--events-img-place p {

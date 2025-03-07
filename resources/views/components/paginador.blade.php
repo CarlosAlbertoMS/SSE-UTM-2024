@@ -5,13 +5,9 @@
         <div class="pagination-buttons">
             @if ($paginador->onFirstPage())
                 <button class="disabled pag-btn-txt" disabled>Primera página</button>
-            @else
-                <button class="pag-btn-txt" onclick="location.href='{{ $paginador->url(1) }}'">Primera página</button>
-            @endif
-
-            @if ($paginador->onFirstPage())
                 <button class="disabled pag-btn-txt" disabled>Anterior</button>
             @else
+                <button class="pag-btn-txt" onclick="location.href='{{ $paginador->url(1) }}'">Primera página</button>
                 <button class="pag-btn-txt" onclick="location.href='{{ $paginador->previousPageUrl() }}'">Anterior</button>
             @endif
 
@@ -32,13 +28,9 @@
 
             @if ($paginador->hasMorePages())
                 <button class="pag-btn-txt" onclick="location.href='{{ $paginador->nextPageUrl() }}'">Siguiente</button>
-            @else
-                <button class="disabled pag-btn-txt" disabled>Siguiente</button>
-            @endif
-
-            @if ($paginador->hasMorePages())
                 <button class="pag-btn-txt" onclick="location.href='{{ $paginador->url($realEnd) }}'">Última página</button>
             @else
+                <button class="disabled pag-btn-txt" disabled>Siguiente</button>
                 <button class="disabled pag-btn-txt" disabled>Última página</button>
             @endif
         </div>

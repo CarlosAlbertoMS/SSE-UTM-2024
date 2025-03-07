@@ -284,12 +284,12 @@ tr:hover{
 }
 
 
-list-style-type: none; {
+/* list-style-type: none; {
     margin: 0;
     padding: 15px 15px;
     overflow: hidden;
     background-color: #333333;
-}
+} */
 
 table .tabla-inicio {
   background-color:#6b6b6b;
