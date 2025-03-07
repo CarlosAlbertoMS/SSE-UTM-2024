@@ -122,7 +122,7 @@
 
 </body>
 <style>
-    #shape {
+#shape {
         width: 24px;
         height: 16px;
         background-color: #6d000e;
@@ -140,7 +140,8 @@
 
     /* Fila seleccionada */
     tr.selected {
-        background-color: var(--lista-hover);
+        background-color: #6d000e;
+        cursor: pointer;
     }
 
     /* Botón "Ver Detalles" desactivado */
@@ -152,14 +153,7 @@
     }
 
     /* Botón "Ver Detalles" activado */
-    #btn-ver-detalles.active .nofijos {
-        color: #ff0000 !important;
-        /* Rojo */
-        pointer-events: auto;
-        /* Habilita clic */
-    }
-
-    #btn-eliminar.active .nofijos {
+    #btn-ver-detalles.active .nofijos .item-r {
         color: #ff0000 !important;
         /* Rojo */
         pointer-events: auto;

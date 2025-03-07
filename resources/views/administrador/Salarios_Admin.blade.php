@@ -41,6 +41,8 @@
     <title>Salarios - ADMIN</title>
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Salarios_Admin.css') }}">
+    <script src="{{ asset('js/verDetalles.js') }}"></script>
+
 </head>
 
 
@@ -122,5 +124,44 @@
 
 
 </body>
+<style>
+#shape {
+        width: 24px;
+        height: 16px;
+        background-color: #6d000e;
+        box-sizing: border-box;
+    }
+
+    /* Mensaje de error */
+    .error-message {
+        color: #ff0000;
+        padding: 10px;
+        margin: 10px 0;
+        display: none;
+        /* Oculto inicialmente */
+    }
+
+    /* Fila seleccionada */
+    tr.selected {
+        background-color: #6d000e;
+        cursor: pointer;
+    }
+
+    /* Botón "Ver Detalles" desactivado */
+    #btn-ver-detalles .nofijos {
+        color: var(--txt-navbar-nofijo);
+        /* Gris */
+        pointer-events: none;
+        /* Deshabilita clic */
+    }
+
+    /* Botón "Ver Detalles" activado */
+    #btn-ver-detalles.active .nofijos .item-r {
+        color: #ff0000 !important;
+        /* Rojo */
+        pointer-events: auto;
+        /* Habilita clic */
+    }
+</style>
 
 </html>

@@ -71,9 +71,9 @@
         <center>
             <!--Inicio de la tabla-->
             @if ($error)
-                <div class="error-message">
-                    {{ $error }}
-                </div>
+            <div class="error-message">
+                {{ $error }}
+            </div>
             @endif
             <div class="error-message" id="select-row-message">
                 ⚠️ Por favor, seleccione una fila primero.
@@ -92,24 +92,24 @@
                 <tbody>
 
                     @foreach ($egresados as $egresado)
-                                        @php
+                    @php
 
-                                            $matricula = $egresado['matricula'] ?? null;
-                                            // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
-                                            $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
-                                        @endphp
+                    $matricula = $egresado['matricula'] ?? null;
+                    // Verifica que la matrícula exista y sea válida, y si hay datos en carrerasGeneraciones
+                    $carreraGeneracion = $matricula && isset($carrerasGeneraciones[$matricula]) ? $carrerasGeneraciones[$matricula] : null;
+                    @endphp
 
-                                        @if ($matricula && $carreraGeneracion)
-                                            <!-- Solo muestra la fila si existe matrícula y carreraGeneracion -->
-                                            <tr>
-                                                <td>{{ $egresado['matricula'] }}</td>
-                                                <td>{{ ($egresado['ap_paterno'] ?? 'N/A') . ' ' . ($egresado['ap_materno'] ?? 'N/A') . '  ' . ($egresado['nombres'] ?? 'N/A') }}
-                                                </td>
-                                                <td>{{ $carreraGeneracion['carrera'] ?? 'N/A' }}</td>
-                                                <td>{{ $carreraGeneracion['generacion'] ?? 'N/A' }}</td>
-                                                <td>{{ $egresado['estado'] ?? 'N/A' }}</td>
-                                            </tr>
-                                        @endif
+                    @if ($matricula && $carreraGeneracion)
+                    <!-- Solo muestra la fila si existe matrícula y carreraGeneracion -->
+                    <tr>
+                        <td>{{ $egresado['matricula'] }}</td>
+                        <td>{{ ($egresado['ap_paterno'] ?? 'N/A') . ' ' . ($egresado['ap_materno'] ?? 'N/A') . '  ' . ($egresado['nombres'] ?? 'N/A') }}
+                        </td>
+                        <td>{{ $carreraGeneracion['carrera'] ?? 'N/A' }}</td>
+                        <td>{{ $carreraGeneracion['generacion'] ?? 'N/A' }}</td>
+                        <td>{{ $egresado['estado'] ?? 'N/A' }}</td>
+                    </tr>
+                    @endif
 
                     @endforeach
 
@@ -121,7 +121,7 @@
                         <th></th>
                         <th></th>
                         <th>
-                            <div id="mostrar-id" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></div>
+                            <!-- <div id="mostrar-id" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></div> -->
                         </th>
                         <th></th>
                         <th></th>

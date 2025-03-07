@@ -79,4 +79,43 @@ class HistoriasController extends Controller
         ], $response->status());
     }
 
+    public function obtener_historias_paginados()
+    {
+        $empresas = collect(); // Inicializamos como colección vacía en caso de error.
+        $error = null;
+
+        try {
+            $url = env('API_URL') . "historiaexito";
+            $response = Http::get($url);
+            $response->throw();
+            $data = $response->json();
+
+            // Obtener totales
+            // Obtener totales
+            $totalEventos = count($data);
+            $noContestado = collect($data)->where('estado', 'No ha contestado')->count();
+            $parcialmente = collect($data)->where('estado', 'Contestado parcialmente')->count();
+            $completamente = collect($data)->where('estado', 'Contestado completamente')->count();
+
+            // Paginación manual
+            $currentPage = request()->get('page', 1);
+            $perPage = 5;
+            $historias = collect($data)->forPage($currentPage, $perPage);
+
+            $historias = new LengthAwarePaginator(
+                $historias,
+                $totalEventos,
+                $perPage,
+                $currentPage,
+                ['path' => request()->url(), 'query' => request()->query()]
+            );
+        } catch (RequestException $e) {
+            $error = 'No se pudieron obtener los datos de las empresas. Inténtalo de nuevo más tarde.';
+        } catch (\Exception $e) {
+            $error = 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
+        }
+
+        return view('administrador.Historias_Admin', compact('historias', 'error', 'totalEventos', 'noContestado', 'parcialmente', 'completamente'));
+    }
+
 }

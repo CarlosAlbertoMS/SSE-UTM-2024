@@ -8,6 +8,8 @@
     <title>Eventos - ADMIN</title>
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/administrador/Eventos_Admin.css') }}">
+    <script src="{{ asset('js/verDetalles.js') }}"></script>
+
 </head>
 
 <body>
@@ -28,7 +30,8 @@
                         <span class="fijos">Descargar PDF</span>
                     </a>
                 </div>
-                <div><a href="">
+                <div>
+                    <a href="#" id="btn-ver-detalles">
                         <img src="../assets/icons/ver_oferta.svg" class="item-r">
                         <span class="nofijos">Ver Detalles</span>
                     </a>
@@ -57,140 +60,50 @@
         -->
         <center>
             <!--Inicio de la tabla-->
+            @if ($error)
+            <div class="error-message">
+                {{ $error }}
+            </div>
+            @endif
+            <div class="error-message" id="select-row-message">
+                ⚠️ Por favor, seleccione una fila primero.
+            </div>
             <table>
                 <!-- Inicio del encabezado de la tabla-->
-                <tr id="tabla-inicio">
-                    <th>#</th>
-                    <th>Nombre del evento</th>
-                    <th>Lugar</th>
-                    <th>Categoría</th>
-                    <th>Fecha de inicio</th>
-                    <th>Fecha de fin</th>
-                </tr>
-                <!-- Fin del encabezado-->
-                <tr>
-                    <td>1</td>
-                    <td>Pierre Fermat. 1ª. Etapa.</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Premiación de la Olimpiada Mexicana de Matemáticas Oaxaca</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>4° Encuentro Universitario de Ingeniería Industrial</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>VI Semana de Electrónica y Mecatrónica y 10° concurso de Min</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Pierre Fermat. 1ª. Etapa.</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Premiación de la Olimpiada Mexicana de Matemáticas Oaxaca</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>4° Encuentro Universitario de Ingeniería Industrial</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>VI Semana de Electrónica y Mecatrónica y 10° concurso de Min</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Pierre Fermat. 1ª. Etapa.</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Premiación de la Olimpiada Mexicana de Matemáticas Oaxaca</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>4° Encuentro Universitario de Ingeniería Industrial</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>VI Semana de Electrónica y Mecatrónica y 10° concurso de Min</td>
-                    <td>Instalaciones de la UTM</td>
-                    <td>Académico</td>
-                    <td>2020-09-03</td>
-                    <td>2020-09-05</td>
-                </tr>
 
-
+                <thead>
+                    <tr id="tabla-inicio">
+                        <th>#</th>
+                        <th>Nombre del evento</th>
+                        <th>Lugar</th>
+                        <th>Categoría</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de fin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Fin del encabezado-->
+                    @foreach ($empresas as $tabulador)
+                    <tr>
+                        <td> {{ $tabulador['id'] ?? 'N/A' }}</td>
+                        <td> {{ $tabulador['nombre'] ?? 'N/A'}} </td>
+                        <td> {{ $tabulador['lugar'] ?? 'N/A'}}</td>
+                        <td> {{ $tabulador['categoria'] ?? 'N/A'}} </td>
+                        <td> {{ $tabulador['fecha'] ?? 'N/A'}} </td>
+                        <td> {{ $tabulador['fecha_fin'] ?? 'N/A'}} </td>
+                    </tr>
+                    @endforeach
+                </tbody>
                 <tr id="tabla-fin">
-                    <th colspan="6">Total de eventos: 72</th>
+                    <th colspan="5">Total de eventos: {{ $totalEventos }}</th>
+                    <th>
+                        <div id="mostrar-id" style="margin-top: 10px; font-weight: bold; color: #d9534f;"></div>
+                    </th>
                 </tr>
             </table>
             <!--fin de la tabla-->
             <!--Inicio de la paginacion de la pagina-->
-            <div class="pagination">
-                <ul>
-                    <a href="#">
-                        <li class="otrasPaginas">Anterior</li>
-                    </a>
-                    <a href="#">
-                        <li class="otrasPaginas">1</li>
-                    </a>
-                    <a href="#">
-                        <li class="paginasActual">2</li>
-                    </a>
-                    <a href="#">
-                        <li class="otrasPaginas">3</li>
-                    </a>
-                    <a href="#">
-                        <li class="otrasPaginas">Siguiente</li>
-                    </a>
-                </ul>
-            </div>
+            <x-paginador :paginador="$empresas" />
             <!--fin de la paginación-->
 
         </center>
@@ -199,5 +112,44 @@
     @include('layouts.administrador.footer') <!-- Archivo de encabezado reutilizable -->
 
 </body>
+<style>
+    #shape {
+        width: 24px;
+        height: 16px;
+        background-color: #6d000e;
+        box-sizing: border-box;
+    }
+
+    /* Mensaje de error */
+    .error-message {
+        color: #ff0000;
+        padding: 10px;
+        margin: 10px 0;
+        display: none;
+        /* Oculto inicialmente */
+    }
+
+    /* Fila seleccionada */
+    tr.selected {
+        background-color: #6d000e;
+        cursor: pointer;
+    }
+
+    /* Botón "Ver Detalles" desactivado */
+    #btn-ver-detalles .nofijos {
+        color: var(--txt-navbar-nofijo);
+        /* Gris */
+        pointer-events: none;
+        /* Deshabilita clic */
+    }
+
+    /* Botón "Ver Detalles" activado */
+    #btn-ver-detalles.active .nofijos .item-r {
+        color: #ff0000 !important;
+        /* Rojo */
+        pointer-events: auto;
+        /* Habilita clic */
+    }
+</style>
 
 </html>

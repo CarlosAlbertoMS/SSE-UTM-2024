@@ -33,9 +33,9 @@ class EventosController extends Controller
         $paginaActual = request('page', 1);
         $porPagina = 4;
         $recientes_size = count($recientes);
-    
+
         $items = array_slice($recientes, ($paginaActual - 1) * $porPagina, $porPagina);
-    
+
         $paginador = new LengthAwarePaginator(
             $items,            // Elementos de la página actual
             count($recientes), // Total de elementos
@@ -52,18 +52,57 @@ class EventosController extends Controller
     {
         $hoy = new DateTime();
         $limite = (clone $hoy)->modify($umbralFecha);
-        
+
         $recientes = array_filter($eventos, function ($evento) use ($limite) {
             $fechaEvento = new DateTime($evento['fecha']);
             return $fechaEvento >= $limite;
         });
-        
+
         $noRecientes = array_filter($eventos, function ($evento) use ($limite) {
             $fechaEvento = new DateTime($evento['fecha']);
             return $fechaEvento < $limite;
         });
 
         return [$recientes, $noRecientes];
+    }
+
+    public function obtener_eventos_paginados()
+    {
+        $empresas = collect(); // Inicializamos como colección vacía en caso de error.
+        $error = null;
+
+        try {
+            $url = env('API_URL') . "eventos";
+            $response = Http::get($url);
+            $response->throw();
+            $data = $response->json();
+
+            // Obtener totales
+            // Obtener totales
+            $totalEventos = count($data);
+            $noContestado = collect($data)->where('estado', 'No ha contestado')->count();
+            $parcialmente = collect($data)->where('estado', 'Contestado parcialmente')->count();
+            $completamente = collect($data)->where('estado', 'Contestado completamente')->count();
+
+            // Paginación manual
+            $currentPage = request()->get('page', 1);
+            $perPage = 5;
+            $empresas = collect($data)->forPage($currentPage, $perPage);
+
+            $empresas = new LengthAwarePaginator(
+                $empresas,
+                $totalEventos,
+                $perPage,
+                $currentPage,
+                ['path' => request()->url(), 'query' => request()->query()]
+            );
+        } catch (RequestException $e) {
+            $error = 'No se pudieron obtener los datos de las empresas. Inténtalo de nuevo más tarde.';
+        } catch (\Exception $e) {
+            $error = 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
+        }
+
+        return view('administrador.Eventos_Admin', compact('empresas', 'error', 'totalEventos', 'noContestado', 'parcialmente', 'completamente'));
     }
 
     public function show($id)

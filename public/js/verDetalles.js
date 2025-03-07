@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rutaActual.includes("/ofertas")) return `/ofertas/${idSeleccionado}/ver`;
         if (rutaActual.includes("/salarios")) return `/salarios/${idSeleccionado}/ver`;
         if(rutaActual.includes("/eventos")) return `/eventos/${idSeleccionado}/ver`;
+        if(rutaActual.includes("/historias")) return `/historias/${idSeleccionado}/ver`;
+ 
         return null;
     }
 
