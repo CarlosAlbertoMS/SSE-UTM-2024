@@ -29,7 +29,7 @@
 
 			<div class="main--container--2">
 				@include('layouts.egresados.eventos-index', ['paginador' => $paginador])	
-			</div>
+			</div>l
 		</section>
 	</main>
 
